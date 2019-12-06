@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_margin="5dp"
+
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/item_text"
+            android:text="عنصر"
+            android:textColor="#000"
+            android:fontFamily="@font/merssi_req"
+            android:layout_toLeftOf="@id/delete_icon"
+            android:padding="3dp"/>
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:padding="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_delete"
+            android:id="@+id/delete_icon"/>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

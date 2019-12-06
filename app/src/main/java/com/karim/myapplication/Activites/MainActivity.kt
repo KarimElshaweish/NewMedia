@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
         navigationDrawer.setMenuItemList(menuItems)
         var fragmentClass: Class<*>
-        fragmentClass = NewsFragment::class.java
+        fragmentClass = Defualt_Fregmant::class.java
         try {
             fragment = (fragmentClass.newInstance())
         } catch (e: Exception) {
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
             when (position) {
                 0 -> {
                     color1 = R.color.red
-                    fragmentClass = NewsFragment::class.java
+                    fragmentClass = ControlPanelFragment::class.java
                 }
                 1 -> {
                     color1 = R.color.orange
@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 2 -> {
                     color1 = R.color.green
-                    fragmentClass = MessagesFragment::class.java
+                    fragmentClass = PhotographerFragmetn::class.java
                 }
                 3 -> {
                     color1 = R.color.blue
@@ -72,7 +72,12 @@ class MainActivity : AppCompatActivity() {
                 }
                 4->{
                     color1 = R.color.colorAccent
-                    fragmentClass = MusicFragment::class.java
+                    fragmentClass = TheaterAndScreens::class.java
+                }
+                5->{
+                    color1 = R.color.colorAccent
+                    fragmentClass = MontagFragment::class.java
+
                 }
             }
             navigationDrawer.setDrawerListener(object : SNavigationDrawer.DrawerListener {

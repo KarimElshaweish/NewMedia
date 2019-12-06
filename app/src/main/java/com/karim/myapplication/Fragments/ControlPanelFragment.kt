@@ -1,100 +1,41 @@
 package com.karim.myapplication.Fragments
 
-import android.content.Context
-import android.net.Uri
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import androidx.cardview.widget.CardView
+import androidx.fragment.app.Fragment
+import com.karim.myapplication.Activites.ControlPannel.PhotoGrapherControlActivity
+import com.karim.myapplication.Activites.ControlPannel.SoundControlActivity
 import com.karim.myapplication.R
+import kotlinx.android.synthetic.main.fragment_control_panel.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Activities that contain this fragment must implement the
- * [ControlPanelFragment.OnFragmentInteractionListener] interface
- * to handle interaction events.
- * Use the [ControlPanelFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ControlPanelFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-    private var listener: OnFragmentInteractionListener? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_control_panel, container, false)
-    }
+        var view:View
+        view= inflater.inflate(R.layout.fragment_control_panel, container, false)
 
-    // TODO: Rename method, update argument and hook method into UI event
-    fun onButtonPressed(uri: Uri) {
-        listener?.onFragmentInteraction(uri)
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is OnFragmentInteractionListener) {
-            listener = context
+var rlPhoto=view.findViewById<CardView>(R.id.photograpger_control)
+        rlPhoto.setOnClickListener{
+            startActivity(Intent(context,PhotoGrapherControlActivity::class.java))
         }
+
+        var rlSound=view.findViewById<CardView>(R.id.soundControl)
+        rlSound.setOnClickListener{
+            startActivity(Intent(context,SoundControlActivity::class.java))
+        }
+
+        return view
     }
 
-    override fun onDetach() {
-        super.onDetach()
-        listener = null
-    }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson [Communicating with Other Fragments]
-     * (http://developer.android.com/training/basics/fragments/communicating.html)
-     * for more information.
-     */
-    interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        fun onFragmentInteraction(uri: Uri)
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ControlPanelFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ControlPanelFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }

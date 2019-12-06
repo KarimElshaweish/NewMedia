@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.MontagFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="إسم العميل"
+            android:fontFamily="@font/merssi_bold"
+            android:textColor="#000"
+            android:padding="7dp"
+            android:layout_margin="10dp"
+            android:layout_gravity="right"
+            android:gravity="right"/>
+        <EditText
+            android:textCursorDrawable="@drawable/coursor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_offline"
+            android:padding="7dp"
+            android:textSize="17sp"
+            android:hint="إسم العميل"
+            android:id="@+id/clientName"
+            android:fontFamily="@font/merssi_semibold"
+            android:layout_margin="10dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="رقم الجوال"
+            android:fontFamily="@font/merssi_bold"
+            android:textColor="#000"
+            android:padding="7dp"
+            android:layout_margin="10dp"
+            android:layout_gravity="right"
+            android:gravity="right"/>
+        <EditText
+            android:id="@+id/phonNumber"
+            android:textCursorDrawable="@drawable/coursor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_offline"
+            android:padding="7dp"
+            android:inputType="number"
+            android:textSize="17sp"
+            android:hint="رقم الجوال"
+            android:fontFamily="@font/merssi_semibold"
+            android:layout_margin="10dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="تاريخ العمل"
+            android:fontFamily="@font/merssi_bold"
+            android:textColor="#000"
+            android:padding="7dp"
+            android:layout_margin="10dp"
+            android:layout_gravity="right"
+            android:gravity="right"/>
+        <EditText
+            android:textCursorDrawable="@drawable/coursor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_offline"
+            android:padding="7dp"
+            android:inputType="date"
+            android:textSize="17sp"
+            android:hint="تاريخ العمل"
+            android:id="@+id/workDate"
+            android:fontFamily="@font/merssi_semibold"
+            android:layout_margin="10dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="العربون بالريال"
+            android:fontFamily="@font/merssi_bold"
+            android:textColor="#000"
+            android:padding="7dp"
+            android:layout_margin="10dp"
+            android:layout_gravity="right"
+            android:gravity="right"/>
+        <EditText
+            android:id="@+id/priceText"
+            android:textCursorDrawable="@drawable/coursor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_offline"
+            android:padding="7dp"
+            android:inputType="date"
+            android:textSize="17sp"
+            android:hint="العربون"
+            android:fontFamily="@font/merssi_semibold"
+            android:layout_margin="10dp"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_online"
+            android:text="إصدار العقد"
+            android:fontFamily="@font/merssi_bold"
+            android:textColor="#fff"
+            android:layout_gravity="center"
+            android:layout_margin="7dp"
+            android:padding="7dp"
+            android:id="@+id/btnAdd"/>
+    </LinearLayout>
+
+</FrameLayout>

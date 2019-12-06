@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activites.ControlPannel.SoundControl.SoundControlAddPackage">
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff">
+        <TextView
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  إضافة منتج صوتى جديدة"
+            android:fontFamily="@font/merssi_semibold"
+            android:textColor="#000"
+            android:layout_centerHorizontal="true"
+            android:padding="7dp"/>
+        <ImageView
+            android:onClick="finish"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_left_arrow"
+            android:layout_centerVertical="true"
+            android:padding="7dp"/>
+    </RelativeLayout>
+    <com.kofigyan.stateprogressbar.StateProgressBar
+        android:layout_below="@id/title"
+        android:id="@+id/pbState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:spb_currentStateNumber="one"
+        app:spb_maxStateNumber="four"
+        app:spb_stateBackgroundColor="#BDBDBD"
+        app:spb_stateForegroundColor="@color/blue"
+        app:spb_stateNumberBackgroundColor="#808080"
+        app:spb_stateNumberForegroundColor="#eeeeee"
+        app:spb_currentStateDescriptionColor="@color/blue"
+        app:spb_stateDescriptionColor="#808080"
+        app:spb_checkStateCompleted="true"/>
+    <RelativeLayout
+        android:visibility="visible"
+        android:id="@+id/adding_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/pbState">
+        <LinearLayout
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/type_layout"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/merssi_semibold"
+                android:text="إسم المنتح"/>
+            <EditText
+                android:textCursorDrawable="@drawable/coursor"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/border_offline"
+                android:hint="إسم المنتج"
+                android:fontFamily="@font/merssi_semibold"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:id="@+id/pk_name"/>
+            <!--        <androidx.cardview.widget.CardView-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:elevation="10dp"-->
+            <!--            android:layout_margin="10dp"-->
+            <!--            android:layout_height="wrap_content">-->
+            <!--           <Spinner&ndash;
+            <!-               android:layout_width="match_parent"-->
+            <!--               android:layout_height="110dp"-->
+            <!--             android:id="@+id/package_type_spinner"/>-->
+            <!--        </androidx.cardview.widget.CardView>-->
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/price_layout"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="سعر المنتح بالريال"
+                android:fontFamily="@font/merssi_semibold"
+                android:textColor="#000"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:layout_margin="7dp"
+                android:padding="10dp"/>
+            <EditText
+                android:textCursorDrawable="@drawable/coursor"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/border_offline"
+                android:inputType="number"
+                android:hint="السعر"
+                android:fontFamily="@font/merssi_semibold"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:id="@+id/price"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/items_list"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="عناصر المنتج"
+                android:fontFamily="@font/merssi_semibold"
+                android:textColor="#000"
+                android:textSize="15sp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_margin="7dp"
+                android:padding="7dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="7dp"
+                android:weightSum="4">
+                <Button
+                    android:id="@+id/btnAddItem"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_online"
+                    android:text="إضافة"
+                    android:fontFamily="@font/merssi_req"
+                    android:textColor="#fff"
+                    android:layout_gravity="left|center_vertical"
+                    android:gravity="center"
+                    android:layout_margin="7dp"
+                    android:padding="7dp"/>
+                <EditText
+                    android:textCursorDrawable="@drawable/coursor"
+                    android:fontFamily="@font/merssi_semibold"
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:layout_weight="3"
+                    android:background="@drawable/border_offline"
+                    android:padding="7dp"
+                    android:textSize="16sp"
+                    android:id="@+id/item_edit"
+                    android:layout_margin="7dp"
+                    android:layout_gravity="right|center_vertical"
+                    android:gravity="right|center_vertical"/>
+            </LinearLayout>
+            <TextView
+                android:layout_margin="7dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="العناصر المضافة"
+                android:fontFamily="@font/merssi_req"
+                android:layout_gravity="center"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rv"/>
+        </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/pk_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pbState"
+        >
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:elevation="10dp"
+            app:cardCornerRadius="7dp"
+            android:layout_margin="10dp"
+            app:cardUseCompatPadding="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <RelativeLayout
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:fontFamily="@font/merssi_req"
+                        android:id="@+id/pk_title"
+                        style="@style/TextAppearance.AppCompat.Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="الباقة الذهبية" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:gravity="center">
+                        <TextView
+                            android:padding="7dp"
+                            android:fontFamily="@font/merssi_req"
+                            style="@style/TextAppearance.AppCompat.Title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ريال" />
+                        <TextView
+                            android:id="@+id/price_view"
+                            android:padding="7dp"
+                            android:fontFamily="@font/merssi_req"
+                            style="@style/TextAppearance.AppCompat.Title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0" />
+                        <TextView
+                            android:padding="7dp"
+                            android:fontFamily="@font/merssi_req"
+                            style="@style/TextAppearance.AppCompat.Title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="السعر" />
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/item_rv"
+                        android:layout_gravity="right"
+                        />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_alignParentRight="true"
+                    android:padding="7dp"
+                    android:id="@+id/img_type"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="top|end"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="-5dp"
+                    />
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/next"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="التالى"
+        android:padding="7dp"
+        android:gravity="center"
+        android:layout_margin="20dp"
+        android:background="@drawable/border_offline"
+        android:textColor="#BDBDBD"
+        android:fontFamily="@font/merssi_semibold"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:drawableRight="@drawable/ic_right_arrow"/>
+    <TextView
+        android:id="@+id/previous"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="السابق"
+        android:padding="7dp"
+        android:gravity="center"
+        android:layout_margin="20dp"
+        android:background="@drawable/border_offline"
+        android:textColor="#BDBDBD"
+        android:fontFamily="@font/merssi_semibold"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:drawableLeft="@drawable/ic_left_arrow_offline"/>
+</RelativeLayout>

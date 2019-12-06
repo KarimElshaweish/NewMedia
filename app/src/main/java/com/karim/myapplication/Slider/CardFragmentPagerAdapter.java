@@ -7,9 +7,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.karim.myapplication.Slider.CardAdapter;
-import com.karim.myapplication.Slider.CardFragment;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,13 +14,12 @@ public class CardFragmentPagerAdapter extends FragmentStatePagerAdapter implemen
     private List<CardFragment> fragments;
     private float baseElevation;
 
-    public CardFragmentPagerAdapter(FragmentManager fm, float baseElevation) {
+    public CardFragmentPagerAdapter(FragmentManager fm, float baseElevation,boolean noChoice) {
         super(fm);
         fragments = new ArrayList<>();
         this.baseElevation = baseElevation;
-
         for(int i = 0; i< 8; i++){
-            addCardFragment(new CardFragment());
+            addCardFragment(new CardFragment(noChoice));
         }
     }
 

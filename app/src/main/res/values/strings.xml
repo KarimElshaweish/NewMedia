@@ -1,9 +1,12 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">New Media</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="btn_smooth_scroll">Smooth scroll</string>
     <string name="btn_transition_time">Transition time</string>
+    <string name="btn_next">التالى</string>
+    <string name="btn_back">السابق</string>
 
 </resources>
+

@@ -9,6 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Activites.TheaterAndScreens.ScreensActivity"></activity>
+        <activity android:name=".Activites.TheaterAndScreens.Theater" />
+        <activity android:name=".Activites.ControlPannel.SoundControlActivity" />
+        <activity android:name=".Activites.ControlPannel.SoundControl" />
+        <activity android:name=".Activites.ControlPannel.SoundControl.SoundControlAddPackage" />
+        <activity android:name=".Activites.ControlPannel.PhotoGrapherControl.PhotoGrapherAddPackage" />
+        <activity android:name=".Activites.ControlPannel.PhotoGrapherControlActivity" />
         <activity android:name=".Activites.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,10 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ViewScroll"></activity>
-        <activity android:name=".Activites.MainActivity">
-
-        </activity>
+        <activity android:name=".Activites.MainActivity" />
     </application>
 
 </manifest>

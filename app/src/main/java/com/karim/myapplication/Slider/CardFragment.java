@@ -17,9 +17,17 @@ import com.karim.myapplication.R;
 
 public class CardFragment extends Fragment{
     private CardView cardView;
+   static boolean noChoice;
+
+    public CardFragment(boolean noChoice) {
+        this.noChoice = noChoice;
+    }
+
+    public CardFragment() {
+    }
 
     public static Fragment getInstance(int position) {
-        CardFragment f = new CardFragment();
+        CardFragment f = new CardFragment(noChoice);
         Bundle args = new Bundle();
         args.putInt("position", position);
         f.setArguments(args);
@@ -37,9 +45,10 @@ public class CardFragment extends Fragment{
         cardView = (CardView) view.findViewById(R.id.cardView);
         cardView.setMaxCardElevation(cardView.getCardElevation() * CardAdapter.MAX_ELEVATION_FACTOR);
 
-        TextView title = (TextView) view.findViewById(R.id.title);
-        Button button = (Button)view.findViewById(R.id.button);
-
+        TextView title = view.findViewById(R.id.title);
+        Button button = view.findViewById(R.id.button);
+        if(noChoice)
+            button.setVisibility(View.GONE);
        // title.setText(String.format("Card %d", getArguments().getInt("position")));
         button.setOnClickListener(new View.OnClickListener() {
             @Override
