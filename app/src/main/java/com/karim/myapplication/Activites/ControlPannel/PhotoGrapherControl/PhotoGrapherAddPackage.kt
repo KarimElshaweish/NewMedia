@@ -9,14 +9,14 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.AdapterView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.database.FirebaseDatabase
 import com.karim.myapplication.Adapter.RVItemsAdapter
 import com.karim.myapplication.Adapter.RvAdapter
-import com.karim.myapplication.Adapter.SpinnerCustomeAdapter
+import com.karim.myapplication.Model.PhotoGraph
 import com.karim.myapplication.Model.TypesItems
-import com.karim.myapplication.Model.TypesPackages
 import com.karim.myapplication.R
 import com.kofigyan.stateprogressbar.StateProgressBar
 import kotlinx.android.synthetic.main.activity_photo_grapher_add_package.*
@@ -119,6 +119,12 @@ class PhotoGrapherAddPackage : AppCompatActivity() {
                     item_rv.adapter=itemAdapter
                     price_view.setText(price.text.toString())
                 }
+                if(next.text.equals("نشر")){
+                    var photoData=PhotoGraph(pk_name.text.toString(),price.text.toString(),listItems)
+                    FirebaseDatabase.getInstance().getReference("photoGraph").setValue(photoData).addOnCompleteListener{
+                        Toast.makeText(baseContext,"Done",Toast.LENGTH_LONG).show()
+                    }
+                }
             }
         }
         previous.setOnClickListener{
@@ -156,6 +162,7 @@ class PhotoGrapherAddPackage : AppCompatActivity() {
                 viewGone(pk_form,adding_form)
                 pbState.setCurrentStateNumber(StateProgressBar.StateNumber.THREE)
             }
+
         }
         val textWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
