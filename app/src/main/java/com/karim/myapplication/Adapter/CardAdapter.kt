@@ -6,10 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.karim.myapplication.Model.PhotoGraph
 import com.karim.myapplication.R
+import com.mikhaellopez.circularimageview.CircularImageView
 
 class CardAdapter (var photList: List<PhotoGraph>,var _ctx:Context,var nochoice:Boolean):RecyclerView.Adapter<CardAdapter.ViewHolder> (){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -32,6 +35,10 @@ class CardAdapter (var photList: List<PhotoGraph>,var _ctx:Context,var nochoice:
         holder.rv.adapter=adapter
         if(nochoice)
             holder.button.visibility=View.GONE
+        holder.pkIamge.elevation=10f
+        holder.cv.elevation=9f
+        Glide.with(_ctx).load(photList.get(position).image).placeholder(_ctx.resources.getDrawable(R.drawable.defualt)
+        ).into(holder.pkIamge)
     }
 
     class ViewHolder(itemView:View):RecyclerView.ViewHolder(itemView){
@@ -39,5 +46,7 @@ class CardAdapter (var photList: List<PhotoGraph>,var _ctx:Context,var nochoice:
         val price = itemView.findViewById<TextView>(R.id.price)
         val  rv=itemView.findViewById<RecyclerView>(R.id.rv)
         var button=itemView.findViewById<Button>(R.id.button)
+        var pkIamge=itemView.findViewById<CircularImageView>(R.id.pkIamge)
+        var cv=itemView.findViewById<CardView>(R.id.cv)
     }
 }

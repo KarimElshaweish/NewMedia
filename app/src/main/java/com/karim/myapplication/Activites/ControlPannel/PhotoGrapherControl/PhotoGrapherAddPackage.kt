@@ -1,5 +1,6 @@
 package com.karim.myapplication.Activites.ControlPannel.PhotoGrapherControl
 
+import android.app.Activity
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
@@ -21,6 +22,14 @@ import com.karim.myapplication.R
 import com.kofigyan.stateprogressbar.StateProgressBar
 import dmax.dialog.SpotsDialog
 import kotlinx.android.synthetic.main.activity_photo_grapher_add_package.*
+import android.content.Intent
+import android.net.Uri
+import android.provider.MediaStore
+import com.bumptech.glide.Glide
+import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.UploadTask
 
 
 class PhotoGrapherAddPackage : AppCompatActivity() {
@@ -97,51 +106,77 @@ class PhotoGrapherAddPackage : AppCompatActivity() {
                 .setContext(this)
                 .setTheme(R.style.Custom)
                 .build()
-            if(typecheckd){
+            if(typecheckd) {
                 previous.setTextColor(Color.parseColor("#ffffff"))
                 previous.setBackgroundDrawable(resources.getDrawable(R.drawable.border_online))
-                val img = getResources().getDrawable(com.karim.myapplication.R.drawable.ic_left_online)
+                val img =
+                    getResources().getDrawable(com.karim.myapplication.R.drawable.ic_left_online)
                 img.setBounds(0, 0, 60, 60)
-                previous.setCompoundDrawables(img,null,null,null)
+                previous.setCompoundDrawables(img, null, null, null)
                 current++
-                if(current==1){
+                if (current == 1) {
                     pbState.setCurrentStateNumber(StateProgressBar.StateNumber.TWO)
-                    viewGone(type_layout,price_layout)
-                }
-               else if(current==2) {
+                    viewGone(type_layout, price_layout)
+                } else if (current == 2) {
                     next.setText("إنهاء")
-                    next.setCompoundDrawables(null,null,null,null)
+                    next.setCompoundDrawables(null, null, null, null)
                     pbState.setCurrentStateNumber(StateProgressBar.StateNumber.THREE)
-                    viewGone(price_layout,items_list)
-                }
-               else if(current==3){
+                    viewGone(price_layout, items_list)
+                } else if (current == 3) {
                     next.setText("نشر")
                     pbState.setCurrentStateNumber(StateProgressBar.StateNumber.FOUR)
-                    viewGone(adding_form,pk_form)
-                  //  var pk=list.get(spinnerPosition)
-                  //  img_type.setImageDrawable(resources.getDrawable(pk.image))
+                    viewGone(adding_form, pk_form)
+                    //  var pk=list.get(spinnerPosition)
+                    //  img_type.setImageDrawable(resources.getDrawable(pk.image))
                     pk_title.setText(pk_name.text.toString())
-                    var itemAdapter=RVItemsAdapter(this,listItems)
+                    var itemAdapter = RVItemsAdapter(this, listItems)
                     item_rv.setHasFixedSize(true)
-                    item_rv.layoutManager=LinearLayoutManager(this)
-                    item_rv.adapter=itemAdapter
+                    item_rv.layoutManager = LinearLayoutManager(this)
+                    item_rv.adapter = itemAdapter
                     price_view.setText(price.text.toString())
-                }
-               else if(next.text.equals("نشر")){
+                } else if (next.text.equals("نشر")) {
                     dialog!!.show()
-                    var photoData= PhotoGraph()
-                    photoData.name=pk_name.text.toString()
-                    photoData.price=price.text.toString()
-                    photoData.items=listItems
-                    FirebaseDatabase.getInstance().getReference("photoGraph")
-                        .child(photoData.name).setValue(photoData).addOnCompleteListener{
-                            dialog.dismiss()
-                            showToast("تم النشر")
-                            finish()
-                    }.addOnFailureListener{
-                        showToast("حدث خطأ")
+
+                    if (filepath != null) {
+                        var mrefernace = FirebaseStorage.getInstance().getReference("PKImage")
+                        var uploadImage = mrefernace.putFile(filepath)
+                        uploadImage.addOnFailureListener { ex ->
+                            Toast.makeText(
+                                baseContext,
+                                ex.message,
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                            .addOnSuccessListener {
+                                uploadImage.continueWithTask { task ->
+                                    if (!task.isSuccessful) {
+                                    }
+                                    mrefernace.downloadUrl
+                                }.addOnCompleteListener { task ->
+                                    if (task.isSuccessful) {
+                                        val downloadUri = task.result
+                                        var photoData = PhotoGraph()
+                                        photoData.name = pk_name.text.toString()
+                                        photoData.price = price.text.toString()
+                                        photoData.items = listItems
+                                        photoData.image = downloadUri.toString()
+                                        FirebaseDatabase.getInstance().getReference("photoGraph")
+                                            .child(photoData.name).setValue(photoData)
+                                            .addOnCompleteListener {
+                                                dialog.dismiss()
+                                                showToast("تم النشر")
+                                                finish()
+                                            }.addOnFailureListener {
+                                                showToast("حدث خطأ")
+                                            }
+
+                                    }
+                                }
+                            }
                     }
                 }
+            }else{
+                Toast.makeText(this,"من فضلك ادخل صورة المنتج",Toast.LENGTH_LONG).show()
             }
         }
         previous.setOnClickListener{
@@ -227,5 +262,28 @@ class PhotoGrapherAddPackage : AppCompatActivity() {
         })
 
         view.startAnimation(animation)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(data!=null&&resultCode== Activity.RESULT_OK&&requestCode==PICK_IMAGE){
+            filepath= data.data!!
+            Glide.with(this).load(filepath).into(pkPicture)
+            Glide.with(this).load(filepath).into(pkIamge)
+        }
+    }
+
+    var PICK_IMAGE:Int=77
+    lateinit var filepath:Uri
+    fun chengePicture(view: View) {
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(
+            Intent.createChooser(
+                intent,
+                "اختار صورة المنتج"
+            ), PICK_IMAGE
+        )
     }
 }

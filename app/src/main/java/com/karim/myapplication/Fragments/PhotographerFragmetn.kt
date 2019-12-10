@@ -57,7 +57,8 @@ class PhotographerFragmetn : Fragment() {
                         var name:String=pp.get("name")as String
                         var price:String=pp.get("price")as String
                         var pkItems=pp.get("items")as MutableList<TypesItems>
-                        var photoGraph=PhotoGraph(name,price,pkItems)
+                        var pkImage=pp.get("image")as String
+                        var photoGraph=PhotoGraph(name,price,pkItems,pkImage)
                         photoList.add(photoGraph)
                         print(pp)
                     }
