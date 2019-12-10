@@ -8,7 +8,7 @@
     android:layout_margin="25dp"
     app:cardUseCompatPadding="true"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_gravity="center">
 
     <RelativeLayout
@@ -30,52 +30,42 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="الباقة الذهبية" />
-
-            <TextView
-                android:fontFamily="@font/merssi_req"
-                style="@style/TextAppearance.AppCompat.Body1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:drawablePadding="7dp"
+            <LinearLayout
                 android:layout_gravity="center"
-                android:gravity="right"
-                android:drawableRight="@drawable/ic_bullet"
-                android:text="ألبوم صور كلاسيكي بمقاس A4 (ألبوم فولدر مع شنطة للألبوم)" />
-            <TextView
-                android:fontFamily="@font/merssi_req"
-                style="@style/TextAppearance.AppCompat.Body1"
+                android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:drawablePadding="7dp"
-                android:layout_gravity="right"
-                android:gravity="right"
-                android:drawableRight="@drawable/ic_bullet"
-                android:text="٥ ساعات تصوير" />
-            <TextView
-                android:fontFamily="@font/merssi_req"
-                style="@style/TextAppearance.AppCompat.Body1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:drawablePadding="7dp"
-                android:layout_gravity="right"
-                android:gravity="right"
-                android:drawableRight="@drawable/ic_bullet"
-                android:text="٥٤٠ صورة في الألبوم بمقاس A4" />
-            <TextView
-                android:fontFamily="@font/merssi_req"
-                style="@style/TextAppearance.AppCompat.Body1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:drawablePadding="7dp"
-                android:layout_gravity="right"
-                android:gravity="right"
-                android:drawableRight="@drawable/ic_bullet"
-                android:text="١٠ صور عائلية" />
+                android:orientation="horizontal">
+                <TextView
+                    android:padding="10dp"
+                    android:fontFamily="@font/merssi_req"
+                    style="@style/TextAppearance.AppCompat.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ريال" />
+                <TextView
+                    android:padding="10dp"
+                    android:fontFamily="@font/merssi_req"
+                    android:id="@+id/price"
+                    style="@style/TextAppearance.AppCompat.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="" />
+                <TextView
+                    android:padding="10dp"
+                    android:fontFamily="@font/merssi_req"
+                    style="@style/TextAppearance.AppCompat.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="السعر" />
+            </LinearLayout>
 
+<androidx.recyclerview.widget.RecyclerView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/rv"
+    android:layout_gravity="right"
+    />
 
         </LinearLayout>
 

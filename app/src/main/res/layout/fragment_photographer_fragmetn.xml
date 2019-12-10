@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    android:layout_margin="20dp"
+<androidx.coordinatorlayout.widget.CoordinatorLayout android:layout_margin="20dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -13,17 +13,26 @@
         android:layout_marginTop="20dp"
         />
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager"
+    <com.yarolegovich.discretescrollview.DiscreteScrollView
+        android:id="@+id/picker"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:clipToPadding="false"
-        android:overScrollMode="never"
-        android:paddingBottom="30dp"
-        android:paddingEnd="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingStart="10dp" />
+        android:layout_height="match_parent"
+        app:dsv_orientation="horizontal" />
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:id="@+id/rv"/>-->
+<!--    <androidx.viewpager.widget.ViewPager-->
+<!--        android:id="@+id/viewPager"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:clipToPadding="false"-->
+<!--        android:overScrollMode="never"-->
+<!--        android:paddingBottom="30dp"-->
+<!--        android:paddingEnd="10dp"-->
+<!--        android:paddingLeft="10dp"-->
+<!--        android:paddingRight="10dp"-->
+<!--        android:paddingStart="10dp" />-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

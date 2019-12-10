@@ -19,6 +19,7 @@ import com.karim.myapplication.Model.PhotoGraph
 import com.karim.myapplication.Model.TypesItems
 import com.karim.myapplication.R
 import com.kofigyan.stateprogressbar.StateProgressBar
+import dmax.dialog.SpotsDialog
 import kotlinx.android.synthetic.main.activity_photo_grapher_add_package.*
 
 
@@ -30,6 +31,9 @@ class PhotoGrapherAddPackage : AppCompatActivity() {
     var typecheckd=false
     var current=0
     var spinnerPosition:Int=-1
+    private fun showToast(msg:String){
+        Toast.makeText(baseContext,msg,Toast.LENGTH_LONG).show()
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_photo_grapher_add_package)
@@ -89,24 +93,28 @@ class PhotoGrapherAddPackage : AppCompatActivity() {
 //            }
 //        }
         next.setOnClickListener{
+            val dialog: android.app.AlertDialog? = SpotsDialog.Builder()
+                .setContext(this)
+                .setTheme(R.style.Custom)
+                .build()
             if(typecheckd){
-                current++
-                if(current==1){
-                    pbState.setCurrentStateNumber(StateProgressBar.StateNumber.TWO)
-                    viewGone(type_layout,price_layout)
-                }
                 previous.setTextColor(Color.parseColor("#ffffff"))
                 previous.setBackgroundDrawable(resources.getDrawable(R.drawable.border_online))
                 val img = getResources().getDrawable(com.karim.myapplication.R.drawable.ic_left_online)
                 img.setBounds(0, 0, 60, 60)
                 previous.setCompoundDrawables(img,null,null,null)
-                if(current==2) {
+                current++
+                if(current==1){
+                    pbState.setCurrentStateNumber(StateProgressBar.StateNumber.TWO)
+                    viewGone(type_layout,price_layout)
+                }
+               else if(current==2) {
                     next.setText("إنهاء")
                     next.setCompoundDrawables(null,null,null,null)
                     pbState.setCurrentStateNumber(StateProgressBar.StateNumber.THREE)
                     viewGone(price_layout,items_list)
                 }
-                if(current==3){
+               else if(current==3){
                     next.setText("نشر")
                     pbState.setCurrentStateNumber(StateProgressBar.StateNumber.FOUR)
                     viewGone(adding_form,pk_form)
@@ -119,10 +127,19 @@ class PhotoGrapherAddPackage : AppCompatActivity() {
                     item_rv.adapter=itemAdapter
                     price_view.setText(price.text.toString())
                 }
-                if(next.text.equals("نشر")){
-                    var photoData=PhotoGraph(pk_name.text.toString(),price.text.toString(),listItems)
-                    FirebaseDatabase.getInstance().getReference("photoGraph").setValue(photoData).addOnCompleteListener{
-                        Toast.makeText(baseContext,"Done",Toast.LENGTH_LONG).show()
+               else if(next.text.equals("نشر")){
+                    dialog!!.show()
+                    var photoData= PhotoGraph()
+                    photoData.name=pk_name.text.toString()
+                    photoData.price=price.text.toString()
+                    photoData.items=listItems
+                    FirebaseDatabase.getInstance().getReference("photoGraph")
+                        .child(photoData.name).setValue(photoData).addOnCompleteListener{
+                            dialog.dismiss()
+                            showToast("تم النشر")
+                            finish()
+                    }.addOnFailureListener{
+                        showToast("حدث خطأ")
                     }
                 }
             }
@@ -158,7 +175,6 @@ class PhotoGrapherAddPackage : AppCompatActivity() {
             }
             if(next.text.equals("نشر")){
                 next.setText("إنهاء")
-
                 viewGone(pk_form,adding_form)
                 pbState.setCurrentStateNumber(StateProgressBar.StateNumber.THREE)
             }

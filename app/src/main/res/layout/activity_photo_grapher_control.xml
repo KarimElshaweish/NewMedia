@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activites.ControlPannel.PhotoGrapherControlActivity">
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff">
+        <TextView
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="التصوير"
+            android:fontFamily="@font/merssi_semibold"
+            android:textColor="#000"
+            android:layout_centerHorizontal="true"
+            android:padding="7dp"/>
+        <ImageView
+            android:onClick="finish"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_left_arrow"
+            android:layout_centerVertical="true"
+            android:padding="7dp"/>
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/noPk"
+        android:text="لاتوجد باقات مضافة"
+        android:layout_below="@id/title"
+        android:fontFamily="@font/merssi_bold"
+        android:textColor="#000"
+        android:padding="15dp"
+        android:gravity="center"
+        android:visibility="gone"/>
+    <com.yarolegovich.discretescrollview.DiscreteScrollView
+        android:layout_below="@id/title"
+        android:id="@+id/picker"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:dsv_orientation="horizontal" />
+    <com.robertlevonyan.views.customfloatingactionbutton.FloatingActionButton
+        android:id="@+id/add_fab"
+        app:fabIcon="@drawable/ic_add"
+        android:text="إضافة باقة"
+        android:fontFamily="@font/merssi_semibold"
+        android:textColor="#fff"
+        app:fabColor="@color/blue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"/>
+</RelativeLayout>
