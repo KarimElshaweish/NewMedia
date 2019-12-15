@@ -369,22 +369,140 @@
                         </RelativeLayout>
 
                     </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:gravity="right"
 
+                        android:orientation="horizontal">
+                        <RelativeLayout
+                            android:layout_marginTop="15dp"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:background="@drawable/left_cornor">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="الشروط"
+                                android:fontFamily="@font/merssi_bold"
+                                android:textColor="#fff"
+                                android:gravity="right"
+                                android:textSize="20sp"
+                                android:layout_alignParentRight="true"/>
+                        </RelativeLayout>
+
+                    </LinearLayout>
+                    <TextView
+
+                        android:padding="3dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_gravity="right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="١_ يتم تسليم العمل بعد اسبوع ونصف كحد اقصى"
+                        android:fontFamily="@font/merssi_req"
+                        android:textSize="15dp"
+                        android:textColor="#000"
+                        android:drawablePadding="7dp"
+                        android:gravity="center_vertical"
+                        /> <TextView
+
+                        android:padding="3dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_gravity="right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="٢_ في حال مطالبتنا من قِبل العميل بالتعديل يتم احتساب ٢٠٠ ريال على كل تعديل وله الحق التعديل المره الأولى مجانا"
+                        android:fontFamily="@font/merssi_req"
+                        android:textSize="14dp"
+                        android:textColor="#000"
+                        android:drawablePadding="7dp"
+                        android:gravity="center_vertical"
+                        /><TextView
+
+                        android:padding="3dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_gravity="right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="٣_ يشترط دفع عربون نصف المبلغ وعند الانتهاء من العمل يتم تسليم المبلغ كاملا قبل استلام العمل ولا يحق للعميل تأجيل موعد الدفع في اي حال من الأحوال"
+                        android:fontFamily="@font/merssi_req"
+                        android:textSize="14dp"
+                        android:textColor="#000"
+                        android:drawablePadding="7dp"
+                        android:gravity="center_vertical"
+                        /><TextView
+
+                        android:padding="3dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_gravity="right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                    android:text="٤_ في حال تأخر العميل عن استلام المونتاج لأكثر من ثلاثة أشهر من تاريخ يوم العمل لا يحق له المطالبه بعد ذلك "
+                        android:fontFamily="@font/merssi_req"
+                        android:textSize="14dp"
+                        android:textColor="#000"
+                        android:drawablePadding="7dp"
+                        android:gravity="center_vertical"
+                        /><TextView
+
+                        android:padding="3dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_gravity="right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                    android:text="٥_ في حال فقدان العمل من قبل المؤسسة يتم استرجاع المبلغ الكامل للعميل"
+                        android:fontFamily="@font/merssi_req"
+                        android:textSize="14dp"
+                        android:textColor="#000"
+                        android:drawablePadding="7dp"
+                        android:gravity="center_vertical"
+                        /><TextView
+
+                        android:padding="3dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_gravity="right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                    android:text="٦_في حالة طلب العمل مستعجل يتم زيادة المبلغ بنسة 50٪ من المبلغ الكامل"
+                        android:fontFamily="@font/merssi_req"
+                        android:textSize="14dp"
+                        android:textColor="#000"
+                        android:drawablePadding="7dp"
+                        android:gravity="center_vertical"
+                        /><TextView
+
+                        android:padding="3dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_gravity="right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                    android:text="٧_ يحق للمؤسسة إلغاء العمل مع العميل وارجاع كامل المبلغ المتفق عليه"
+                        android:fontFamily="@font/merssi_req"
+                        android:textSize="14dp"
+                        android:textColor="#000"
+                        android:drawablePadding="7dp"
+                        android:gravity="center_vertical"
+                        />
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_online"
+                        android:text="إصدار المستند"
+                        android:fontFamily="@font/merssi_bold"
+                        android:textColor="#fff"
+                        android:layout_gravity="center"
+                        android:layout_margin="7dp"
+                        android:padding="10dp"
+                        android:id="@+id/print_pdf"/>
                 </LinearLayout>
             </RelativeLayout>
+
         </ScrollView>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/border_online"
-            android:text="إصدار المستند"
-            android:fontFamily="@font/merssi_bold"
-            android:textColor="#fff"
-            android:layout_gravity="center"
-            android:layout_margin="7dp"
-            android:padding="10dp"
-            android:id="@+id/print_pdf"/>
+
     </LinearLayout>
 
 </FrameLayout>

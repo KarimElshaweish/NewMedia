@@ -49,7 +49,7 @@
             android:gravity="center"
             android:textCursorDrawable="@drawable/coursor"
             android:id="@+id/meterPriceText"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:padding="5dp"
             android:layout_width="100dp"
             android:layout_height="50dp"
@@ -67,7 +67,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:id="@+id/meterSumText"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:padding="5dp"
             android:layout_width="100dp"
             android:layout_height="50dp"
@@ -82,6 +82,7 @@
     </LinearLayout>
     <com.robertlevonyan.views.customfloatingactionbutton.FloatingActionButton
         android:id="@+id/add_fab"
+        android:onClick="btnClicked"
         app:fabIcon="@drawable/ic_add"
         android:text="إضافة إلى السلة"
         android:fontFamily="@font/merssi_semibold"

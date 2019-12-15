@@ -1,12 +1,17 @@
 package com.karim.myapplication.Fragments
 
+import android.app.DatePickerDialog
+import android.content.Intent
 import android.graphics.*
 import android.graphics.pdf.PdfDocument
+import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
+import android.os.StrictMode
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.karim.myapplication.R
@@ -14,18 +19,7 @@ import kotlinx.android.synthetic.main.fragment_montag.view.*
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
-import android.app.DatePickerDialog
-import android.app.TimePickerDialog
-import android.widget.*
 import java.util.*
-import javax.xml.datatype.DatatypeConstants.MONTHS
-import androidx.core.content.ContextCompat.startActivity
-import android.content.Intent
-import android.net.Uri
-import androidx.core.content.FileProvider
-import android.os.StrictMode
-
-
 
 
 class MontagFragment : Fragment() {
@@ -121,11 +115,9 @@ class MontagFragment : Fragment() {
         }
         var print_pdf=view.findViewById<Button>(R.id.print_pdf)
         print_pdf.setOnClickListener{
-
-
+            print_pdf.visibility=View.GONE
             var printView=view.findViewById<ScrollView>(R.id.report)
             createPdf(getBitmapFromView(printView,view.report.getChildAt(0).getHeight(),view.report.getWidth()))
-
         }
         return view
     }

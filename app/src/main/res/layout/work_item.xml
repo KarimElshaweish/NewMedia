@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.github.florent37.expansionpanel.ExpansionHeader
+        android:padding="12dp"
+        android:background="#fff"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:expansion_headerIndicator="@id/headerIndicator"
+        app:expansion_layout="@id/expansionLayout"
+        app:expansion_toggleOnClick="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="كريم"
+            android:fontFamily="@font/merssi_semibold"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="#000"
+            android:id="@+id/name"
+            android:padding="7dp"/>
+        <!-- HEADER -->
+
+
+        ...
+        <!-- HEADER INDICATOR -->
+        <ImageView
+            android:adjustViewBounds="true"
+            android:id="@+id/headerIndicator"
+            android:layout_gravity="center_vertical|right"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_width="wrap_content"
+            app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
+
+
+    </com.github.florent37.expansionpanel.ExpansionHeader>
+
+    <com.github.florent37.expansionpanel.ExpansionLayout
+        android:id="@+id/expansionLayout"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="التاريخ"
+                    android:padding="7dp"
+                    android:fontFamily="@font/merssi_req"
+                    android:textColor="#000"/>
+                <TextView
+                    android:padding="7dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/merssi_req"
+                    android:textColor="#000"
+                    android:id="@+id/url"/>
+
+            </RelativeLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="الرابط"
+                    android:padding="7dp"
+                    android:fontFamily="@font/merssi_req"
+                    android:textColor="#000"/>
+                <TextView
+                    android:padding="7dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/merssi_req"
+                    android:textColor="#000"
+                    android:id="@+id/date"/>
+            </LinearLayout>
+        </LinearLayout>
+        <!-- CONTENT -->
+
+    </com.github.florent37.expansionpanel.ExpansionLayout>
+</LinearLayout>

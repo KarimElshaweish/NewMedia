@@ -13,15 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-
-
-        <activity android:name=".Activites.FirebaseAutActivity">
-
-        </activity>
-        <activity android:name=".Activites.TheaterAndScreens.ScreensActivity" >
-
-        </activity>
+        <activity android:name=".Activites.AddWorkDone"></activity>
+        <activity android:name=".Activites.Basket.TheaterAndScreensBasket" />
+        <activity android:name=".Activites.Basket.PhotoAndSoundBasket" />
+        <activity android:name=".Activites.FirebaseAutActivity" />
+        <activity android:name=".Activites.TheaterAndScreens.ScreensActivity" />
         <activity android:name=".Activites.TheaterAndScreens.Theater" />
         <activity android:name=".Activites.ControlPannel.SoundControlActivity" />
         <activity android:name=".Activites.ControlPannel.SoundControl.SoundControlAddPackage" />

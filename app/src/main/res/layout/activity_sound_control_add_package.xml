@@ -14,7 +14,7 @@
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="  إضافة منتج صوتى جديدة"
+            android:text="  إضافة منتج صوتى جديد جديدة"
             android:fontFamily="@font/merssi_semibold"
             android:textColor="#000"
             android:layout_centerHorizontal="true"
@@ -49,12 +49,30 @@
         android:orientation="vertical"
         android:layout_below="@id/pbState">
         <LinearLayout
+            android:layout_margin="7dp"
             android:visibility="visible"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:id="@+id/type_layout"
             >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/merssi_semibold"
+                android:text=" صورة المنتح"/>
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:onClick="chengePicture"
+                android:layout_gravity="center"
+                android:layout_margin="7dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/pkPicture"
+                android:src="@drawable/defualt"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -75,6 +93,8 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:id="@+id/pk_name"/>
+
+
             <!--        <androidx.cardview.widget.CardView-->
             <!--            android:layout_width="match_parent"-->
             <!--            android:elevation="10dp"-->
@@ -210,6 +230,15 @@
                     android:orientation="vertical"
                     android:padding="24dp">
 
+                    <com.mikhaellopez.circularimageview.CircularImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        app:civ_border_color="@android:color/transparent"
+                        app:civ_border_width="3dp"
+                        android:id="@+id/pkIamge"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/music_bg"
+                        android:layout_centerHorizontal="true"/>
                     <TextView
                         android:fontFamily="@font/merssi_req"
                         android:id="@+id/pk_title"

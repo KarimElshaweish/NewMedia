@@ -14,7 +14,7 @@
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="  إضافة منتج تصوير جديد جديدة"
+            android:text="  إضافة منتج تصويرى جديد جديدة"
             android:fontFamily="@font/merssi_semibold"
             android:textColor="#000"
             android:layout_centerHorizontal="true"

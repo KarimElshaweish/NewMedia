@@ -6,12 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.karim.myapplication.Model.PhotoGraph
 import com.karim.myapplication.R
+import com.karim.myapplication.Util
 import com.mikhaellopez.circularimageview.CircularImageView
 
 class CardAdapter (var photList: List<PhotoGraph>,var _ctx:Context,var nochoice:Boolean):RecyclerView.Adapter<CardAdapter.ViewHolder> (){
@@ -35,6 +37,12 @@ class CardAdapter (var photList: List<PhotoGraph>,var _ctx:Context,var nochoice:
         holder.rv.adapter=adapter
         if(nochoice)
             holder.button.visibility=View.GONE
+        else{
+            holder.button.setOnClickListener{
+                Toast.makeText(_ctx,"تمت الاضافة",Toast.LENGTH_LONG).show()
+                Util.list.add(photList.get(position))
+            }
+        }
         holder.pkIamge.elevation=10f
         holder.cv.elevation=9f
         Glide.with(_ctx).load(photList.get(position).image).placeholder(_ctx.resources.getDrawable(R.drawable.defualt)

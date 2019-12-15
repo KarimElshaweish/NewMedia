@@ -34,7 +34,9 @@ class MainActivity : AppCompatActivity() {
         menuItems.add(MenuItem("قسم المونتاج", R.drawable.montag_bag))
         menuItems.add(MenuItem("السلة", R.drawable.shoppinh_bag))
 
-
+        if(Util.empolyee){
+            menuItems.add(MenuItem("الاعمال المنجزه", R.drawable.work))
+        }
         navigationDrawer.setMenuItemList(menuItems)
         var fragmentClass: Class<*>
         fragmentClass = Defualt_Fregmant::class.java
@@ -65,7 +67,7 @@ class MainActivity : AppCompatActivity() {
                     }
                     1 -> {
                         color1 = R.color.orange
-                        fragmentClass = PhotographerFragmetn::class.java
+                        fragmentClass = SoundFragment::class.java
                     }
                     2 -> {
                         color1 = R.color.green
@@ -77,7 +79,10 @@ class MainActivity : AppCompatActivity() {
                     }
                     4 -> {
                         color1 = R.color.colorAccent
-                        fragmentClass = MontagFragment::class.java
+                        fragmentClass = BasketFragment::class.java
+                    }
+                    5->{
+                        fragmentClass=WorkDoneFragment::class.java
                     }
                 }
 
@@ -140,7 +145,7 @@ class MainActivity : AppCompatActivity() {
                     }
                     3 -> {
                         color1 = R.color.blue
-                        fragmentClass = PhotographerFragmetn::class.java
+                        fragmentClass = SoundFragment::class.java
                     }
                     4 -> {
                         color1 = R.color.colorAccent
@@ -148,7 +153,7 @@ class MainActivity : AppCompatActivity() {
                     }
                     5 -> {
                         color1 = R.color.colorAccent
-                        fragmentClass = MontagFragment::class.java
+                        fragmentClass = BasketFragment::class.java
 
                     }
                 }

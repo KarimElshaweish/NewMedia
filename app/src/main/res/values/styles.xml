@@ -31,4 +31,5 @@
         <item name="DialogSpotColor">@color/blue</item>
         <item name="DialogSpotCount">4</item>
     </style>
+
 </resources>

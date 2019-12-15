@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragments.BasketFragment">
+    <ScrollView
+        android:visibility="visible"
+        android:id="@+id/bsketFrame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/soundControl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="60dp"
+                app:cardUseCompatPadding="true">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:background="@drawable/btn_graident"
+                    android:layout_height="wrap_content">
+                    <com.mikhaellopez.circularimageview.CircularImageView
+                        android:layout_alignParentLeft="true"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="7dp"
+                        android:src="@drawable/music_bg"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="التصوير والتسجيل الصوتى"
+                        android:fontFamily="@font/merssi_semibold"
+                        android:textColor="#000"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="35dp"/>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvTheater"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="60dp"
+                app:cardUseCompatPadding="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:background="@drawable/gradent_3"
+                    android:layout_height="wrap_content">
+                    <com.mikhaellopez.circularimageview.CircularImageView
+                        android:layout_alignParentLeft="true"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="7dp"
+                        android:src="@drawable/theater_bag"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="المسارح والشاشات"
+                        android:fontFamily="@font/merssi_semibold"
+                        android:textColor="#000"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="35dp"/>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:id="@+id/rv"/>
+            <Button
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_online"
+                android:text="إصدار المستند"
+                android:fontFamily="@font/merssi_bold"
+                android:textColor="#fff"
+                android:layout_gravity="center"
+                android:layout_margin="7dp"
+                android:padding="10dp"
+                android:id="@+id/print_pdf"/>
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/fullReportOption">
+        <ScrollView
+            android:id="@+id/report"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+
+                    android:layout_marginTop="25dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <RelativeLayout
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:background="@drawable/left_cornor">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="عقد فاتورة التصوير والصوت"
+                            android:fontFamily="@font/merssi_bold"
+                            android:textColor="#fff"
+                            android:gravity="right"
+                            android:textSize="20sp"
+                            android:layout_alignParentRight="true"/>
+                    </RelativeLayout>
+
+                </LinearLayout>
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/nlogo"/>
+                <LinearLayout
+                    android:layout_below="@+id/logo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:gravity="right"
+
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_gravity="center_vertical"
+                            android:id="@+id/cashRest_report"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
+                            android:drawablePadding="7dp"
+                            android:fontFamily="@font/merssi_req"
+                            android:gravity="center_vertical"
+                            android:textColor="#14B2BB"
+                            android:textSize="20dp" />
+                        <TextView
+                            android:layout_marginRight="20dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="المبلغ"
+                            android:fontFamily="@font/merssi_req"
+                            android:textSize="20dp"
+                            android:textColor="#000"
+                            android:drawablePadding="7dp"
+                            android:gravity="center_vertical"
+                            />
+                        <RelativeLayout
+                            android:layout_marginTop="15dp"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:background="@drawable/left_cornor">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="السعر"
+                                android:fontFamily="@font/merssi_bold"
+                                android:textColor="#fff"
+                                android:gravity="right"
+                                android:textSize="20sp"
+                                android:layout_alignParentRight="true"/>
+                        </RelativeLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:gravity="right"
+                        android:orientation="horizontal">
+                        <RelativeLayout
+                            android:layout_marginTop="15dp"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:background="@drawable/left_cornor">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="المحتويات"
+                                android:fontFamily="@font/merssi_bold"
+                                android:textColor="#fff"
+                                android:gravity="right"
+                                android:textSize="20sp"
+                                android:layout_alignParentRight="true"/>
+                        </RelativeLayout>
+
+                    </LinearLayout>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/rvitems"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:gravity="right"
+
+                        android:orientation="horizontal">
+                        <RelativeLayout
+                            android:layout_marginTop="15dp"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:background="@drawable/left_cornor">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="الشروط"
+                                android:fontFamily="@font/merssi_bold"
+                                android:textColor="#fff"
+                                android:gravity="right"
+                                android:textSize="20sp"
+                                android:layout_alignParentRight="true"/>
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <TextView
+
+                        android:padding="3dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_gravity="right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="١_ يتم تسليم العمل بعد 3 اسابيع كحد اقصى"
+                        android:fontFamily="@font/merssi_req"
+                        android:textSize="15dp"
+                        android:textColor="#000"
+                        android:drawablePadding="7dp"
+                        android:gravity="center_vertical"
+                        /> <TextView
+
+                    android:padding="3dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_gravity="right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="٢_ في حال مطالبتنا من قِبل العميل بالتعديل يتم احتساب ٢٠٠ ريال على كل تعديل وله الحق التعديل المره الأولى مجانا"
+                    android:fontFamily="@font/merssi_req"
+                    android:textSize="14dp"
+                    android:textColor="#000"
+                    android:drawablePadding="7dp"
+                    android:gravity="center_vertical"
+                    /><TextView
+
+                    android:padding="3dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_gravity="right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="٣_ يشترط دفع عربون نصف المبلغ وعند الانتهاء من العمل يتم تسليم المبلغ كاملا قبل استلام العمل ولا يحق للعميل تأجيل موعد الدفع في اي حال من الأحوال"
+                    android:fontFamily="@font/merssi_req"
+                    android:textSize="14dp"
+                    android:textColor="#000"
+                    android:drawablePadding="7dp"
+                    android:gravity="center_vertical"
+                    /><TextView
+
+                    android:padding="3dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_gravity="right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="٤_ في حال تأخر العميل عن استلام عمله لأكثر من ثلاثة أشهر من تاريخ يوم العمل لا يحق له المطالبه بعد ذلك"
+                    android:fontFamily="@font/merssi_req"
+                    android:textSize="14dp"
+                    android:textColor="#000"
+                    android:drawablePadding="7dp"
+                    android:gravity="center_vertical"
+                    /><TextView
+
+                    android:padding="3dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_gravity="right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="٥_ العربون لا يرد ولا يسترجع في اي حال من الأحوال"
+                    android:fontFamily="@font/merssi_req"
+                    android:textSize="14dp"
+                    android:textColor="#000"
+                    android:drawablePadding="7dp"
+                    android:gravity="center_vertical"
+                    /><TextView
+
+                    android:padding="3dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_gravity="right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="٦_ في حال فقدان العمل من قبل المؤسسة يتم استرجاع المبلغ الكامل للعميل"
+                    android:fontFamily="@font/merssi_req"
+                    android:textSize="14dp"
+                    android:textColor="#000"
+                    android:drawablePadding="7dp"
+                    android:gravity="center_vertical"
+                    /><TextView
+
+                    android:padding="3dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_gravity="right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="٧_في حالة طلب العمل مستعجل يتم زيادة المبلغ بنسة 50٪ من المبلغ الكامل"
+                    android:fontFamily="@font/merssi_req"
+                    android:textSize="14dp"
+                    android:textColor="#000"
+                    android:drawablePadding="7dp"
+                    android:gravity="center_vertical"
+                    />
+                    <TextView
+
+                    android:padding="3dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_gravity="right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="٨_ في حال طلب العميل لتصوير جوي فإنه يتحمل كامل المسؤولية عند الحاقها بضرر من قبل أحد الحضور في مناسبته"
+                    android:fontFamily="@font/merssi_req"
+                    android:textSize="14dp"
+                    android:textColor="#000"
+                    android:drawablePadding="7dp"
+                    android:gravity="center_vertical"
+                    /> <TextView
+
+                    android:padding="3dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_gravity="right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="٩_ يحق للمؤسسة إلغاء العمل مع العميل وارجاع كامل المبلغ المتفق عليه"
+                    android:fontFamily="@font/merssi_req"
+                    android:textSize="14dp"
+                    android:textColor="#000"
+                    android:drawablePadding="7dp"
+                    android:gravity="center_vertical"
+                    /><TextView
+
+                    android:padding="3dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_gravity="right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="١٠_في حال طلب العميل فقط صوتيات يتم دفع المبلغ كاملا قبل العمل"
+                    android:fontFamily="@font/merssi_req"
+                    android:textSize="14dp"
+                    android:textColor="#000"
+                    android:drawablePadding="7dp"
+                    android:gravity="center_vertical"
+                    />
+                    <TextView
+
+                    android:padding="3dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_gravity="right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                        android:text="11- في حالة طلب العمل مستعجل يتم زيادة المبلغ بنسة 30٪ من المبلغ الكامل"
+                    android:fontFamily="@font/merssi_req"
+                    android:textSize="14dp"
+                    android:textColor="#000"
+                    android:drawablePadding="7dp"
+                    android:gravity="center_vertical"
+                    /> <TextView
+
+                    android:padding="3dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_gravity="right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12_ يتم دفع المبلغ كاملا بعد التسجيل وقبل البدء في التوزيع وقبل التسليم"
+                    android:fontFamily="@font/merssi_req"
+                    android:textSize="14dp"
+                    android:textColor="#000"
+                    android:drawablePadding="7dp"
+                    android:gravity="center_vertical"
+                    /> <TextView
+
+                    android:padding="3dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_gravity="right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="13-في حال مطالبتنا من قِبل العميل بالتعديل يتم احتساب ٢٠٠ ريال على كل تعديل وله الحق التعديل المره الأولى مجانا"
+                    android:fontFamily="@font/merssi_req"
+                    android:textSize="14dp"
+                    android:textColor="#000"
+                    android:drawablePadding="7dp"
+                    android:gravity="center_vertical"
+                    />
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_online"
+                        android:text="إصدار المستند"
+                        android:fontFamily="@font/merssi_bold"
+                        android:textColor="#fff"
+                        android:layout_gravity="center"
+                        android:layout_margin="7dp"
+                        android:padding="10dp"
+                        android:id="@+id/print_doc_pdf"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+        </ScrollView>
+
+
+    </LinearLayout>
+
+</FrameLayout>

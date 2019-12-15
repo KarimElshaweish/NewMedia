@@ -26,6 +26,7 @@ android {
 
 dependencies {
     implementation 'com.yarolegovich:discrete-scrollview:1.4.9'
+    implementation 'com.github.florent37:expansionpanel:1.2.2'
 
     implementation 'com.github.d-max:spots-dialog:1.1@aar'
     implementation 'com.kofigyan.stateprogressbar:stateprogressbar:1.0.0'

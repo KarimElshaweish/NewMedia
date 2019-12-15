@@ -28,22 +28,26 @@
             android:layout_centerVertical="true"
             android:padding="7dp"/>
     </RelativeLayout>
-    <androidx.viewpager.widget.ViewPager
-        android:layout_margin="10dp"
-        android:layout_below="@id/title"
-        android:id="@+id/viewPager"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:clipToPadding="false"
-        android:overScrollMode="never"
-        android:paddingBottom="30dp"
-        android:paddingEnd="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingStart="10dp" />
+        android:id="@+id/noPk"
+        android:text="لاتوجد باقات مضافة"
+        android:layout_below="@id/title"
+        android:fontFamily="@font/merssi_bold"
+        android:textColor="#000"
+        android:padding="15dp"
+        android:gravity="center"
+        android:visibility="gone"/>
+    <com.yarolegovich.discretescrollview.DiscreteScrollView
+        android:layout_below="@id/title"
+        android:id="@+id/picker"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:dsv_orientation="horizontal" />
     <com.robertlevonyan.views.customfloatingactionbutton.FloatingActionButton
         android:id="@+id/add_fab"
+        android:onClick="openAddSound"
         app:fabIcon="@drawable/ic_add"
         android:text="إضافة منتج"
         android:fontFamily="@font/merssi_semibold"

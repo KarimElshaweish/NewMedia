@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activites.AddWorkDone">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:text="إضافة عمل"
+        android:fontFamily="@font/merssi_semibold"
+        android:textColor="#000"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="10dp"/>
+    <ScrollView
+        android:visibility="visible"
+        android:fillViewport="true"
+        android:id="@+id/scroll_print"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="إسم الموظف"
+                android:fontFamily="@font/merssi_bold"
+                android:textColor="#000"
+                android:padding="7dp"
+                android:layout_margin="10dp"
+                android:layout_gravity="right"
+                android:gravity="right"/>
+            <EditText
+                android:textCursorDrawable="@drawable/coursor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_offline"
+                android:padding="7dp"
+                android:textSize="17sp"
+                android:hint="إسم الموظف"
+                android:id="@+id/employeName"
+                android:fontFamily="@font/merssi_semibold"
+                android:layout_margin="10dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="تاريخ العمل"
+                android:fontFamily="@font/merssi_bold"
+                android:textColor="#000"
+                android:padding="7dp"
+                android:layout_margin="10dp"
+                android:layout_gravity="right"
+                android:gravity="right"/>
+            <EditText
+                android:textCursorDrawable="@drawable/coursor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_offline"
+                android:padding="7dp"
+                android:inputType="date"
+                android:textSize="17sp"
+                android:hint="تاريخ العمل"
+                android:id="@+id/workDate"
+                android:fontFamily="@font/merssi_semibold"
+                android:layout_margin="10dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="رابط العمل"
+                android:fontFamily="@font/merssi_bold"
+                android:textColor="#000"
+                android:padding="7dp"
+                android:layout_margin="10dp"
+                android:layout_gravity="right"
+                android:gravity="right"/>
+            <EditText
+                android:id="@+id/workUri"
+                android:textCursorDrawable="@drawable/coursor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_offline"
+                android:padding="7dp"
+                android:inputType="textUri"
+                android:textSize="17sp"
+                android:hint="رابط العمل"
+                android:fontFamily="@font/merssi_semibold"
+                android:layout_margin="10dp"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_online"
+                android:text="إضافة عمل "
+                android:fontFamily="@font/merssi_bold"
+                android:textColor="#fff"
+                android:layout_gravity="center"
+                android:layout_margin="7dp"
+                android:padding="7dp"
+                android:id="@+id/addWork"/>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
