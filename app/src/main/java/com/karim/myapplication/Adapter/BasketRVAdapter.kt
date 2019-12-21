@@ -4,11 +4,13 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.karim.myapplication.Model.PhotoGraph
 import com.karim.myapplication.R
+import com.karim.myapplication.Util
 
 class BasketRVAdapter(var _ctx:Context,var list:List<PhotoGraph>) :RecyclerView.Adapter<BasketRVAdapter.ViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,6 +29,14 @@ class BasketRVAdapter(var _ctx:Context,var list:List<PhotoGraph>) :RecyclerView.
         var adapter=RVAdapterPkItems(list.get(position).items,_ctx)
         holder.rv.adapter=adapter
         holder.titleText.text=list.get(position).name
+        holder.delete.setOnClickListener{
+            if(list!=null&&adapter!=null) {
+                list.toMutableList().removeAt(position)
+                Util.list.removeAt(position)
+                notifyItemChanged(position)
+                notifyItemRangeChanged(position, list.size)
+            }
+        }
     }
 
     class ViewHolder(itemview:View) :RecyclerView.ViewHolder(itemview){
@@ -37,6 +47,10 @@ class BasketRVAdapter(var _ctx:Context,var list:List<PhotoGraph>) :RecyclerView.
         var rv:RecyclerView
         init {
             rv=itemview.findViewById(R.id.rv)
+        }
+        var delete:ImageView
+        init {
+            delete=itemview.findViewById(R.id.delete)
         }
     }
 }

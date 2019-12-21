@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<LinearLayout
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:elevation="10dp"
-    android:layout_margin="3dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <com.github.florent37.expansionpanel.ExpansionHeader
@@ -32,7 +30,13 @@
             android:layout_marginLeft="16dp"
             android:layout_width="wrap_content"
             app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
-
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_delete"
+            android:id="@+id/delete"
+            android:layout_gravity="center_vertical"
+            android:padding="3dp"/>
     </com.github.florent37.expansionpanel.ExpansionHeader>
 
     <com.github.florent37.expansionpanel.ExpansionLayout
@@ -46,4 +50,4 @@
             android:id="@+id/rv"/>
 
     </com.github.florent37.expansionpanel.ExpansionLayout>
-</androidx.cardview.widget.CardView>
+</LinearLayout>

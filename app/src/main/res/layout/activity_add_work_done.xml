@@ -51,6 +51,27 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="إسم العمل"
+                android:fontFamily="@font/merssi_bold"
+                android:textColor="#000"
+                android:padding="7dp"
+                android:layout_margin="10dp"
+                android:layout_gravity="right"
+                android:gravity="right"/>
+            <EditText
+                android:textCursorDrawable="@drawable/coursor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_offline"
+                android:padding="7dp"
+                android:textSize="17sp"
+                android:hint="إسم العمل"
+                android:id="@+id/workName"
+                android:fontFamily="@font/merssi_semibold"
+                android:layout_margin="10dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="تاريخ العمل"
                 android:fontFamily="@font/merssi_bold"
                 android:textColor="#000"

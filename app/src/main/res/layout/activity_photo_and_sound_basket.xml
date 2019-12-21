@@ -39,18 +39,115 @@
                 android:layout_height="wrap_content"
                 android:visibility="visible"
                 android:id="@+id/rv"/>
-            <Button
-                android:visibility="visible"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/border_online"
-                android:text="إصدار المستند"
-                android:fontFamily="@font/merssi_bold"
-                android:textColor="#fff"
-                android:layout_gravity="center"
-                android:layout_margin="7dp"
-                android:padding="10dp"
-                android:id="@+id/print_pdf"/>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="إسم العميل"
+                        android:fontFamily="@font/merssi_bold"
+                        android:textColor="#000"
+                        android:padding="7dp"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="right"
+                        android:gravity="right"/>
+                    <EditText
+                        android:textCursorDrawable="@drawable/coursor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_offline"
+                        android:padding="7dp"
+                        android:textSize="17sp"
+                        android:hint="إسم العميل"
+                        android:id="@+id/clientName"
+                        android:fontFamily="@font/merssi_semibold"
+                        android:layout_margin="10dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="طريقة الدفع"
+                        android:fontFamily="@font/merssi_bold"
+                        android:textColor="#000"
+                        android:padding="7dp"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="right"
+                        android:gravity="right"/>
+                    <EditText
+                        android:textCursorDrawable="@drawable/coursor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_offline"
+                        android:padding="7dp"
+                        android:textSize="17sp"
+                        android:hint="طريقة الدفع"
+                        android:id="@+id/moneyGetWay"
+                        android:fontFamily="@font/merssi_semibold"
+                        android:layout_margin="10dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="موقع العمل"
+                        android:fontFamily="@font/merssi_bold"
+                        android:textColor="#000"
+                        android:padding="7dp"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="right"
+                        android:gravity="right"/>
+                    <EditText
+                        android:textCursorDrawable="@drawable/coursor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_offline"
+                        android:padding="7dp"
+                        android:textSize="17sp"
+                        android:hint="موقع العمل"
+                        android:id="@+id/workLocation"
+                        android:fontFamily="@font/merssi_semibold"
+                        android:layout_margin="10dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="رقم الجوال"
+                        android:fontFamily="@font/merssi_bold"
+                        android:textColor="#000"
+                        android:padding="7dp"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="right"
+                        android:gravity="right"/>
+                    <EditText
+                        android:textCursorDrawable="@drawable/coursor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_offline"
+                        android:padding="7dp"
+                        android:textSize="17sp"
+                        android:hint="رقم الجوال"
+                        android:inputType="phone"
+                        android:id="@+id/phoneNumber"
+                        android:fontFamily="@font/merssi_semibold"
+                        android:layout_margin="10dp"/>
+
+                    <Button
+                        android:visibility="visible"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_online"
+                        android:text="إصدار المستند"
+                        android:fontFamily="@font/merssi_bold"
+                        android:textColor="#fff"
+                        android:layout_gravity="center"
+                        android:layout_margin="7dp"
+                        android:padding="10dp"
+                        android:id="@+id/print_pdf"/>
+                </LinearLayout>
+
+            </ScrollView>
+
         </LinearLayout>
     </ScrollView>
     <LinearLayout
@@ -64,12 +161,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <RelativeLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <LinearLayout
-
-                    android:layout_marginTop="25dp"
+                    android:id="@+id/top"
+                    android:layout_marginTop="50dp"
                     android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -91,13 +189,119 @@
                     </RelativeLayout>
 
                 </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/detials"
+                    android:padding="1dp"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/top"
+                    android:layout_alignParentRight="true"
+                    android:orientation="vertical">
+                    <TableLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TableRow>
+                            <TextView
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/reportClientName"
+                                android:fontFamily="@font/merssi_req"
+                                android:textSize="17sp"
+                                android:textColor="#14B2BB"
+                                android:padding="7dp"/>
+                            <TextView
+                                android:layout_weight="1"
+                                android:padding="7dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="إسم العميل"
+                                android:fontFamily="@font/merssi_req"
+                                android:textColor="#000"
+                                android:textSize="17sp"/>
+                        </TableRow>
+                        <TableRow>
+                            <TextView
+                                android:layout_gravity="right"
+                                android:gravity="right"
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/phoneNumberReport"
+                                android:fontFamily="@font/merssi_req"
+                                android:textSize="17sp"
+                                android:textColor="#14B2BB"
+                                android:padding="7dp"/>
+                            <TextView
+                                android:layout_weight="1"
+                                android:layout_gravity="right"
+                                android:gravity="right"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="رقم الجوال"
+                                android:fontFamily="@font/merssi_req"
+                                android:textColor="#000"
+                                android:textSize="17sp"/>
+                        </TableRow>
+                        <TableRow>
+                            <TextView
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/locationReport"
+                                android:fontFamily="@font/merssi_req"
+                                android:textSize="17sp"
+                                android:textColor="#14B2BB"
+                                android:padding="7dp"/>
+                            <TextView
+                                android:layout_weight="1"
+                                android:layout_gravity="right"
+                                android:padding="7dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="مكان العمل"
+                                android:fontFamily="@font/merssi_req"
+                                android:textColor="#000"
+                                android:textSize="17sp"/>
+                        </TableRow>
+                        <TableRow>
+                            <TextView
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/reportCashType"
+                                android:fontFamily="@font/merssi_req"
+                                android:textSize="17sp"
+                                android:textColor="#14B2BB"
+                                android:padding="7dp"/>
+                            <TextView
+                                android:layout_weight="1"
+                                android:padding="7dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="طريقة الدفع"
+                                android:fontFamily="@font/merssi_req"
+                                android:textColor="#000"
+                                android:textSize="17sp"/>
+                        </TableRow>
+                    </TableLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                    </LinearLayout>
+                </LinearLayout>
                 <ImageView
+                    android:layout_alignParentLeft="true"
                     android:id="@+id/logo"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:src="@drawable/nlogo"/>
                 <LinearLayout
-                    android:layout_below="@+id/logo"
+                    android:layout_below="@+id/detials"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">

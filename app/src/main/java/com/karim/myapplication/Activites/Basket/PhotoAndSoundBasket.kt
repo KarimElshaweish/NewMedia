@@ -9,13 +9,18 @@ import android.os.Bundle
 import android.os.Environment
 import android.view.View
 import android.widget.Button
+import android.widget.CalendarView
 import android.widget.ScrollView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.karim.myapplication.Adapter.BasketRVAdapter
 import com.karim.myapplication.Adapter.RVAdapterPkItems
 import com.karim.myapplication.Model.TypesItems
+import com.karim.myapplication.Model.photoData
 import com.karim.myapplication.R
 import com.karim.myapplication.Util
 import kotlinx.android.synthetic.main.activity_photo_and_sound_basket.*
@@ -29,6 +34,7 @@ import kotlinx.android.synthetic.main.fragment_montag.view.*
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
+import java.util.*
 
 class PhotoAndSoundBasket : AppCompatActivity() {
 
@@ -40,36 +46,63 @@ class PhotoAndSoundBasket : AppCompatActivity() {
         rv.setHasFixedSize(true)
         rv.layoutManager= LinearLayoutManager(this)
         printBtn.setOnClickListener{
-            printBtn.visibility= View.GONE
-            bsketFrame.visibility= View.GONE
-            fullReportOption.visibility= View.VISIBLE
+            if(clientName.text.toString().isEmpty())
+                clientName.error="من فضلك أدخل إسم العميل"
+            else if(moneyGetWay.text.toString().isEmpty())
+                moneyGetWay.error="من فضلك ادخل طريقة الدفع"
+            else {
+                reportClientName.text = clientName.text.toString()
+                reportCashType.text = moneyGetWay.text.toString()
+                phoneNumberReport.text=phoneNumber.text.toString()
+                locationReport.text=workLocation.text.toString()
+                printBtn.visibility = View.GONE
+                bsketFrame.visibility = View.GONE
+                fullReportOption.visibility = View.VISIBLE
+                var rvItems=findViewById<RecyclerView>(R.id.rvitems)
+                rvItems.setHasFixedSize(true)
+                rvItems.layoutManager= LinearLayoutManager(this)
+
+                var listTypes= mutableListOf<TypesItems>()
+                var totPrice=0
+                for(item in Util.list){
+                    listTypes.addAll(item.items)
+                    totPrice+=item.price.toInt()
+                }
+                var itemAdapter=  RVAdapterPkItems(listTypes, this)
+                rvItems.adapter=itemAdapter
+
+                cashRest_report.text=totPrice.toString()
+            }
         }
         var adapter= BasketRVAdapter(this, Util.list)
-
         rv.adapter=adapter
-        var rvItems=findViewById<RecyclerView>(R.id.rvitems)
-        rvItems.setHasFixedSize(true)
-        rvItems.layoutManager= LinearLayoutManager(this)
-
-        var listTypes= mutableListOf<TypesItems>()
-        var totPrice=0
-        for(item in Util.list){
-            listTypes.addAll(item.items)
-            totPrice+=item.price.toInt()
-        }
-        var itemAdapter=  RVAdapterPkItems(listTypes, this)
-        rvItems.adapter=itemAdapter
-
-        cashRest_report.text=totPrice.toString()
-
         var print_doc_pdf=findViewById<Button>(R.id.print_doc_pdf)
         var printView=findViewById<ScrollView>(R.id.report)
-        print_doc_pdf.setOnClickListener{
-            print_doc_pdf.visibility= View.GONE
-            createPdf(getBitmapFromView(printView,report.getChildAt(0).getHeight(),report.getWidth()))
+        print_doc_pdf.setOnClickListener {
+            print_doc_pdf.visibility = View.GONE
+            var photoData= photoData(
+                Util.list
+                ,clientName.text.toString()
+                ,moneyGetWay.text.toString(),phoneNumber.text.toString(),workLocation.text.toString())
+
+            FirebaseDatabase.getInstance().getReference("PhotoData").child(FirebaseAuth.getInstance().currentUser!!.uid)
+                .child(Calendar.getInstance().time.toString())
+                .setValue(photoData).addOnCompleteListener(OnCompleteListener { task ->
+                    if(task.isSuccessful){
+                        createPdf(
+                            getBitmapFromView(
+                                printView,
+                                report.getChildAt(0).getHeight(),
+                                report.getWidth()
+                            )
+                        )
+                    }else{
+                        Toast.makeText(baseContext,task.exception!!.message,Toast.LENGTH_SHORT).show()
+                    }
+                })
 
         }
-        if(listTypes.size==0){
+        if(Util.list.size==0){
             noPk.visibility= View.VISIBLE
             printBtn.visibility= View.GONE
         }

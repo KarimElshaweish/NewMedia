@@ -14,6 +14,10 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
+import com.karim.myapplication.Model.Montag
 import com.karim.myapplication.R
 import kotlinx.android.synthetic.main.fragment_montag.view.*
 import java.io.File
@@ -115,9 +119,29 @@ class MontagFragment : Fragment() {
         }
         var print_pdf=view.findViewById<Button>(R.id.print_pdf)
         print_pdf.setOnClickListener{
-            print_pdf.visibility=View.GONE
-            var printView=view.findViewById<ScrollView>(R.id.report)
-            createPdf(getBitmapFromView(printView,view.report.getChildAt(0).getHeight(),view.report.getWidth()))
+            var montag=Montag(nameText,phoneNumber,dateText,cashGet,cashRest)
+            FirebaseDatabase.getInstance().getReference("Montage").child(FirebaseAuth.getInstance().currentUser!!.uid)
+                .child(Calendar.getInstance().time.toString())
+                .setValue(montag).addOnCompleteListener(OnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        print_pdf.visibility = View.GONE
+                        var printView = view.findViewById<ScrollView>(R.id.report)
+                        createPdf(
+                            getBitmapFromView(
+                                printView,
+                                view.report.getChildAt(0).getHeight(),
+                                view.report.getWidth()
+                            )
+                        )
+                    } else {
+                        Toast.makeText(
+                            context,
+                            task.exception!!.message.toString(),
+                            Toast.LENGTH_SHORT
+                        )
+                            .show()
+                    }
+                })
         }
         return view
     }

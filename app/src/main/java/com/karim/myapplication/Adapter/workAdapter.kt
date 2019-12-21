@@ -1,6 +1,9 @@
 package com.karim.myapplication.Adapter
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,6 +29,15 @@ class workAdapter (var _ctx: Context, var list:List<WorkDone>) :RecyclerView.Ada
         holder.nameText.text=list.get(position).employeName
         holder.date.text=list.get(position).workDate
         holder.url.text=list.get(position).workURL
+        holder.date.setOnClickListener{
+            val uri=Uri.parse(holder.date.text.toString())
+            val intent=Intent(Intent.ACTION_VIEW,uri)
+            val bundle=Bundle()
+            bundle.putBoolean("new_window",true)
+            intent.putExtras(bundle)
+            _ctx.startActivity(intent)
+        }
+        holder.workName.text=list.get(position).workName
     }
 
     class ViewHolder(itemview: View) :RecyclerView.ViewHolder(itemview){
@@ -40,6 +52,10 @@ class workAdapter (var _ctx: Context, var list:List<WorkDone>) :RecyclerView.Ada
         var url:TextView
         init {
             url=itemview.findViewById(R.id.url)
+        }
+        var workName:TextView
+        init {
+            workName=itemview.findViewById(R.id.workName)
         }
     }
 }

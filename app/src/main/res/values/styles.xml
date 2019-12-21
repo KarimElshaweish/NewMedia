@@ -31,5 +31,11 @@
         <item name="DialogSpotColor">@color/blue</item>
         <item name="DialogSpotCount">4</item>
     </style>
+    <style name="login" parent="Theme.AppCompat.Light.Dialog">
+        <item name="DialogTitleAppearance">@android:style/TextAppearance.Medium</item>
+        <item name="DialogTitleText">جارى الدخول كمدير</item>
+        <item name="DialogSpotColor">@color/blue</item>
+        <item name="DialogSpotCount">4</item>
+    </style>
 
 </resources>

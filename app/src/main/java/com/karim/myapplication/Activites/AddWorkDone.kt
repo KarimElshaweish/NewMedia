@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -26,18 +27,21 @@ class AddWorkDone : AppCompatActivity() {
                 workDate.setError("من فضلك ادخل تاريخ العمل")
             else if(workUri.text.equals(""))
                 workUri.setError("من فضلك ادخل رابط العمل")
+            else if(workName.text.isEmpty())
+                workName.setError("من فضلك أدخل إسم العمل")
             else {
                 var work = WorkDone(
                     employeName.text.toString(),
                     workUri.text.toString(),
-                    workDate.text.toString()
+                    workDate.text.toString(),
+                    workName.text.toString()
                 )
                 val dialog: android.app.AlertDialog? = SpotsDialog.Builder()
                     .setContext(this)
                     .setTheme(R.style.Custom)
                     .build()
                 dialog!!.show()
-                FirebaseDatabase.getInstance().getReference("WorkDone").child(work.employeName)
+                FirebaseDatabase.getInstance().getReference("WorkDone").child(FirebaseAuth.getInstance().currentUser!!.uid)
                     .child(Calendar.getInstance().time.toString()).setValue(work).addOnCompleteListener(
                         OnCompleteListener { task ->
                             if (task.isSuccessful) {

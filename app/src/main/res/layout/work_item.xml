@@ -6,7 +6,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <com.github.florent37.expansionpanel.ExpansionHeader
-        android:padding="12dp"
+        android:padding="2dp"
         android:background="#fff"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
@@ -17,12 +17,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="كريم"
             android:fontFamily="@font/merssi_semibold"
             android:layout_gravity="center"
             android:gravity="center"
             android:textColor="#000"
-            android:id="@+id/name"
+            android:id="@+id/workName"
             android:padding="7dp"/>
         <!-- HEADER -->
 
@@ -47,9 +46,36 @@
         android:layout_width="match_parent">
 
         <LinearLayout
+            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="كريم"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/merssi_semibold"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textColor="#000"
+                    android:id="@+id/name"
+                    android:padding="7dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="إسم الموظف"
+                    android:layout_alignParentRight="true"
+                    android:fontFamily="@font/merssi_semibold"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textColor="#000"
+                    android:padding="7dp"/>
+            </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -66,6 +92,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_centerHorizontal="true"
                     android:fontFamily="@font/merssi_req"
                     android:textColor="#000"
                     android:id="@+id/url"/>
@@ -89,7 +116,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:fontFamily="@font/merssi_req"
-                    android:textColor="#000"
+                    android:textColor="#0000EE"
                     android:id="@+id/date"/>
             </LinearLayout>
         </LinearLayout>

@@ -137,7 +137,7 @@ class MainActivity : AppCompatActivity() {
                     }
                     1 -> {
                         color1 = R.color.orange
-                        fragmentClass = FeedFragment::class.java
+                        fragmentClass = OrderFragment::class.java
                     }
                     2 -> {
                         color1 = R.color.green
@@ -152,6 +152,11 @@ class MainActivity : AppCompatActivity() {
                         fragmentClass = TheaterAndScreens::class.java
                     }
                     5 -> {
+                        color1 = R.color.colorAccent
+                        fragmentClass = MontagFragment::class.java
+
+                    }
+                    6->{
                         color1 = R.color.colorAccent
                         fragmentClass = BasketFragment::class.java
 

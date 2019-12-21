@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activites.Orders.MontageOrderAct">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="حجوزات المونتاج"
+        android:fontFamily="@font/merssi_semibold"
+        android:textColor="#000"
+        android:textSize="16sp"
+        android:layout_centerHorizontal="true"
+        android:padding="7dp"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_back"
+        android:layout_centerVertical="true"
+        android:padding="7dp"
+        android:onClick="finish"/>
+</RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TableLayout
+            android:layout_margin="7dp"
+            android:layout_width="match_parent"
+            android:id="@+id/table"
+            android:layout_height="wrap_content">
+
+            <TableRow android:background="#14B2BB">
+                <TextView android:layout_weight="1"
+                    android:textColor="#fff"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="المتبقى"
+                    android:fontFamily="@font/merssi_req"/>
+                <TextView android:layout_weight="1"
+                    android:textColor="#fff"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="العربون"
+                    android:fontFamily="@font/merssi_req"/>
+                <TextView android:layout_weight="1"
+                    android:text="التاريخ"
+                    android:textColor="#fff"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+
+                    android:fontFamily="@font/merssi_req"/>
+                <TextView android:layout_weight="1"
+                    android:text="رقم العميل"
+                    android:textColor="#fff"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:fontFamily="@font/merssi_req"/>
+                <TextView android:layout_weight="1"
+                    android:text="إسم العميل"
+                    android:textColor="#fff"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:fontFamily="@font/merssi_req"/>
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
+</LinearLayout>

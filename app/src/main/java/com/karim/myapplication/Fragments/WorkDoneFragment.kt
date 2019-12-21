@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -55,15 +56,19 @@ class WorkDoneFragment : Fragment() {
 
                 override fun onDataChange(p0: DataSnapshot) {
                     list.clear()
-                    for (p1 in p0.children){
-                        for(p2 in p1.children) {
-                            var map = p2.value as Map<String, Objects>
-                            var work = WorkDone(
-                                map.get("employeName").toString(),
-                                map.get("workDate").toString(),
-                                map.get("workURL").toString()
-                            )
-                            list.add(work)
+                    for (p1 in p0.children) {
+                        if (p1.key.equals(FirebaseAuth.getInstance().currentUser!!.uid)) {
+                            for (p2 in p1.children) {
+                                var map = p2.value as Map<String, Objects>
+                                var work = WorkDone(
+                                    map.get("employeName").toString(),
+                                    map.get("workDate").toString(),
+                                    map.get("workURL").toString(),
+                                    map.get("workName").toString()
+                                )
+                                list.add(work)
+
+                            }
                         }
                     }
                     var adapter=workAdapter(context!!,list)
