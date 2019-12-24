@@ -16,32 +16,32 @@ import com.karim.myapplication.R
 import com.karim.myapplication.Util
 import com.mikhaellopez.circularimageview.CircularImageView
 
-class CardAdapter (var photList: List<PhotoGraph>,var _ctx:Context,var nochoice:Boolean)
-    :RecyclerView.Adapter<CardAdapter.ViewHolder> (){
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+class SoundCardAdapter(var photList: List<PhotoGraph>, var _ctx: Context, var nochoice:Boolean)
+    : RecyclerView.Adapter<SoundCardAdapter.ViewHolder> (){
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SoundCardAdapter.ViewHolder {
         val view = LayoutInflater.from(_ctx).inflate(R.layout.item, parent, false)
 
 
-        return ViewHolder(view)
+        return SoundCardAdapter.ViewHolder(view)
     }
 
     override fun getItemCount(): Int {
-         return  photList.size
+        return  photList.size
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: SoundCardAdapter.ViewHolder, position: Int) {
         holder.title.text=photList.get(position).name
         holder.price.text=photList.get(position).price
         holder.rv.setHasFixedSize(true)
-        holder.rv.layoutManager=LinearLayoutManager(_ctx)
+        holder.rv.layoutManager= LinearLayoutManager(_ctx)
         var adapter=RVAdapterPkItems(photList.get(position).items,_ctx)
         holder.rv.adapter=adapter
         if(nochoice)
             holder.button.visibility=View.GONE
         else{
             holder.button.setOnClickListener{
-                Toast.makeText(_ctx,"تمت الاضافة",Toast.LENGTH_LONG).show()
-                Util.list.add(photList.get(position))
+                Toast.makeText(_ctx,"تمت الاضافة", Toast.LENGTH_LONG).show()
+                Util.soundList.add(photList.get(position))
             }
         }
         holder.pkIamge.elevation=10f
@@ -49,8 +49,7 @@ class CardAdapter (var photList: List<PhotoGraph>,var _ctx:Context,var nochoice:
         Glide.with(_ctx).load(photList.get(position).image).placeholder(_ctx.resources.getDrawable(R.drawable.defualt)
         ).into(holder.pkIamge)
     }
-
-    class ViewHolder(itemView:View):RecyclerView.ViewHolder(itemView){
+    class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
         val title = itemView.findViewById<TextView>(R.id.title)
         val price = itemView.findViewById<TextView>(R.id.price)
         val  rv=itemView.findViewById<RecyclerView>(R.id.rv)

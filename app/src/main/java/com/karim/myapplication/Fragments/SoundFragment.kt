@@ -11,6 +11,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.karim.myapplication.Adapter.CardAdapter
+import com.karim.myapplication.Adapter.SoundCardAdapter
 import com.karim.myapplication.Model.PhotoGraph
 import com.karim.myapplication.Model.TypesItems
 import com.karim.myapplication.R
@@ -80,7 +81,7 @@ class SoundFragment : Fragment() {
                 .setPivotX(Pivot.X.CENTER)
                 .setPivotY(Pivot.Y.BOTTOM)
                 .build())
-        var cardAdapter= CardAdapter(photoList,context!!,false)
+        var cardAdapter= SoundCardAdapter(photoList,context!!,false)
         rv.adapter=cardAdapter
     }
 }

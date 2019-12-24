@@ -8,6 +8,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
+import android.os.StrictMode
 import android.view.Gravity
 import android.view.View
 import android.widget.*
@@ -21,9 +22,7 @@ import com.karim.myapplication.Util
 import kotlinx.android.synthetic.main.activity_photo_and_sound_basket.*
 import kotlinx.android.synthetic.main.fragment_basket.*
 import kotlinx.android.synthetic.main.fragment_basket.bsketFrame
-import kotlinx.android.synthetic.main.fragment_basket.cashRest_report
-import kotlinx.android.synthetic.main.fragment_basket.fullReportOption
-import kotlinx.android.synthetic.main.fragment_basket.report
+
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -41,6 +40,9 @@ class TheaterAndScreensBasket : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_theater_and_screens_basket)
+        val builder = StrictMode.VmPolicy.Builder()
+        StrictMode.setVmPolicy(builder.build())
+        builder.detectFileUriExposure()
         var printBtn=findViewById<Button>(R.id.print_pdf)
         var rv=findViewById<RecyclerView>(R.id.rv)
         rv.setHasFixedSize(true)
@@ -48,7 +50,7 @@ class TheaterAndScreensBasket : AppCompatActivity() {
         printBtn.setOnClickListener{
             printBtn.visibility= View.GONE
             bsketFrame.visibility= View.GONE
-            fullReportOption.visibility= View.VISIBLE
+        //    fullReportOption.visibility= View.VISIBLE
         }
       //  var adapter= BasketRVAdapter(this, Util.listScreen)
 
@@ -75,7 +77,7 @@ class TheaterAndScreensBasket : AppCompatActivity() {
                 )
             )
         }
-        cashRest_report.setText(sum.toString())
+      //  cashRest_report.setText(sum.toString())
 
     }
     private fun createTextLabel(text:String):TextView{

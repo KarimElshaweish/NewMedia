@@ -4,14 +4,15 @@ import android.content.Intent
 import android.graphics.*
 import android.graphics.pdf.PdfDocument
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
+import android.os.StrictMode
+import android.os.StrictMode.VmPolicy.Builder
 import android.view.View
 import android.widget.Button
-import android.widget.CalendarView
 import android.widget.ScrollView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.tasks.OnCompleteListener
@@ -24,13 +25,8 @@ import com.karim.myapplication.Model.photoData
 import com.karim.myapplication.R
 import com.karim.myapplication.Util
 import kotlinx.android.synthetic.main.activity_photo_and_sound_basket.*
-import kotlinx.android.synthetic.main.fragment_basket.*
 import kotlinx.android.synthetic.main.fragment_basket.bsketFrame
-import kotlinx.android.synthetic.main.fragment_basket.cashRest_report
-import kotlinx.android.synthetic.main.fragment_basket.fullReportOption
-import kotlinx.android.synthetic.main.fragment_basket.report
-import kotlinx.android.synthetic.main.fragment_basket.view.*
-import kotlinx.android.synthetic.main.fragment_montag.view.*
+import kotlinx.android.synthetic.main.sound_report.*
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -38,6 +34,8 @@ import java.util.*
 
 class PhotoAndSoundBasket : AppCompatActivity() {
 
+    lateinit var  printView:ScrollView
+    lateinit var  printView1:ScrollView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_photo_and_sound_basket)
@@ -55,6 +53,7 @@ class PhotoAndSoundBasket : AppCompatActivity() {
                 reportCashType.text = moneyGetWay.text.toString()
                 phoneNumberReport.text=phoneNumber.text.toString()
                 locationReport.text=workLocation.text.toString()
+
                 printBtn.visibility = View.GONE
                 bsketFrame.visibility = View.GONE
                 fullReportOption.visibility = View.VISIBLE
@@ -77,7 +76,8 @@ class PhotoAndSoundBasket : AppCompatActivity() {
         var adapter= BasketRVAdapter(this, Util.list)
         rv.adapter=adapter
         var print_doc_pdf=findViewById<Button>(R.id.print_doc_pdf)
-        var printView=findViewById<ScrollView>(R.id.report)
+        printView=findViewById<ScrollView>(R.id.report)
+        printView1=findViewById<ScrollView>(R.id.sv_photo)
         print_doc_pdf.setOnClickListener {
             print_doc_pdf.visibility = View.GONE
             var photoData= photoData(
@@ -108,6 +108,10 @@ class PhotoAndSoundBasket : AppCompatActivity() {
         }
     }
     private fun createPdf(bitmap: Bitmap) {
+
+
+        var builder=StrictMode.VmPolicy.Builder()
+        StrictMode.setVmPolicy(builder.build())
         var bitmap = bitmap
         val document = PdfDocument()
         val pageInfo = PdfDocument.PageInfo.Builder(bitmap.width, bitmap.height, 1).create()
@@ -126,6 +130,28 @@ class PhotoAndSoundBasket : AppCompatActivity() {
         paint.color = Color.BLUE
         canvas.drawBitmap(bitmap, 0f, 0f, null)
         document.finishPage(page)
+
+        var bitmap1 = getBitmapFromView(
+            printView1,
+            report.getChildAt(0).getHeight(),
+            report.getWidth()
+        )
+        val pageInfo1 = PdfDocument.PageInfo.Builder(bitmap1.width, bitmap1.height, 1).create()
+        val page1 = document.startPage(pageInfo)
+
+        val canvas1 = page1.getCanvas()
+
+
+        val paint1 = Paint()
+        paint1.color = Color.parseColor("#ffffff")
+        canvas1.drawPaint(paint1)
+
+
+        bitmap1 = Bitmap.createScaledBitmap(bitmap1, bitmap1.width, bitmap1.height, true)
+
+        paint1.color = Color.BLUE
+        canvas1.drawBitmap(bitmap1, 0f, 0f, null)
+        document.finishPage(page1)
 
 
         // write the document content

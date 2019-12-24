@@ -17,12 +17,15 @@
         <activity
             android:name=".ui.login.AdminLoginActivity"
             android:label="@string/title_activity_admin_login" />
+
         <activity android:name=".Activites.Orders.PhotoOrderActivity" />
         <activity android:name=".Activites.Orders.SoundOrderActivity" />
         <activity android:name=".Activites.Orders.MontageOrderAct" />
         <activity android:name=".Activites.AddWorkDone" />
         <activity android:name=".Activites.Basket.TheaterAndScreensBasket" />
-        <activity android:name=".Activites.Basket.PhotoAndSoundBasket" />
+        <activity android:name=".Activites.Basket.PhotoAndSoundBasket" >
+
+        </activity>
         <activity android:name=".Activites.FirebaseAutActivity" />
         <activity android:name=".Activites.TheaterAndScreens.ScreensActivity" />
         <activity android:name=".Activites.TheaterAndScreens.Theater" />
