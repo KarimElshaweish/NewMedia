@@ -1,17 +1,15 @@
 package com.karim.myapplication.Activites.TheaterAndScreens
 
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
-import com.karim.myapplication.Model.ScreenType
+import com.karim.myapplication.model.ScreenType
 import com.karim.myapplication.R
 import com.karim.myapplication.Util
-import kotlinx.android.synthetic.main.activity_photo_grapher_add_package.*
-import kotlinx.android.synthetic.main.activity_photo_grapher_add_package.price
+import com.karim.myapplication.model.TheaterData
 import kotlinx.android.synthetic.main.activity_theater.*
 
 class Theater : AppCompatActivity() {
@@ -60,7 +58,7 @@ class Theater : AppCompatActivity() {
     fun btnClicked(view: View) {
         when(view.id){
             R.id.add_fab->{
-                Util.listScreen.add(ScreenType((sum*meterSum).toString(),meterSum.toString(),"مسرح"))
+                Util.theaterList.add(TheaterData(meterSum.toString(),(sum*meterSum).toString()))
                 Toast.makeText(this,"تم الاضافة",Toast.LENGTH_SHORT).show()
                 meterPriceText.setText("0")
                 meterSumText.setText("0")

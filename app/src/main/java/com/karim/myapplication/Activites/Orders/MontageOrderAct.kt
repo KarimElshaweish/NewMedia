@@ -15,12 +15,9 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.karim.myapplication.Adapter.workAdapter
-import com.karim.myapplication.Model.Montag
-import com.karim.myapplication.Model.WorkDone
+import com.karim.myapplication.model.Montag
 import com.karim.myapplication.R
 import kotlinx.android.synthetic.main.activity_montage_order.*
-import kotlinx.android.synthetic.main.fragment_work_done.*
 import java.util.*
 
 class MontageOrderAct : AppCompatActivity() {

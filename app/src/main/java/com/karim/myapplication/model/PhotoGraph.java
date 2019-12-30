@@ -1,4 +1,4 @@
-package com.karim.myapplication.Model;
+package com.karim.myapplication.model;
 
 import java.util.List;
 

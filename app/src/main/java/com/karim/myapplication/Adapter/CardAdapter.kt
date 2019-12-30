@@ -11,7 +11,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.karim.myapplication.Model.PhotoGraph
+import com.karim.myapplication.model.PhotoGraph
 import com.karim.myapplication.R
 import com.karim.myapplication.Util
 import com.mikhaellopez.circularimageview.CircularImageView

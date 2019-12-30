@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import com.karim.myapplication.Model.TypesPackages
+import com.karim.myapplication.model.TypesPackages
 import com.karim.myapplication.R
 import kotlinx.android.synthetic.main.spinner_custome_item.view.*
 

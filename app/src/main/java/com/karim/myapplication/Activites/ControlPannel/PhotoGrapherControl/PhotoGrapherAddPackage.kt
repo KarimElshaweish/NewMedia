@@ -16,20 +16,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.FirebaseDatabase
 import com.karim.myapplication.Adapter.RVItemsAdapter
 import com.karim.myapplication.Adapter.RvAdapter
-import com.karim.myapplication.Model.PhotoGraph
-import com.karim.myapplication.Model.TypesItems
+import com.karim.myapplication.model.PhotoGraph
+import com.karim.myapplication.model.TypesItems
 import com.karim.myapplication.R
 import com.kofigyan.stateprogressbar.StateProgressBar
 import dmax.dialog.SpotsDialog
 import kotlinx.android.synthetic.main.activity_photo_grapher_add_package.*
 import android.content.Intent
 import android.net.Uri
-import android.provider.MediaStore
 import com.bumptech.glide.Glide
-import com.google.android.gms.tasks.OnSuccessListener
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.UploadTask
 
 
 class PhotoGrapherAddPackage : AppCompatActivity() {
@@ -115,7 +111,7 @@ class PhotoGrapherAddPackage : AppCompatActivity() {
                 previous.setCompoundDrawables(img, null, null, null)
                 current++
                 if (current == 1) {
-                    pbState.setCurrentStateNumber(StateProgressBar.StateNumber.TWO)
+                        pbState.setCurrentStateNumber(StateProgressBar.StateNumber.TWO)
                     viewGone(type_layout, price_layout)
                 } else if (current == 2) {
                     next.setText("إنهاء")

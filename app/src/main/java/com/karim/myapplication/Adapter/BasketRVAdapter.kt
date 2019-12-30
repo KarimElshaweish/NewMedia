@@ -8,11 +8,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.karim.myapplication.Model.PhotoGraph
+import com.karim.myapplication.model.PhotoGraph
 import com.karim.myapplication.R
 import com.karim.myapplication.Util
 
-class BasketRVAdapter(var _ctx:Context,var list:List<PhotoGraph>) :RecyclerView.Adapter<BasketRVAdapter.ViewHolder>(){
+class BasketRVAdapter(var _ctx:Context,var list:MutableList<PhotoGraph>) :RecyclerView.Adapter<BasketRVAdapter.ViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         var view=LayoutInflater.from(_ctx).inflate(R.layout.baskete_item,parent,false)
         return ViewHolder(view)

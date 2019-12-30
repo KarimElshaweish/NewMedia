@@ -8,6 +8,7 @@
 
     <com.yarolegovich.discretescrollview.DiscreteScrollView
         android:id="@+id/picker"
+        android:layout_marginBottom="5dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:dsv_orientation="horizontal" />

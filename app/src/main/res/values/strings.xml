@@ -16,6 +16,14 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="please_enter_moneyGet">من فضلك أدخل العربون</string>
+    <string name="please_enter_moneyRest">من فضلك أدخل المبلغ المتبقى</string>
+    <string name="printPdf">إصدار المستند</string>
+    <string name="please_enter_all_data">من فضلك أدخل بيانات العميل كاملة</string>
+    <string name="noPk_added">لا توجد باقات مضافة</string>
+    <string name="share">مشاركة</string>
+    <string name="meter_count">عدد الأمتار</string>
+    <string name="price">السعر</string>
 
 </resources>
 

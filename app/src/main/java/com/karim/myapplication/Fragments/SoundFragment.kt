@@ -10,10 +10,9 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.karim.myapplication.Adapter.CardAdapter
 import com.karim.myapplication.Adapter.SoundCardAdapter
-import com.karim.myapplication.Model.PhotoGraph
-import com.karim.myapplication.Model.TypesItems
+import com.karim.myapplication.model.PhotoGraph
+import com.karim.myapplication.model.TypesItems
 import com.karim.myapplication.R
 import com.yarolegovich.discretescrollview.DiscreteScrollView
 import com.yarolegovich.discretescrollview.transform.Pivot

@@ -1,11 +1,13 @@
 package com.karim.myapplication.Activites
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import com.karim.myapplication.R
+import java.util.*
 
 class SplashScreen : AppCompatActivity() {
 
@@ -20,9 +22,17 @@ class SplashScreen : AppCompatActivity() {
         }
     }
 
+    fun setlocality(){
+        var res=resources
+        var dm=res.displayMetrics
+        var config=res.configuration
+        config.locale=Locale("ar")
+        res.updateConfiguration(config,dm)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
+        setlocality()
         mDelayHandler = Handler()
 
         //Navigate with delay

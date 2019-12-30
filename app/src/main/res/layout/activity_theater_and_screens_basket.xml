@@ -251,60 +251,64 @@
                         android:textColor="#000"
                         android:drawablePadding="7dp"
                         android:gravity="right"
-                        /> <TextView
+                        />
+                    <TextView
 
-                    android:padding="3dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_gravity="right"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="٢_ في حال مطالبتنا من قِبل العميل التركيب  قبل يوم العمل للتجربة يتم زيادة 20% من كامل المبلغ المتفق عليه"
-                    android:fontFamily="@font/merssi_req"
-                    android:textSize="14dp"
-                    android:textColor="#000"
-                    android:drawablePadding="7dp"
-                    android:gravity="center_vertical"
-                    /><TextView
+                        android:padding="3dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_gravity="right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="٢_ في حال مطالبتنا من قِبل العميل التركيب  قبل يوم العمل للتجربة يتم زيادة 20% من كامل المبلغ المتفق عليه"
+                        android:fontFamily="@font/merssi_req"
+                        android:textSize="14dp"
+                        android:textColor="#000"
+                        android:drawablePadding="7dp"
+                        android:gravity="center_vertical"
+                        />
+                    <TextView
 
-                    android:padding="3dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_gravity="right"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="٣_ يشترط دفع عربون نصف المبلغ للحجز وقبل التركيب يدفع المبلغ كاملا ولا يحق للعميل تأجيل موعد الدفع في اي حال من الأحوال"
-                    android:fontFamily="@font/merssi_req"
-                    android:textSize="14dp"
-                    android:textColor="#000"
-                    android:drawablePadding="7dp"
-                    android:gravity="center_vertical"
-                    /><TextView
+                        android:padding="3dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_gravity="right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="٣_ يشترط دفع عربون نصف المبلغ للحجز وقبل التركيب يدفع المبلغ كاملا ولا يحق للعميل تأجيل موعد الدفع في اي حال من الأحوال"
+                        android:fontFamily="@font/merssi_req"
+                        android:textSize="14dp"
+                        android:textColor="#000"
+                        android:drawablePadding="7dp"
+                        android:gravity="center_vertical"
+                        />
+                    <TextView
 
-                    android:padding="3dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_gravity="right"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="٤_ العربون لا يرد ولا يسترجع في اي حال من الأحوال"
-                    android:fontFamily="@font/merssi_req"
-                    android:textSize="14dp"
-                    android:textColor="#000"
-                    android:drawablePadding="7dp"
-                    android:gravity="center_vertical"
-                    /><TextView
+                        android:padding="3dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_gravity="right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="٤_ العربون لا يرد ولا يسترجع في اي حال من الأحوال"
+                        android:fontFamily="@font/merssi_req"
+                        android:textSize="14dp"
+                        android:textColor="#000"
+                        android:drawablePadding="7dp"
+                        android:gravity="center_vertical"
+                        />
+                    <TextView
 
-                    android:padding="3dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_gravity="right"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="٥_ المؤسسة يحق لها الغاء التركيب مع استلام الحقوق المالية كاملة
+                        android:padding="3dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_gravity="right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="٥_ المؤسسة يحق لها الغاء التركيب مع استلام الحقوق المالية كاملة
 عند اي تغير في الأحوال الجوية"
-                    android:fontFamily="@font/merssi_req"
-                    android:textSize="14dp"
-                    android:textColor="#000"
-                    android:drawablePadding="7dp"
-                    android:gravity="center_vertical"
-                    />
+                        android:fontFamily="@font/merssi_req"
+                        android:textSize="14dp"
+                        android:textColor="#000"
+                        android:drawablePadding="7dp"
+                        android:gravity="center_vertical"
+                        />
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-import com.karim.myapplication.Model.TypesItems
+import com.karim.myapplication.model.TypesItems
 import com.karim.myapplication.R
 
 class RvAdapter(var typesItemsList: ArrayList<TypesItems>, var _ctx: Context) :

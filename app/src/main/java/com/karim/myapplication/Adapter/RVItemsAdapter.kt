@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.karim.myapplication.Model.TypesItems
+import com.karim.myapplication.model.TypesItems
 import com.karim.myapplication.R
 
 class RVItemsAdapter(var _ctx:Context,var itemList:ArrayList<TypesItems>)

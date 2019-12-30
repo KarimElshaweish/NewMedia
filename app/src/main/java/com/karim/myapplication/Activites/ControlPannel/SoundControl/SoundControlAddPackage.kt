@@ -18,8 +18,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.karim.myapplication.Adapter.RVItemsAdapter
 import com.karim.myapplication.Adapter.RvAdapter
-import com.karim.myapplication.Model.PhotoGraph
-import com.karim.myapplication.Model.TypesItems
+import com.karim.myapplication.model.PhotoGraph
+import com.karim.myapplication.model.TypesItems
 import com.karim.myapplication.R
 import com.kofigyan.stateprogressbar.StateProgressBar
 import dmax.dialog.SpotsDialog

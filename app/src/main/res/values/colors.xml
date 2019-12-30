@@ -90,4 +90,5 @@
     <color name="shopSecondary">#727272</color>
     <color name="shopRatedStar">#ffeb5a</color>
     <color name="shopFabRipple">#51b2ac</color>
+    <color name="color_second_primary">#14B2BB</color>
 </resources>

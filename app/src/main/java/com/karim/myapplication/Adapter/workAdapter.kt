@@ -8,10 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.karim.myapplication.Model.PhotoGraph
-import com.karim.myapplication.Model.WorkDone
+import com.karim.myapplication.model.WorkDone
 import com.karim.myapplication.R
 
 class workAdapter (var _ctx: Context, var list:List<WorkDone>) :RecyclerView.Adapter<workAdapter.ViewHolder>(){

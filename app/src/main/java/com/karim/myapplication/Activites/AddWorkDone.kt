@@ -5,11 +5,8 @@ import android.os.Bundle
 import android.widget.Toast
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import com.karim.myapplication.Model.WorkDone
+import com.karim.myapplication.model.WorkDone
 import com.karim.myapplication.R
 import dmax.dialog.SpotsDialog
 import kotlinx.android.synthetic.main.activity_add_work_done.*

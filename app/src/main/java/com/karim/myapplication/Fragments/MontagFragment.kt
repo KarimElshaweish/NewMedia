@@ -17,7 +17,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
-import com.karim.myapplication.Model.Montag
+import com.karim.myapplication.model.Montag
 import com.karim.myapplication.R
 import kotlinx.android.synthetic.main.fragment_montag.view.*
 import java.io.File

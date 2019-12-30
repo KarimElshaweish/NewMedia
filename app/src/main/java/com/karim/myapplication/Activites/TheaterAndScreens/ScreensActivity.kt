@@ -6,7 +6,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
-import com.karim.myapplication.Model.ScreenType
+import com.karim.myapplication.model.ScreenType
 import com.karim.myapplication.R
 import com.karim.myapplication.Util
 import kotlinx.android.synthetic.main.activity_theater.*
@@ -19,7 +19,6 @@ class ScreensActivity : AppCompatActivity() {
         setContentView(R.layout.activity_screens)
         val sumWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 if(!s.toString().isEmpty())
                     sum=s.toString().toDouble()
@@ -54,7 +53,7 @@ class ScreensActivity : AppCompatActivity() {
     fun btnClicked(view: View) {
         when(view.id){
             R.id.add_fab->{
-                Util.listScreen.add(ScreenType((sum*meterSum).toString(),meterSum.toString(),"شاشة"))
+                Util.listScreen.add(ScreenType((sum*meterSum).toString(),meterSum.toString()))
                 Toast.makeText(this,"تم الاضافة", Toast.LENGTH_SHORT).show()
                 meterPriceText.setText("0")
                 meterSumText.setText("0")

@@ -6,10 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.karim.myapplication.Model.TypesItems
+import com.karim.myapplication.model.TypesItems
 import com.karim.myapplication.R
-import java.lang.reflect.Type
-import java.util.*
 import kotlin.collections.HashMap
 
 class RVAdapterPkItems(var typesItemsList: List<TypesItems>, var _ctx: Context): RecyclerView.Adapter<RVAdapterPkItems.ViewHolder>(){
