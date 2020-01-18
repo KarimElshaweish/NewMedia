@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.PastOrderFragment">
+
+
+    <RelativeLayout
+        android:layout_marginStart="20dp"
+        android:layout_margin="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/top">
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/border_offline_color"
+            android:text="@string/printPdf"
+            android:fontFamily="@font/merssi_semibold"
+            android:layout_margin="7dp"
+            android:id="@+id/print_pdf_arch"/>
+        <TextView
+            android:layout_centerVertical="true"
+            android:padding="7dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/orderNumber"
+            android:fontFamily="@font/merssi_semibold"
+            android:layout_alignParentLeft="true"/>
+
+    </RelativeLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top"
+        android:gravity="right|center"
+        android:id="@+id/filterRl">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:background="@drawable/border_offline_color"
+            android:drawableRight="@drawable/ic_filter"
+            android:fontFamily="@font/merssi_semibold"
+            android:id="@+id/btnFilter"
+            android:text="@string/filter" />
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:layout_width="wrap_content"
+            android:padding="7dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/yearSpinner"
+           />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/year"
+            android:fontFamily="@font/merssi_semibold"
+            android:padding="7dp"
+            android:textColor="#000"/>
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:padding="7dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/monthSpinner"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/month"
+            android:fontFamily="@font/merssi_semibold"
+            android:padding="7dp"
+            android:textColor="#000"/>
+    </LinearLayout>
+    <com.eyalbira.loadingdots.LoadingDots
+        android:id="@+id/screenPb"
+        android:layout_below="@id/filterRl"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="7sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_order_date"
+        android:fontFamily="@font/merssi_semibold"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/screenPb"
+        android:visibility="gone"
+            android:id="@+id/no_order"/>
+    <ScrollView
+        android:layout_below="@id/screenPb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/arch_scroll">
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/arch_rv"/>
+    </ScrollView>
+
+</RelativeLayout>

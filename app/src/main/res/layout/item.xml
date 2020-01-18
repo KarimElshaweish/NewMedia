@@ -11,7 +11,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:background="@android:color/transparent"
@@ -31,10 +30,19 @@
                 android:padding="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/float_delete"
+                    app:backgroundTint="@android:color/white"
+                    android:src="@drawable/ic_delete"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="7dp"/>
                 <LinearLayout
+                    android:layout_above="@id/button"
                     android:id="@+id/content"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="24dp">
@@ -105,9 +113,9 @@
             android:layout_height="100dp"
             app:civ_border_color="@android:color/transparent"
             app:civ_border_width="3dp"
-                android:id="@+id/pkIamge"
+            android:id="@+id/pkIamge"
             android:adjustViewBounds="true"
-            android:src="@drawable/music_bg"
+            android:src="@drawable/defualt"
             android:layout_centerHorizontal="true"/>
     </RelativeLayout>
 

@@ -1,5 +1,6 @@
 package com.karim.myapplication.Adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -11,10 +12,12 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.karim.myapplication.model.PhotoGraph
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.karim.myapplication.R
 import com.karim.myapplication.Util
+import com.karim.myapplication.model.PhotoGraph
 import com.mikhaellopez.circularimageview.CircularImageView
+
 
 class SoundCardAdapter(var photList: List<PhotoGraph>, var _ctx: Context, var nochoice:Boolean)
     : RecyclerView.Adapter<SoundCardAdapter.ViewHolder> (){
@@ -29,6 +32,7 @@ class SoundCardAdapter(var photList: List<PhotoGraph>, var _ctx: Context, var no
         return  photList.size
     }
 
+    @SuppressLint("RestrictedApi")
     override fun onBindViewHolder(holder: SoundCardAdapter.ViewHolder, position: Int) {
         holder.title.text=photList.get(position).name
         holder.price.text=photList.get(position).price
@@ -44,6 +48,7 @@ class SoundCardAdapter(var photList: List<PhotoGraph>, var _ctx: Context, var no
                 Util.soundList.add(photList.get(position))
             }
         }
+        holder.floatingDetete.visibility=View.GONE
         holder.pkIamge.elevation=10f
         holder.cv.elevation=9f
         Glide.with(_ctx).load(photList.get(position).image).placeholder(_ctx.resources.getDrawable(R.drawable.defualt)
@@ -56,5 +61,6 @@ class SoundCardAdapter(var photList: List<PhotoGraph>, var _ctx: Context, var no
         var button=itemView.findViewById<Button>(R.id.button)
         var pkIamge=itemView.findViewById<CircularImageView>(R.id.pkIamge)
         var cv=itemView.findViewById<CardView>(R.id.cv)
+        var floatingDetete=itemView.findViewById<FloatingActionButton>(R.id.float_delete)
     }
 }

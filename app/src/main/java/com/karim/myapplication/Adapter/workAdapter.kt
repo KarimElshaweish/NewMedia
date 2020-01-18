@@ -2,15 +2,23 @@ package com.karim.myapplication.Adapter
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebSettings
+import android.webkit.WebView
+import android.webkit.WebViewClient
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.karim.myapplication.model.WorkDone
+import com.github.florent37.expansionpanel.ExpansionHeader
+import com.github.florent37.expansionpanel.ExpansionLayout
 import com.karim.myapplication.R
+import com.karim.myapplication.model.WorkDone
+
 
 class workAdapter (var _ctx: Context, var list:List<WorkDone>) :RecyclerView.Adapter<workAdapter.ViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -21,8 +29,6 @@ class workAdapter (var _ctx: Context, var list:List<WorkDone>) :RecyclerView.Ada
     override fun getItemCount(): Int {
         return list.size
     }
-
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.nameText.text=list.get(position).employeName
         holder.date.text=list.get(position).workDate
@@ -36,24 +42,19 @@ class workAdapter (var _ctx: Context, var list:List<WorkDone>) :RecyclerView.Ada
             _ctx.startActivity(intent)
         }
         holder.workName.text=list.get(position).workName
+        if(position%2==0) {
+            holder.exp.setBackgroundColor(Color.parseColor("#dfe6e9"))
+            holder.expansionLayout.setBackgroundColor(Color.parseColor("#dfe6e9"))
+        }
     }
 
     class ViewHolder(itemview: View) :RecyclerView.ViewHolder(itemview){
-        var nameText: TextView
-        init {
-            nameText=itemview.findViewById(R.id.name)
-        }
-        var date:TextView
-        init {
-            date=itemview.findViewById(R.id.date)
-        }
-        var url:TextView
-        init {
-            url=itemview.findViewById(R.id.url)
-        }
-        var workName:TextView
-        init {
-            workName=itemview.findViewById(R.id.workName)
-        }
+        val exp: ExpansionHeader =itemview.findViewById(R.id.exp)
+        val expansionLayout:ExpansionLayout=itemview.findViewById(R.id.expansionLayout)
+        var nameText: TextView = itemview.findViewById(R.id.name)
+        var date:TextView = itemview.findViewById(R.id.date)
+        var url:TextView = itemview.findViewById(R.id.url)
+        var workName:TextView = itemview.findViewById(R.id.workName)
+        var image=itemview.findViewById<ImageView>(R.id.image)
     }
 }

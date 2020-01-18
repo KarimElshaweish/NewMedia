@@ -237,7 +237,7 @@
                         app:civ_border_width="3dp"
                         android:id="@+id/pkIamge"
                         android:adjustViewBounds="true"
-                        android:src="@drawable/music_bg"
+                        android:src="@drawable/defualt"
                         android:layout_centerHorizontal="true"/>
                     <TextView
                         android:fontFamily="@font/merssi_req"

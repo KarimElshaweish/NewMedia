@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':poi-3.8', ':poi-ooxml-3.8', ':poi-ooxml-schemas-3.8'
 rootProject.name='My Application'

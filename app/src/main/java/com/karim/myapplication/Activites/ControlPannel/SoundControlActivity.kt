@@ -24,6 +24,7 @@ import java.util.*
 import kotlin.collections.HashMap
 
 class SoundControlActivity : AppCompatActivity() {
+    var dialog: android.app.AlertDialog? = null
     var count:Int = 0
     val photoList = mutableListOf<PhotoGraph>()
     private fun setUI(count:Int) {
@@ -35,15 +36,12 @@ class SoundControlActivity : AppCompatActivity() {
                 .setPivotX(Pivot.X.CENTER)
                 .setPivotY(Pivot.Y.BOTTOM)
                 .build())
-        var cardAdapter= CardAdapter(photoList,this,true)
+        var cardAdapter= CardAdapter(photoList,this,true,"Sound")
         rv.adapter=cardAdapter
     }
     private fun getData(){
 
-        val dialog: android.app.AlertDialog? = SpotsDialog.Builder()
-            .setContext(this)
-            .setTheme(R.style.getData)
-            .build()
+
         dialog!!.show()
 
         FirebaseDatabase.getInstance().getReference().addValueEventListener(object :
@@ -52,8 +50,9 @@ class SoundControlActivity : AppCompatActivity() {
                 Toast.makeText(baseContext,p0.message, Toast.LENGTH_LONG).show()
             }
             override fun onDataChange(p0: DataSnapshot) {
-                if(p0.children.count()>0){
+                if(p0.hasChild("Sound")){
                     noPk.visibility=View.GONE
+                    photoList.clear()
                     FirebaseDatabase.getInstance().getReference("Sound").addValueEventListener(object :
                         ValueEventListener {
                         override fun onCancelled(p0: DatabaseError) {
@@ -61,8 +60,9 @@ class SoundControlActivity : AppCompatActivity() {
                         }
 
                         override fun onDataChange(p0: DataSnapshot) {
+                            dialog!!.show()
                             count= p0.childrenCount.toInt()
-                            if(p0!!.exists()) {
+                            if(p0.exists()) {
                                 for (p1 in p0.children) {
                                     var pp=p1.value as HashMap<String, Objects>
                                     var name:String=pp.get("name")as String
@@ -80,7 +80,7 @@ class SoundControlActivity : AppCompatActivity() {
 
                     })
                 }else{
-                    dialog.dismiss()
+                    dialog!!.dismiss()
                     noPk.visibility=View.VISIBLE
                 }
             }
@@ -93,6 +93,10 @@ class SoundControlActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sound_control)
+        dialog=SpotsDialog.Builder()
+            .setContext(this)
+            .setTheme(R.style.getData)
+            .build()
         getData()
     }
     fun finish(view: View) {

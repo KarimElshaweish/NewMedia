@@ -18,6 +18,7 @@ import com.yarolegovich.discretescrollview.DiscreteScrollView
 import com.yarolegovich.discretescrollview.transform.Pivot
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer
 import dmax.dialog.SpotsDialog
+import kotlinx.android.synthetic.main.fragment_photographer_fragmetn.view.*
 import java.util.*
 
 
@@ -28,7 +29,7 @@ class PhotographerFragmetn : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val v= inflater.inflate(R.layout.fragment_photographer_fragmetn, container, false)
+            val v= inflater.inflate(R.layout.fragment_photographer_fragmetn, container, false)
 
         getData(v)
         return v
@@ -43,27 +44,41 @@ class PhotographerFragmetn : Fragment() {
             .setTheme(R.style.getData)
             .build()
         dialog!!.show()
-
-        FirebaseDatabase.getInstance().getReference("photoGraph").addListenerForSingleValueEvent(object :ValueEventListener{
+        FirebaseDatabase.getInstance().reference.addListenerForSingleValueEvent(object :ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                v.no_pk.visibility=View.VISIBLE
             }
 
             override fun onDataChange(p0: DataSnapshot) {
-                count= p0.childrenCount.toInt()
-                if(p0!!.exists()) {
-                    for (p1 in p0.children) {
-                        var pp=p1.value as HashMap<String,Objects>
-                        var name:String=pp.get("name")as String
-                        var price:String=pp.get("price")as String
-                        var pkItems=pp.get("items")as MutableList<TypesItems>
-                        var pkImage=pp.get("image")as String
-                        var photoGraph=PhotoGraph(name,price,pkItems,pkImage)
-                        photoList.add(photoGraph)
-                        print(pp)
-                    }
-                    dialog!!.dismiss()
-                    setUI(v,count)
+                if(p0.hasChild("photoGraph")){
+                    v.no_pk.visibility=View.GONE
+                    FirebaseDatabase.getInstance().getReference("photoGraph").addListenerForSingleValueEvent(object :ValueEventListener{
+                        override fun onCancelled(p0: DatabaseError) {
+                            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                        }
+
+                        override fun onDataChange(p0: DataSnapshot) {
+                            count= p0.childrenCount.toInt()
+                            if(p0!!.exists()) {
+                                for (p1 in p0.children) {
+                                    var pp=p1.value as HashMap<String,Objects>
+                                    var name:String=pp.get("name")as String
+                                    var price:String=pp.get("price")as String
+                                    var pkItems=pp.get("items")as MutableList<TypesItems>
+                                    var pkImage=pp.get("image")as String
+                                    var photoGraph=PhotoGraph(name,price,pkItems,pkImage)
+                                    photoList.add(photoGraph)
+                                    print(pp)
+                                }
+                                dialog!!.dismiss()
+                                setUI(v,count)
+                            }
+                        }
+
+                    })
+                }else{
+                    dialog.dismiss()
+                    v.no_pk.visibility=View.VISIBLE
                 }
             }
 
@@ -78,7 +93,7 @@ class PhotographerFragmetn : Fragment() {
             .setPivotX(Pivot.X.CENTER)
             .setPivotY(Pivot.Y.BOTTOM)
             .build())
-        var cardAdapter= CardAdapter(photoList,context!!,false)
+        var cardAdapter= CardAdapter(photoList,context!!,false,"photoGraph")
         rv.adapter=cardAdapter
     }
 

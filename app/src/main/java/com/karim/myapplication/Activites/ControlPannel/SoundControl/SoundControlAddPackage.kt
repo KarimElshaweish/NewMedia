@@ -88,7 +88,7 @@ class SoundControlAddPackage : AppCompatActivity() {
                 } else if (next.text.equals("نشر")) {
                     dialog!!.show()
 
-                    if (filepath != null) {
+                    if (::filepath.isInitialized&&filepath != null) {
                         var mrefernace = FirebaseStorage.getInstance().getReference("PKImage")
                         var uploadImage = mrefernace.putFile(filepath)
                         uploadImage.addOnFailureListener { ex ->
@@ -123,6 +123,22 @@ class SoundControlAddPackage : AppCompatActivity() {
 
                                     }
                                 }
+                            }
+                    }
+                    else{
+                        var photoData = PhotoGraph()
+                        photoData.name = pk_name.text.toString()
+                        photoData.price = price.text.toString()
+                        photoData.items = listItems
+                        photoData.image = ""
+                        FirebaseDatabase.getInstance().getReference("Sound")
+                            .child(photoData.name).setValue(photoData)
+                            .addOnCompleteListener {
+                                dialog.dismiss()
+                                showToast("تم النشر")
+                                finish()
+                            }.addOnFailureListener {
+                                showToast("حدث خطأ")
                             }
                     }
                 }

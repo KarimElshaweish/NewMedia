@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <TableLayout
+        android:id="@+id/table2"
+        android:layout_width="fill_parent"
+        android:layout_marginLeft="45dp"
+        android:layout_marginBottom="25dp"
+        android:layout_marginRight="45dp"
+        android:layout_height="fill_parent"
+        android:stretchColumns="*">
+        <TableRow
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <TextView
+                android:padding="2dp"
+                android:layout_width="0dp"
+                android:text="كريم"
+                android:fontFamily="@font/merssi_semibold"
+                android:textColor="#000"
+                android:id="@+id/name"
+                android:gravity="center"
+                android:background="@drawable/left_border"
+                android:textStyle="bold"/>
+            <TextView
+                android:padding="2dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="إسم الموظف"
+                android:fontFamily="@font/merssi_semibold"
+                android:textColor="#000"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:background="@drawable/right_border"
+                />
+
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/border">
+            <TextView
+                android:padding="2dp"
+
+                android:layout_width="0dp"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/url"
+                android:fontFamily="@font/merssi_semibold"
+                android:textColor="#000"
+                android:gravity="center"
+                android:background="@drawable/border"
+                android:textStyle="bold"/>
+            <TextView
+                android:padding="2dp"
+
+                android:background="@drawable/border"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="التاريخ"
+                android:fontFamily="@font/merssi_semibold"
+                android:textColor="#000"
+                android:gravity="center"
+                android:textStyle="bold"
+                />
+
+        </TableRow>
+        <TableRow
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <TextView
+                android:padding="2dp"
+                android:id="@+id/date"
+                android:layout_width="0dp"
+                android:fontFamily="@font/merssi_semibold"
+                android:textColor="#0000EE "
+                android:gravity="center"
+                android:textStyle="bold"
+                android:background="@drawable/bottom_left_border"
+                />
+            <TextView
+                android:padding="2dp"
+                android:background="@drawable/bottom_right_border"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:fontFamily="@font/merssi_semibold"
+                android:textColor="#000"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:text="الرابط"
+                />
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>

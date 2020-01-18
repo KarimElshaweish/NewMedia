@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.github.florent37.expansionpanel.ExpansionHeader android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:layout_width="match_parent"
+    app:expansion_headerIndicator="@id/headerIndicator"
+    app:expansion_layout="@id/expansionLayout"
+    app:expansion_toggleOnClick="true"
+    layout_height=""
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="19sp"
+        android:fontFamily="@font/merssi_req"
+        android:text="@string/photo"
+        android:textColor="#000"
+        android:layout_gravity="center"/>
+
+
+</com.github.florent37.expansionpanel.ExpansionHeader>

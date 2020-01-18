@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#636e72"/>
+    <include layout="@layout/horizontial_scroll"/>
+    <RelativeLayout
+        android:id="@+id/removeRl"
+        android:layout_margin="7dp"
+        android:gravity="right"
+        android:layout_gravity="right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_centerHorizontal="true"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/colse_ic"
+            android:id="@+id/close_img"/>
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/remove_order"
+            android:layout_below="@id/close_img"
+            android:fontFamily="@font/merssi_semibold"/>
+    </RelativeLayout>
+
+    <com.github.florent37.expansionpanel.ExpansionHeader
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:expansion_headerIndicator="@id/headerIndicator"
+        app:expansion_layout="@id/expansionLayout"
+        android:padding="10dp"
+        android:id="@+id/exp"
+        app:expansion_toggleOnClick="true">
+
+
+        <ImageView
+            android:adjustViewBounds="true"
+            android:id="@+id/headerIndicator"
+            android:layout_gravity="center_vertical|left"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_width="wrap_content"
+            app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/clientName"
+            android:text="كريم"
+            android:fontFamily="@font/merssi_semibold"
+            android:textSize="16sp"
+            android:textColor="#000"
+            android:layout_gravity="center|center_vertical"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/order_date"
+            android:text="25/2/2020"
+            android:fontFamily="@font/merssi_semibold"
+            android:textSize="16sp"
+            android:textColor="#000"
+            android:layout_gravity="right|center_vertical"/>
+
+    </com.github.florent37.expansionpanel.ExpansionHeader>
+
+    <com.github.florent37.expansionpanel.ExpansionLayout
+        android:id="@+id/expansionLayout"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+
+        <LinearLayout
+            android:layout_margin="7dp"
+            android:background="#F9FAFC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+    </com.github.florent37.expansionpanel.ExpansionLayout>
+</LinearLayout>

@@ -24,10 +24,14 @@ import java.util.*
 import kotlin.collections.HashMap
 
 class PhotoGrapherControlActivity : AppCompatActivity() {
-
+    var dialog: android.app.AlertDialog? =null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_photo_grapher_control)
+        dialog= SpotsDialog.Builder()
+            .setContext(this)
+            .setTheme(R.style.getData)
+            .build()
         add_fab.setOnClickListener{
             startActivity(Intent(this,PhotoGrapherAddPackage::class.java))
         }
@@ -40,20 +44,16 @@ class PhotoGrapherControlActivity : AppCompatActivity() {
     var count:Int = 0
     val photoList = mutableListOf<PhotoGraph>()
     private fun getData(){
-
-        val dialog: android.app.AlertDialog? = SpotsDialog.Builder()
-            .setContext(this)
-            .setTheme(R.style.getData)
-            .build()
         dialog!!.show()
-
         FirebaseDatabase.getInstance().getReference().addValueEventListener(object :ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
                 Toast.makeText(baseContext,p0.message,Toast.LENGTH_LONG).show()
             }
             override fun onDataChange(p0: DataSnapshot) {
-               if(p0.children.count()>0){
+                dialog!!.show()
+               if(p0.hasChild("photoGraph")){
                    noPk.visibility=View.GONE
+                   photoList.clear()
                    FirebaseDatabase.getInstance().getReference("photoGraph").addValueEventListener(object :
                        ValueEventListener {
                        override fun onCancelled(p0: DatabaseError) {
@@ -80,7 +80,7 @@ class PhotoGrapherControlActivity : AppCompatActivity() {
 
                    })
                }else{
-                   dialog.dismiss()
+                   dialog!!.dismiss()
                    noPk.visibility=View.VISIBLE
                }
             }
@@ -98,7 +98,7 @@ class PhotoGrapherControlActivity : AppCompatActivity() {
                 .setPivotX(Pivot.X.CENTER)
                 .setPivotY(Pivot.Y.BOTTOM)
                 .build())
-        var cardAdapter= CardAdapter(photoList,this,true)
+        var cardAdapter= CardAdapter(photoList,this,true,"photoGraph")
         rv.adapter=cardAdapter
     }
 

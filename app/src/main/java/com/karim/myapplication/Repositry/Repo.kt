@@ -3,7 +3,7 @@ package com.karim.myapplication.Repositry
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
-import com.karim.myapplication.OnBasketDataLoadLisenter
+import com.karim.myapplication.Interfaces.OnBasketDataLoadLisenter
 import com.karim.myapplication.model.ScreenUploadData
 import com.karim.myapplication.model.TheaterUploadData
 import com.karim.myapplication.model.photoData
@@ -12,7 +12,7 @@ import java.util.*
 class Repo{
     var ref=FirebaseDatabase.getInstance().getReference()
     companion object{
-        var dataListener:OnBasketDataLoadLisenter?=null
+        var dataListener: OnBasketDataLoadLisenter?=null
         var instance:Repo?=null
         fun getInstance(_ctxt:Fragment):Repo?{
             dataListener=_ctxt as OnBasketDataLoadLisenter
@@ -23,8 +23,11 @@ class Repo{
         }
     }
     fun uploadPictures(pd:photoData){
-        var query=ref.child("photoOrders").child(FirebaseAuth.getInstance().currentUser!!.uid)
-            .child(Calendar.getInstance().time.toString())
+        val uid=FirebaseAuth.getInstance().currentUser!!.uid
+        val time=Calendar.getInstance().time.toString()
+        pd.id= "$uid*$time"
+        var query=ref.child("photoOrders").child(uid)
+            .child(time)
         query.setValue(pd).addOnCompleteListener{
             task ->
             if(task.isSuccessful)
@@ -32,10 +35,14 @@ class Repo{
             else
                 dataListener?.onPhotoAddedFailed()
         }
+        query=ref.child("photoMonth/${uid}/${time}")
+        query.setValue(pd)
     }
     fun uploadMusic(pd:photoData){
-        var query=ref.child("musicOrders").child(FirebaseAuth.getInstance().currentUser!!.uid)
-            .child(Calendar.getInstance().time.toString())
+        val uid=FirebaseAuth.getInstance().currentUser!!.uid
+        val time=Calendar.getInstance().time.toString()
+        val query=ref.child("musicOrdersMonth/${uid}/${time}")
+        pd.id="${uid}*${time}"
         query.setValue(pd).addOnCompleteListener{
             task ->
             if(task.isSuccessful)
@@ -45,8 +52,11 @@ class Repo{
         }
     }
     fun uploadTheater(pd: TheaterUploadData) {
-        var query=ref.child("Theater").child(FirebaseAuth.getInstance().currentUser!!.uid)
-            .child(Calendar.getInstance().time.toString())
+        val uid=FirebaseAuth.getInstance().currentUser!!.uid
+        val time=Calendar.getInstance().time.toString()
+        var query=ref.child("Theater").child(uid)
+            .child(time)
+        pd.id="${uid}*${time}"
         query.setValue(pd).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 dataListener?.onTheaterAddedSuccess()
@@ -54,18 +64,25 @@ class Repo{
                 dataListener?.onTheaterAddedFailed()
             }
         }
+        query=ref.child("TheaterMonth/${uid}/${time}")
+        query.setValue(pd)
     }
 
     fun uploadScreen(screenData: ScreenUploadData) {
-        var query=ref.child("Screen").child(FirebaseAuth.getInstance().currentUser!!.uid).child(
-            Calendar.getInstance().time.toString()
+        val uid=FirebaseAuth.getInstance().currentUser!!.uid
+        val time=Calendar.getInstance().time.toString()
+        screenData.id="${uid}*${time}"
+        var query=ref.child("Screen").child(uid).child(
+            time
         )
-        query.setValue(screenData).addOnCompleteListener{
-            task ->if(task.isSuccessful) {
-            dataListener?.onScreenAddedSuccess()
-        }else{
-            dataListener?.onScreenAddedFailed()
+        query.setValue(screenData).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                dataListener?.onScreenAddedSuccess()
+            } else {
+                dataListener?.onScreenAddedFailed()
+            }
         }
-        }
+        query=ref.child("ScreenMonth/${uid}/${time}")
+        query.setValue(screenData)
     }
 }

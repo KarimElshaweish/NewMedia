@@ -164,6 +164,26 @@
                                         android:id="@+id/theaterMoneyRest"
                                         android:fontFamily="@font/merssi_semibold"
                                         android:layout_margin="10dp"/>
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="right"
+                                        android:gravity="right"
+                                        android:layout_margin="3dp"
+                                        android:orientation="horizontal">
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="@string/fullMoney"
+                                            android:fontFamily="@font/merssi_req"
+                                            android:textColor="#000"
+                                            android:gravity="center"/>
+                                        <CheckBox
+                                            android:buttonTint="@color/colorPrimary"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:id="@+id/theaterCheckBox"/>
+                                    </LinearLayout>
                                 </LinearLayout>
 
                             </LinearLayout>
@@ -241,6 +261,27 @@
                                         android:id="@+id/screenMoneyRest"
                                         android:fontFamily="@font/merssi_semibold"
                                         android:layout_margin="10dp"/>
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="right"
+                                        android:gravity="right"
+                                        android:layout_margin="3dp"
+                                        android:orientation="horizontal">
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="@string/fullMoney"
+                                            android:fontFamily="@font/merssi_req"
+                                            android:textColor="#000"
+                                            android:gravity="center"/>
+                                        <CheckBox
+                                            android:buttonTint="@color/colorPrimary"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:id="@+id/screenCheckBox"/>
+                                    </LinearLayout>
+
                                 </LinearLayout>
 
                             </LinearLayout>
@@ -262,6 +303,7 @@
                                     android:layout_gravity="right"
                                     android:gravity="right"/>
 
+
                                 <EditText
                                     android:gravity="right"
                                     android:id="@+id/clientName"
@@ -272,6 +314,30 @@
                                     android:fontFamily="@font/merssi_semibold"
                                     android:hint="إسم العميل"
                                     android:text="@{data.name}"
+                                    android:inputType="text"
+                                    android:padding="7dp"
+                                    android:textCursorDrawable="@drawable/coursor"
+                                    android:textSize="17sp" />
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="إسم العمل"
+                                    android:fontFamily="@font/merssi_bold"
+                                    android:textColor="#000"
+                                    android:padding="7dp"
+                                    android:layout_margin="10dp"
+                                    android:layout_gravity="right"
+                                    android:gravity="right"/>
+                                <EditText
+                                    android:gravity="right"
+                                    android:id="@+id/workName"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:background="@drawable/border_offline"
+                                    android:fontFamily="@font/merssi_semibold"
+                                    android:hint="إسم العمل"
+                                    android:text="@{data.workName}"
                                     android:inputType="text"
                                     android:padding="7dp"
                                     android:textCursorDrawable="@drawable/coursor"
@@ -438,6 +504,26 @@
                             android:id="@+id/soundMoneyRest"
                             android:fontFamily="@font/merssi_semibold"
                             android:layout_margin="10dp"/>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:gravity="right"
+                            android:layout_margin="3dp"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/fullMoney"
+                                android:fontFamily="@font/merssi_req"
+                                android:textColor="#000"
+                                android:gravity="center"/>
+                            <CheckBox
+                                android:buttonTint="@color/colorPrimary"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/soundCheckBox"/>
+                        </LinearLayout>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -493,6 +579,27 @@
                             android:id="@+id/photoMoneyRest"
                             android:fontFamily="@font/merssi_semibold"
                             android:layout_margin="10dp"/>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:gravity="right"
+                            android:layout_margin="3dp"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/fullMoney"
+                                android:fontFamily="@font/merssi_req"
+                                android:textColor="#000"
+                                android:gravity="center"/>
+                            <CheckBox
+                                android:buttonTint="@color/colorPrimary"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/photoCheckBox"/>
+                        </LinearLayout>
+
                     </LinearLayout>
 
                 </LinearLayout>
@@ -691,7 +798,40 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical">
-
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="right"
+                                    android:gravity="right"
+                                    android:orientation="horizontal">
+                                    <TextView
+                                        android:layout_gravity="center_vertical"
+                                        android:id="@+id/soundTotalPrice"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginRight="20dp"
+                                        android:drawablePadding="7dp"
+                                        android:fontFamily="@font/merssi_req"
+                                        android:gravity="center_vertical"
+                                        android:textColor="#14B2BB"
+                                        android:textSize="20dp" />
+                                    <RelativeLayout
+                                        android:layout_marginTop="15dp"
+                                        android:layout_width="120dp"
+                                        android:layout_height="wrap_content"
+                                        android:padding="10dp"
+                                        android:background="@drawable/left_cornor">
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="@string/total_price"
+                                            android:fontFamily="@font/merssi_bold"
+                                            android:textColor="#fff"
+                                            android:gravity="right"
+                                            android:textSize="20sp"
+                                            android:layout_alignParentRight="true"/>
+                                    </RelativeLayout>
+                                </LinearLayout>
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -1037,6 +1177,40 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical">
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="right"
+                                    android:gravity="right"
+                                    android:orientation="horizontal">
+                                    <TextView
+                                        android:layout_gravity="center_vertical"
+                                        android:id="@+id/photoTotalPrice"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginRight="20dp"
+                                        android:drawablePadding="7dp"
+                                        android:fontFamily="@font/merssi_req"
+                                        android:gravity="center_vertical"
+                                        android:textColor="#14B2BB"
+                                        android:textSize="20dp" />
+                                    <RelativeLayout
+                                        android:layout_marginTop="15dp"
+                                        android:layout_width="120dp"
+                                        android:layout_height="wrap_content"
+                                        android:padding="10dp"
+                                        android:background="@drawable/left_cornor">
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="@string/total_price"
+                                            android:fontFamily="@font/merssi_bold"
+                                            android:textColor="#fff"
+                                            android:gravity="right"
+                                            android:textSize="20sp"
+                                            android:layout_alignParentRight="true"/>
+                                    </RelativeLayout>
+                                </LinearLayout>
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -1473,7 +1647,40 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical">
-
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="right"
+                                    android:gravity="right"
+                                    android:orientation="horizontal">
+                                    <TextView
+                                        android:layout_gravity="center_vertical"
+                                        android:id="@+id/theaterTotalPrice"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginRight="20dp"
+                                        android:drawablePadding="7dp"
+                                        android:fontFamily="@font/merssi_req"
+                                        android:gravity="center_vertical"
+                                        android:textColor="#14B2BB"
+                                        android:textSize="20dp" />
+                                    <RelativeLayout
+                                        android:layout_marginTop="15dp"
+                                        android:layout_width="120dp"
+                                        android:layout_height="wrap_content"
+                                        android:padding="10dp"
+                                        android:background="@drawable/left_cornor">
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="@string/total_price"
+                                            android:fontFamily="@font/merssi_bold"
+                                            android:textColor="#fff"
+                                            android:gravity="right"
+                                            android:textSize="20sp"
+                                            android:layout_alignParentRight="true"/>
+                                    </RelativeLayout>
+                                </LinearLayout>
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -1928,6 +2135,40 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical">
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="right"
+                                    android:gravity="right"
+                                    android:orientation="horizontal">
+                                    <TextView
+                                        android:layout_gravity="center_vertical"
+                                        android:id="@+id/screenTotalPrice"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginRight="20dp"
+                                        android:drawablePadding="7dp"
+                                        android:fontFamily="@font/merssi_req"
+                                        android:gravity="center_vertical"
+                                        android:textColor="#14B2BB"
+                                        android:textSize="20dp" />
+                                    <RelativeLayout
+                                        android:layout_marginTop="15dp"
+                                        android:layout_width="120dp"
+                                        android:layout_height="wrap_content"
+                                        android:padding="10dp"
+                                        android:background="@drawable/left_cornor">
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="@string/total_price"
+                                            android:fontFamily="@font/merssi_bold"
+                                            android:textColor="#fff"
+                                            android:gravity="right"
+                                            android:textSize="20sp"
+                                            android:layout_alignParentRight="true"/>
+                                    </RelativeLayout>
+                                </LinearLayout>
 
                                 <LinearLayout
                                     android:layout_width="match_parent"

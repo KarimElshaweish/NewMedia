@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.fragment_montag.view.*
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -65,6 +66,18 @@ class MontagFragment : Fragment() {
         view.draw(canvas)
         return bitmap
     }
+    fun updateDate(workDate:TextView){
+        var foramt="EEEE- dd/MM/yyyy"
+        var locale=Locale("ar")
+        Locale.setDefault(locale)
+        var config =
+            context!!.getResources().getConfiguration()
+        config.setLocale(locale)
+        context!!.createConfigurationContext(config)
+        var sdf= SimpleDateFormat(foramt,locale)
+        workDate.text=sdf.format(calendar.time)
+    }
+    lateinit var calendar: Calendar
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -74,23 +87,27 @@ class MontagFragment : Fragment() {
         builder.detectFileUriExposure()
         // Inflate the layout for this fragment
         var view= inflater.inflate(R.layout.fragment_montag, container, false)
-        val c = Calendar.getInstance()
-        val year = c.get(Calendar.YEAR)
-        val month = c.get(Calendar.MONTH)
-        val day = c.get(Calendar.DAY_OF_MONTH)
-
-
-        var dateText22=view.findViewById<EditText>(R.id.workDate)
-        val dpd = DatePickerDialog(context!!,R.style.DialogTheme, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-
-            // Display Selected date in textbox
-            dateText22.setText("" + dayOfMonth+"/"+monthOfYear+ "/ " + year)
-        }, year, month, day)
-
-
-
+        calendar=Calendar.getInstance()
+        var workDate=view.findViewById<TextView>(R.id.workDate)
+        var dateSetup=DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+            calendar.set(Calendar.YEAR,year)
+            calendar.set(Calendar.MONTH,month)
+            calendar.set(Calendar.DAY_OF_WEEK,dayOfMonth)
+            updateDate(workDate)
+        }
+        var checkbox=view.findViewById<CheckBox>(R.id.allMoneyCheckBox)
+        checkbox.setOnCheckedChangeListener { buttonView, isChecked ->
+            if(isChecked){
+                view.resstPriceText.isEnabled=false
+                view.resstPriceText.setText("0")
+            }
+        }
         view.workDate.setOnClickListener{
-            dpd.show()
+            DatePickerDialog(context!!,R.style.DialogTheme
+                ,dateSetup
+                ,calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_WEEK)).show()
+
 
         }
         activity?.let {
@@ -104,25 +121,33 @@ class MontagFragment : Fragment() {
         report=view.findViewById(R.id.fullReportOption)
         var btnDeal=view.findViewById<Button>(R.id.addContract)
         btnDeal.setOnClickListener{
-            scrollView.visibility=View.GONE
-            report.visibility=View.VISIBLE
-            nameText=view.clientName.text.toString()
-            phoneNumber=view.phonNumber.text.toString()
-            dateText=view.workDate.text.toString()
-            cashGet=view.priceText.text.toString()
-            cashRest=view.resstPriceText.text.toString()
-            view.report_data.text=dateText
-            view.clientNameReport.text=nameText
-            view.clientPhoneNumberReport.text=phoneNumber
-            view.cashGet_report.text=cashGet
-            view.cashRest_report.text=cashRest
+            nameText = view.clientName.text.toString()
+            phoneNumber = view.phonNumber.text.toString()
+            dateText = view.workDate.text.toString()
+            cashGet = view.priceText.text.toString()
+            cashRest = view.resstPriceText.text.toString()
+            if(nameText.isNotEmpty()&&dateText.isNotEmpty()&&
+                    phoneNumber.isNotEmpty()&&cashGet.isNotEmpty()&&
+                    cashRest.isNotEmpty()) {
+                scrollView.visibility = View.GONE
+                report.visibility = View.VISIBLE
+                view.report_data.text = dateText
+                view.clientNameReport.text = nameText
+                view.clientPhoneNumberReport.text = phoneNumber
+                view.cashGet_report.text = cashGet
+                view.cashRest_report.text = cashRest
+            }else{
+                Toast.makeText(context,getString(R.string.please_enter_all_data),Toast.LENGTH_SHORT).show()
+            }
         }
         var print_pdf=view.findViewById<Button>(R.id.print_pdf)
         print_pdf.setOnClickListener{
-            var montag=Montag(nameText,phoneNumber,dateText,cashGet,cashRest)
-            FirebaseDatabase.getInstance().getReference("Montage").child(FirebaseAuth.getInstance().currentUser!!.uid)
-                .child(Calendar.getInstance().time.toString())
-                .setValue(montag).addOnCompleteListener(OnCompleteListener { task ->
+            val time=Calendar.getInstance().time.toString()
+            val uid=FirebaseAuth.getInstance().currentUser!!.uid
+            var montag=Montag(nameText,phoneNumber,dateText,cashGet,cashRest,"${uid}*${time}")
+            FirebaseDatabase.getInstance().getReference("Montage").child(uid)
+                .child(time)
+                .setValue(montag).addOnCompleteListener{ task ->
                     if (task.isSuccessful) {
                         print_pdf.visibility = View.GONE
                         var printView = view.findViewById<ScrollView>(R.id.report)
@@ -141,7 +166,7 @@ class MontagFragment : Fragment() {
                         )
                             .show()
                     }
-                })
+                }
         }
         return view
     }

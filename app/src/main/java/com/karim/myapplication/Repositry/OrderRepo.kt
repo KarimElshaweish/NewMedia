@@ -6,9 +6,9 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.karim.myapplication.Activites.TheaterAndScreens.Theater
-import com.karim.myapplication.OnOrdersDataLoaderLisenter
+import com.karim.myapplication.Interfaces.OnOrdersDataLoaderLisenter
 import com.karim.myapplication.model.*
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
@@ -21,7 +21,7 @@ class OrderRepo {
     private var theaterModel=ArrayList<TheaterUploadData>()
     companion object{
         var instance: OrderRepo? = null
-        var listener:OnOrdersDataLoaderLisenter?=null
+        var listener: OnOrdersDataLoaderLisenter?=null
         fun getInstance(_ctx: Fragment): OrderRepo? {
             listener=_ctx as OnOrdersDataLoaderLisenter
             if (instance == null) instance = OrderRepo()
@@ -61,6 +61,7 @@ class OrderRepo {
             }
 
             override fun onDataChange(p0: DataSnapshot) {
+                theaterModel.clear()
                 for(p1 in p0.children){
                     for(p2 in p1.children){
                         var map = p2.value as Map<String, Objects>
@@ -73,14 +74,15 @@ class OrderRepo {
                             map.get("phoneNumber").toString(),map.get("location").toString(),
                             map.get("date").toString(),
                             map.get("moneyRest").toString(),
-                            map.get("moneyHave").toString()
-                        )
+                            map.get("moneyHave").toString(),
+                            map.get("id").toString()
+                        ,map.get("workName").toString())
                         theaterModel.add(work)
-                        listener?.onTheaterloadedSuccess()
                     }
                 }
+                theaterModel=bubbleTheaterSort(theaterModel)
+                listener?.onTheaterloadedSuccess()
             }
-
         })
     }
     fun loadScreen(){
@@ -89,8 +91,8 @@ class OrderRepo {
             override fun onCancelled(p0: DatabaseError) {
                 listener?.onScreenloadedFailed()
             }
-
             override fun onDataChange(p0: DataSnapshot) {
+                screenModel.clear()
                 for(p1 in p0.children){
                     for(p2 in p1.children){
                         var map = p2.value as Map<String, Objects>
@@ -103,18 +105,18 @@ class OrderRepo {
                             map.get("phoneNumber").toString(),map.get("location").toString(),
                             map.get("date").toString(),
                             map.get("moneyRest").toString(),
-                            map.get("moneyHave").toString()
-                        )
+                            map.get("moneyHave").toString(),
+                            map.get("id").toString()
+                        ,map.get("workName").toString())
                         screenModel.add(work)
-                        listener?.onScreenloadedSuceess()
                     }
                 }
+                listener?.onScreenloadedSuceess()
             }
 
         })
     }
     private fun laodSound() {
-        soundModel.clear()
         var query=ref.child("musicOrders")
         query.addValueEventListener(object :ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
@@ -122,6 +124,7 @@ class OrderRepo {
             }
 
             override fun onDataChange(p0: DataSnapshot) {
+                soundModel.clear()
                 for (p1 in p0.children) {
                     for (p2 in p1.children) {
                         var map = p2.value as Map<String, Objects>
@@ -134,8 +137,9 @@ class OrderRepo {
                             map.get("phoneNumber").toString(),map.get("location").toString(),
                             map.get("date").toString(),
                             map.get("moneyRest").toString(),
-                            map.get("moneyHave").toString()
-                        )
+                            map.get("moneyHave").toString(),
+                            map.get("id").toString()
+                        , map.get("workName").toString())
                         soundModel.add(work)
                     }
                 }
@@ -145,13 +149,13 @@ class OrderRepo {
         })
     }
     private fun loadPhoto() {
-        photoModel.clear()
         var query=ref.child("photoOrders")
         query.addListenerForSingleValueEvent(object :ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
                 listener?.onPictureFailed()
             }
             override fun onDataChange(p0: DataSnapshot) {
+                photoModel.clear()
                 for (p1 in p0.children) {
                         for (p2 in p1.children) {
                             var map = p2.value as Map<String, Objects>
@@ -164,8 +168,9 @@ class OrderRepo {
                                 map.get("phoneNumber").toString(),map.get("location").toString(),
                                 map.get("date").toString(),
                                 map.get("moneyRest").toString(),
-                                map.get("moneyHave").toString()
-                            )
+                                map.get("moneyHave").toString(),
+                                map.get("id").toString()
+                                ,map.get("workName").toString())
                             photoModel.add(work)
                     }
                 }
@@ -214,4 +219,65 @@ class OrderRepo {
         }
         return list
     }
+
+    fun removePhoto(uid: String, time: String) {
+        val query=ref.child("photoOrders/${uid}/${time}")
+        query.setValue(null).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                listener!!.onphotoRemoveSuccess()
+            } else {
+                listener!!.onPhotoRemoveFailed()
+            }
+        }
+    }
+    fun removeTheater(uid:String,time:String) {
+        val query = ref.child("Theater/${uid}/${time}")
+        query.setValue(null).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                listener!!.onTheaterRemovedSuccess()
+            } else {
+                listener!!.onTheaterRemovedFailed()
+            }
+        }
+    }
+    fun removeScreen(uid:String,time:String){
+        val query=ref.child("Screen/${uid}/${time}")
+        query.setValue(null).addOnCompleteListener{
+            task ->
+            if(task.isSuccessful){
+                listener!!.onScreenRemovedSuccess()
+            }else{
+                listener!!.onScreenRemovedFailed()
+            }
+        }
+    }
+    private fun getDateFromString(date: String): Date? {
+        var foramt="EEEE- dd/MM/yyyy"
+        val formatter= SimpleDateFormat(foramt,Locale("ar"))
+        return formatter.parse(date)
+    }
+
+    fun bubbleTheaterSort(list:ArrayList<TheaterUploadData>):ArrayList<TheaterUploadData>{
+        var swap = true
+        while(swap){
+            swap = false
+            for(i in 0 until list.size-1){
+                val item=list[i]
+                val item2=list[i+1]
+                var dt1:Date?
+                var dt2:Date?
+                dt1 = getDateFromString((item).date)
+                dt2 = getDateFromString(item2.date)
+                if(dt1!! > dt2!!){
+                    val temp = list[i]
+                    list[i] = list[i+1]
+                    list[i + 1] = temp
+
+                    swap = true
+                }
+            }
+        }
+        return list
+    }
+
 }

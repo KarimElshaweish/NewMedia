@@ -5,28 +5,21 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/noPk_added"
+        android:fontFamily="@font/merssi_semibold"
+        android:textColor="#000"
+        android:layout_gravity="center"
+        android:id="@+id/no_pk"
+        android:visibility="gone"/>
     <com.yarolegovich.discretescrollview.DiscreteScrollView
         android:id="@+id/picker"
         android:layout_marginBottom="5dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:dsv_orientation="horizontal" />
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:id="@+id/rv"/>-->
-<!--    <androidx.viewpager.widget.ViewPager-->
-<!--        android:id="@+id/viewPager"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:clipToPadding="false"-->
-<!--        android:overScrollMode="never"-->
-<!--        android:paddingBottom="30dp"-->
-<!--        android:paddingEnd="10dp"-->
-<!--        android:paddingLeft="10dp"-->
-<!--        android:paddingRight="10dp"-->
-<!--        android:paddingStart="10dp" />-->
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -42,11 +42,12 @@ class MontageOrderAct : AppCompatActivity() {
                             for (p2 in p1.children) {
                                 var map = p2.value as Map<String, Objects>
                                 var work = Montag(
-                                    map.get("name").toString(),
-                                    map.get("phoneNumber").toString(),
-                                    map.get("date").toString(),
-                                    map.get("cashGet").toString(),
-                                    map.get("cashRest").toString()
+                                    map["name"].toString(),
+                                    map["phoneNumber"].toString(),
+                                    map["date"].toString(),
+                                    map["cashGet"].toString(),
+                                    map["cashRest"].toString(),
+                                    map["id"].toString()
                                 )
                                 createTableRow(work)
 
