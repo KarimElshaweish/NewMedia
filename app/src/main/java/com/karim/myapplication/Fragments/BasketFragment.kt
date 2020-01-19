@@ -65,7 +65,7 @@ class BasketFragment : Fragment(),
 
     lateinit var soundLayout: LinearLayout
     lateinit var workDate: TextView
-    lateinit var calendar: Calendar
+    var myCalendar=Calendar.getInstance()
     var svPhoto: ScrollView? = null
     var basketViewModel = BasketViewModel()
     var dialog: AlertDialog? = null
@@ -437,16 +437,8 @@ class BasketFragment : Fragment(),
             }
         }
     }
-    fun updateDate(){
-        var foramt="EEEE- dd/MM/yyyy"
-        var locale=Locale("ar")
-        Locale.setDefault(locale)
-         var config =
-           context!!.getResources().getConfiguration()
-            config.setLocale(locale)
-        context!!.createConfigurationContext(config)
-        var sdf=SimpleDateFormat(foramt,locale)
-        workDate.text=sdf.format(calendar.time)
+    fun updateDate( date:String){
+        workDate.text=date
     }
     var descriptionData = arrayOf(" صوتيه", " تصوير", "مسارح","شاشات","العميل")
 
@@ -553,16 +545,26 @@ class BasketFragment : Fragment(),
         basketViewModel=ViewModelProviders.of(this).get(BasketViewModel::class.java)
         basketViewModel.init(this)
         workDate=view.findViewById(R.id.workDate)
-        calendar=Calendar.getInstance()
         var dateSetup=DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
-                calendar.set(Calendar.YEAR,year)
-                calendar.set(Calendar.MONTH,month)
-                calendar.set(Calendar.DAY_OF_WEEK,dayOfMonth)
-            updateDate()
+                myCalendar.set(Calendar.YEAR,year)
+            myCalendar.set(Calendar.MONTH,month)
+            myCalendar.set(Calendar.DAY_OF_WEEK,dayOfMonth)
+            var date =  Date(year, month, dayOfMonth-1)
+            var locale=Locale("ar")
+            Locale.setDefault(locale)
+            var config =
+                context!!.getResources().getConfiguration()
+            config.setLocale(locale)
+            context!!.createConfigurationContext(config)
+            var  sdf = SimpleDateFormat("EEEE",locale)
+            var d=sdf.format(date)
+            updateDate("$d-${dayOfMonth}/${month+1}/${year}")
         }
+
         workDate.setOnClickListener{
-            DatePickerDialog(context!!,R.style.DialogTheme
-                ,dateSetup,calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_WEEK)).show()
+           DatePickerDialog(context!!,R.style.DialogTheme
+                ,dateSetup,myCalendar.get(Calendar.YEAR),
+                myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_WEEK)).show()
 
         }
 

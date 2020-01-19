@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import androidx.appcompat.widget.AppCompatSpinner
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -25,19 +28,56 @@ import kotlinx.android.synthetic.main.fragment_work_done.*
 import kotlinx.android.synthetic.main.fragment_work_done.view.*
 import kotlinx.android.synthetic.main.fragment_work_done.view.rv
 import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashSet
 
 class WorkDoneFragment : Fragment(),OnWorkDoneLoadedLisntner {
 
 
     var workDoneModel:WorkDoneViewModel= WorkDoneViewModel()
      lateinit var adapter:workAdapter
+    var employeeSpinner: AppCompatSpinner?=null
+    var employessList= ArrayList<String>()
+    var employe=""
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
          var view= inflater.inflate(R.layout.fragment_work_done, container, false)
+        view.btnFilter.setOnClickListener{
+            when(employe){
+                "الكل"->{
+                    adapter = workAdapter(context!!, workDoneModel.getAllWordDone().value!!)
+                    view.rv.adapter = adapter
+                }
+                else->{
+                    var list=ArrayList<WorkDone>()
+                    for(work in workDoneModel.getAllWordDone().value!!){
+                        if(work.employeName==employe)
+                            list.add(work)
+                    }
+                    adapter = workAdapter(context!!,list)
+                    view.rv.adapter = adapter
+                }
+            }
+        }
+        employeeSpinner=view.findViewById(R.id.employeeSpinner)
+        employeeSpinner!!.onItemSelectedListener=object :  AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
 
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                employe=employeSet!!.elementAt(position)
+            }
+
+        }
         view.add_fab.setOnClickListener{
                 startActivity(Intent(context,AddWorkDone::class.java))
         }
@@ -56,10 +96,18 @@ class WorkDoneFragment : Fragment(),OnWorkDoneLoadedLisntner {
         }
         return view
     }
+    var employeSet:Set<String>?=null
     override fun onWorkDoneLoadSuccefully() {
         workDoneModel.allWorkDone.observe(this,Observer<Any>{
             workDonePb.visibility=View.GONE
             adapter.notifyDataSetChanged()
+            employessList.add("الكل")
+            for(work in workDoneModel.allWorkDone.value!!){
+                employessList.add(work.employeName)
+            }
+            employeSet= HashSet(employessList)
+            val employeAdapter= ArrayAdapter(context!!,R.layout.spinner_text_view,employeSet!!.toTypedArray())
+            employeeSpinner!!.adapter=employeAdapter
         })
     }
 
@@ -72,6 +120,7 @@ class WorkDoneFragment : Fragment(),OnWorkDoneLoadedLisntner {
             Observer<Any>{
                 workDonePb.visibility=View.GONE
                 adapter.notifyDataSetChanged()
+
             })
     }
 

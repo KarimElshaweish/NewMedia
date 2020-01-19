@@ -397,6 +397,7 @@
                                     android:layout_gravity="right"
                                     android:gravity="right"/>
                                 <EditText
+                                    android:focusable="false"
                                     android:editable="false"
                                     android:textCursorDrawable="@drawable/coursor"
                                     android:layout_width="match_parent"

@@ -59,12 +59,16 @@ class PhotographerFragmetn : Fragment() {
 
                         override fun onDataChange(p0: DataSnapshot) {
                             count= p0.childrenCount.toInt()
-                            if(p0!!.exists()) {
+                            if(p0.exists()) {
                                 for (p1 in p0.children) {
                                     var pp=p1.value as HashMap<String,Objects>
                                     var name:String=pp.get("name")as String
                                     var price:String=pp.get("price")as String
-                                    var pkItems=pp.get("items")as MutableList<TypesItems>
+                                    var pkItems:MutableList<TypesItems>?=null
+
+                                    if(pp["items"]!=null)
+                                        pkItems=pp.get("items")as MutableList<TypesItems>
+
                                     var pkImage=pp.get("image")as String
                                     var photoGraph=PhotoGraph(name,price,pkItems,pkImage)
                                     photoList.add(photoGraph)
