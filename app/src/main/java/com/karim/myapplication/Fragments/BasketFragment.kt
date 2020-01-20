@@ -48,6 +48,7 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
 class BasketFragment : Fragment(),
@@ -761,15 +762,15 @@ class BasketFragment : Fragment(),
 
         share()
         // close the document
-        Util.theaterList= emptyList()
+        Util.theaterList=ArrayList<TheaterData>()
         Util.photoBolean=false
         Util.musicBolean=false
         Util.theaterBolean=false
         Util.screenBolean=false
-        Util.list= emptyList()
-        Util.listScreen= emptyList()
+        Util.list.clear()
+        Util.listScreen.clear()
         Util.resetPhoto()
-        Util.soundList= emptyList()
+        Util.soundList.clear()
         binding!!.previous.visibility=View.GONE
         state++
     }
@@ -832,7 +833,7 @@ class BasketFragment : Fragment(),
         when(Util.theaterList.size) {
             0-> {
                 createPDF()
-                Util.theaterList= emptyList()
+                Util.theaterList= ArrayList<TheaterData>()
             }
             else->{
                 theaterData=TheaterUploadData(Util.theaterList,pd!!.clientName,
@@ -873,7 +874,6 @@ class BasketFragment : Fragment(),
 
     override fun onMusiceAddedSuccess() {
         Util.musicBolean=true
-        Util.soundList= emptyList()
         when{
             Util.list.size!=0 -> {
                 pd?.items=Util.list

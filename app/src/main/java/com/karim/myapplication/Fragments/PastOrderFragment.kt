@@ -83,10 +83,6 @@ class PastOrderFragment : Fragment(), OnMonthilyOrderLoad {
                 id: Long
             ) {
                month=monthList[position]
-                if(!monthBolean) {
-                    monthList.removeAt(0)
-                    monthBolean = true
-                }
             }
 
         }
@@ -107,10 +103,6 @@ class PastOrderFragment : Fragment(), OnMonthilyOrderLoad {
                 id: Long
             ) {
                 year=yearList[position]
-                if(!yearBolean) {
-                    yearList.removeAt(0)
-                    yearBolean = true
-                }
             }
 
         }
@@ -138,14 +130,18 @@ class PastOrderFragment : Fragment(), OnMonthilyOrderLoad {
         adapter= OrderAdapter(this,filterlist,false)
         view!!.orderNumber.text = " ${filterlist.size} طلب "
         if(filterlist.size==0)
-            no_order!!.visibility=View.VISIBLE
+          Toast.makeText(context,getString(R.string.no_order_date),Toast.LENGTH_SHORT).show()
         arch_rv!!.adapter=adapter
     }
 
     private fun getDateFromString(date: String): Date? {
-        val foramt="EEEE- dd/MM/yyyy"
+        val sdate=date.split("-").toTypedArray()
+        var testDate=sdate[1]
+        if(!testDate.contains("/"))
+            testDate=sdate[0]
+        val foramt="dd/MM/yyyy"
         val formatter= SimpleDateFormat(foramt,Locale("ar"))
-        return formatter.parse(date)
+        return formatter.parse(testDate)
     }
    private  fun sort(list:ArrayList<OrderData>):ArrayList<OrderData>{
         var swap = true
@@ -269,6 +265,7 @@ class PastOrderFragment : Fragment(), OnMonthilyOrderLoad {
                 for(item in model!!.musicList.value!!){
                     var items=""
                     for(misc in item.items){
+                        if (misc.items!=null)
                         for(misc1 in misc.items)
                             items +=misc1.item+"-"
                     }

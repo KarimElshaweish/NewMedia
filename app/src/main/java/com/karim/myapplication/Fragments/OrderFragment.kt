@@ -68,7 +68,7 @@ class OrderFragment : Fragment(), OnOrdersDataLoaderLisenter {
         adapter= OrderAdapter(this,filterlist,false)
         view!!.orderNumber.text = " ${filterlist.size} طلب "
         if(filterlist.size==0)
-            no_order!!.visibility=View.VISIBLE
+            Toast.makeText(context,"لاتوجد نتائج",Toast.LENGTH_SHORT).show()
         order_rv!!.adapter=adapter
     }
     override fun onCreateView(
@@ -193,9 +193,13 @@ class OrderFragment : Fragment(), OnOrdersDataLoaderLisenter {
     }
 
     private fun getDateFromString(date: String): Date? {
-        var foramt="EEEE- dd/MM/yyyy"
+        val sdate=date.split("-").toTypedArray()
+        var testDate=sdate[1]
+        if(!testDate.contains("/"))
+            testDate=sdate[0]
+        val foramt="dd/MM/yyyy"
         val formatter=SimpleDateFormat(foramt,Locale("ar"))
-        return formatter.parse(date)
+        return formatter.parse(testDate)
     }
 
     override fun onMusicOrderLoad() {

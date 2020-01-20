@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatSpinner
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -39,12 +40,16 @@ class WorkDoneFragment : Fragment(),OnWorkDoneLoadedLisntner {
     var employeeSpinner: AppCompatSpinner?=null
     var employessList= ArrayList<String>()
     var employe=""
+    var filterRl:LinearLayout?=null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
          var view= inflater.inflate(R.layout.fragment_work_done, container, false)
+        filterRl=view.findViewById(R.id.filterRl)
+        if(Util.empolyee)
+            filterRl!!.visibility=View.GONE
         view.btnFilter.setOnClickListener{
             when(employe){
                 "الكل"->{

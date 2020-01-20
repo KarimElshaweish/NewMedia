@@ -20,18 +20,14 @@ import com.yarolegovich.discretescrollview.transform.Pivot
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer
 import dmax.dialog.SpotsDialog
 import kotlinx.android.synthetic.main.activity_photo_grapher_control.*
+import kotlinx.android.synthetic.main.horizontial_scroll.*
 import java.util.*
 import kotlin.collections.HashMap
 
 class PhotoGrapherControlActivity : AppCompatActivity() {
-    var dialog: android.app.AlertDialog? =null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_photo_grapher_control)
-        dialog= SpotsDialog.Builder()
-            .setContext(this)
-            .setTheme(R.style.getData)
-            .build()
         add_fab.setOnClickListener{
             startActivity(Intent(this,PhotoGrapherAddPackage::class.java))
         }
@@ -44,13 +40,16 @@ class PhotoGrapherControlActivity : AppCompatActivity() {
     var count:Int = 0
     val photoList = mutableListOf<PhotoGraph>()
     private fun getData(){
+        val dialog= SpotsDialog.Builder()
+            .setContext(this)
+            .setTheme(R.style.getData)
+            .build()
         dialog!!.show()
-        FirebaseDatabase.getInstance().getReference().addValueEventListener(object :ValueEventListener{
+        FirebaseDatabase.getInstance().reference.addValueEventListener(object :ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
                 Toast.makeText(baseContext,p0.message,Toast.LENGTH_LONG).show()
             }
             override fun onDataChange(p0: DataSnapshot) {
-                dialog!!.show()
                if(p0.hasChild("photoGraph")){
                    noPk.visibility=View.GONE
                    photoList.clear()
@@ -62,25 +61,26 @@ class PhotoGrapherControlActivity : AppCompatActivity() {
 
                        override fun onDataChange(p0: DataSnapshot) {
                            count= p0.childrenCount.toInt()
-                           if(p0!!.exists()) {
+                           if(p0.exists()) {
                                for (p1 in p0.children) {
-                                   var pp=p1.value as HashMap<String, Objects>
-                                   var name:String=pp.get("name")as String
-                                   var price:String=pp.get("price")as String
-                                   var pkItems=pp.get("items")as MutableList<TypesItems>
-                                   var pkImage=pp.get("image")as String
-                                   var photoGraph= PhotoGraph(name,price,pkItems,pkImage)
+                                   val pp=p1.value as HashMap<*, *>
+                                   val name:String= pp["name"] as String
+                                   val price:String= pp["price"] as String
+                                   var pkItems:MutableList<TypesItems>?=null
+                                   if(pp["items"]!=null) pkItems= pp["items"] as MutableList<TypesItems>
+                                   val pkImage= pp["image"] as String
+                                   val photoGraph= PhotoGraph(name,price,pkItems,pkImage)
                                    photoList.add(photoGraph)
                                    print(pp)
                                }
-                               dialog!!.dismiss()
+                               dialog.dismiss()
                                setUI(count)
                            }
                        }
 
                    })
                }else{
-                   dialog!!.dismiss()
+                   dialog.dismiss()
                    noPk.visibility=View.VISIBLE
                }
             }

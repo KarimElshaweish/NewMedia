@@ -68,29 +68,47 @@ class SoundControlAddPackage : AppCompatActivity() {
                 previous.setCompoundDrawables(img, null, null, null)
                 current++
                 if (current == 1) {
-                    pbState.setCurrentStateNumber(StateProgressBar.StateNumber.TWO)
-                    viewGone(type_layout, price_layout)
+                    if(pk_name.text.isEmpty()) {
+                        pk_name.error = getString(R.string.error_input)
+                        current--
+                    }
+                    else {
+                        pbState.setCurrentStateNumber(StateProgressBar.StateNumber.TWO)
+                        viewGone(type_layout, price_layout)
+                    }
                 } else if (current == 2) {
-                    next.setText("إنهاء")
-                    next.setCompoundDrawables(null, null, null, null)
-                    pbState.setCurrentStateNumber(StateProgressBar.StateNumber.THREE)
-                    viewGone(price_layout, items_list)
+                    if(price.text.isEmpty()) {
+                        price.error = getString(R.string.error_input)
+                        current--
+                    }
+                    else {
+                        next.text="إنهاء"
+                        next.setCompoundDrawables(null, null, null, null)
+                        pbState.setCurrentStateNumber(StateProgressBar.StateNumber.THREE)
+                        viewGone(price_layout, items_list)
+                    }
                 } else if (current == 3) {
-                    next.setText("نشر")
-                    pbState.setCurrentStateNumber(StateProgressBar.StateNumber.FOUR)
-                    viewGone(adding_form, pk_form)
-                    pk_title.setText(pk_name.text.toString())
-                    var itemAdapter = RVItemsAdapter(this, listItems)
-                    item_rv.setHasFixedSize(true)
-                    item_rv.layoutManager = LinearLayoutManager(this)
-                    item_rv.adapter = itemAdapter
-                    price_view.setText(price.text.toString())
-                } else if (next.text.equals("نشر")) {
+                    if(listItems.size==0) {
+                        Toast.makeText(this, getString(R.string.insert_items), Toast.LENGTH_SHORT)
+                            .show()
+                        current--
+                    }
+                        else {
+                        next.text=("نشر")
+                        pbState.setCurrentStateNumber(StateProgressBar.StateNumber.FOUR)
+                        viewGone(adding_form, pk_form)
+                        pk_title.text=(pk_name.text.toString())
+                        val itemAdapter = RVItemsAdapter(this, listItems)
+                        item_rv.setHasFixedSize(true)
+                        item_rv.layoutManager = LinearLayoutManager(this)
+                        item_rv.adapter = itemAdapter
+                        price_view.text=(price.text.toString())
+                    }
+                } else if (next.text==("نشر")) {
                     dialog!!.show()
-
-                    if (::filepath.isInitialized&&filepath != null) {
-                        var mrefernace = FirebaseStorage.getInstance().getReference("PKImage")
-                        var uploadImage = mrefernace.putFile(filepath)
+                    if (::filepath.isInitialized) {
+                        val mrefernace = FirebaseStorage.getInstance().getReference("PKImage")
+                        val uploadImage = mrefernace.putFile(filepath)
                         uploadImage.addOnFailureListener { ex ->
                             Toast.makeText(
                                 baseContext,

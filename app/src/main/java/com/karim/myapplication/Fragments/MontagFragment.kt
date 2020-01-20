@@ -1,5 +1,6 @@
 package com.karim.myapplication.Fragments
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.graphics.*
@@ -66,18 +67,8 @@ class MontagFragment : Fragment() {
         view.draw(canvas)
         return bitmap
     }
-    fun updateDate(workDate:TextView){
-        var foramt="EEEE- dd/MM/yyyy"
-        var locale=Locale("ar")
-        Locale.setDefault(locale)
-        var config =
-            context!!.getResources().getConfiguration()
-        config.setLocale(locale)
-        context!!.createConfigurationContext(config)
-        var sdf= SimpleDateFormat(foramt,locale)
-        workDate.text=sdf.format(calendar.time)
-    }
     lateinit var calendar: Calendar
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -93,7 +84,16 @@ class MontagFragment : Fragment() {
             calendar.set(Calendar.YEAR,year)
             calendar.set(Calendar.MONTH,month)
             calendar.set(Calendar.DAY_OF_WEEK,dayOfMonth)
-            updateDate(workDate)
+            var date =  Date(year, month, dayOfMonth-1)
+            var locale=Locale("ar")
+            Locale.setDefault(locale)
+            var config =
+                context!!.getResources().getConfiguration()
+            config.setLocale(locale)
+            context!!.createConfigurationContext(config)
+            var  sdf = SimpleDateFormat("EEEE",locale)
+            var d=sdf.format(date)
+            workDate.text="$d-${dayOfMonth}/${month+1}/${year}"
         }
         var checkbox=view.findViewById<CheckBox>(R.id.allMoneyCheckBox)
         checkbox.setOnCheckedChangeListener { buttonView, isChecked ->
@@ -197,7 +197,7 @@ class MontagFragment : Fragment() {
        // val targetPdf = context?.getExternalFilesDir(null).toString()+"/hello.pdf"
         //val targetPdf =  Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)c
 
-        val filePath = File(context?.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),"hello1.pdf")
+        val filePath = File(context?.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),"مونتاج.pdf")
         try {
             document.writeTo(FileOutputStream(filePath))
         } catch (kesho: IOException) {

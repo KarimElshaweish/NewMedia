@@ -43,24 +43,22 @@ class PhotoGrapherAddPackage : AppCompatActivity() {
 
         rv.setHasFixedSize(true)
         rv.layoutManager=LinearLayoutManager(this)
-        var listItems= ArrayList<TypesItems>()
-        var adapter=RvAdapter(listItems,this)
+        val listItems= ArrayList<TypesItems>()
+        val adapter=RvAdapter(listItems,this)
         rv.adapter=adapter
         btnAddItem.setOnClickListener{
-            var itemText=item_edit.text.toString()
-            if(!itemText.equals("")){
+            val itemText=item_edit.text.toString()
+            if(itemText != ""){
                 item_edit.setText("")
                 listItems.add(TypesItems(itemText))
                 adapter.notifyDataSetChanged()
-//                adapter= RvAdapter(listItems,this)
-//                rv.adapter=adapter
             }
         }
         pbState.setStateDescriptionTypeface("font/merssi_semibold.ttf")
         pbState.setStateNumberTypeface("font/merssi_semibold.ttf")
         pbState.setStateDescriptionData(descriptionData)
-        pbState.setDescriptionTopSpaceIncrementer(10f);
-        pbState.setDescriptionLinesSpacing(5f)
+        pbState.descriptionTopSpaceIncrementer = 10f
+        pbState.descriptionLinesSpacing = 5f
         next.setOnClickListener{
             val dialog: android.app.AlertDialog? = SpotsDialog.Builder()
                 .setContext(this)
@@ -70,36 +68,50 @@ class PhotoGrapherAddPackage : AppCompatActivity() {
                 previous.setTextColor(Color.parseColor("#ffffff"))
                 previous.setBackgroundDrawable(resources.getDrawable(R.drawable.border_online))
                 val img =
-                    getResources().getDrawable(com.karim.myapplication.R.drawable.ic_left_online)
+                    resources.getDrawable(com.karim.myapplication.R.drawable.ic_left_online)
                 img.setBounds(0, 0, 60, 60)
                 previous.setCompoundDrawables(img, null, null, null)
                 current++
                 if (current == 1) {
+                    if(pk_name.text.isEmpty()){
+                        current--
+                        pk_name.error=getString(R.string.error_input)
+                    }
+                    else {
                         pbState.setCurrentStateNumber(StateProgressBar.StateNumber.TWO)
-                    viewGone(type_layout, price_layout)
+                        viewGone(type_layout, price_layout)
+                    }
                 } else if (current == 2) {
-                    next.setText("إنهاء")
-                    next.setCompoundDrawables(null, null, null, null)
-                    pbState.setCurrentStateNumber(StateProgressBar.StateNumber.THREE)
-                    viewGone(price_layout, items_list)
+                    if(price.text.isEmpty()){
+                        current--
+                        price.error=getString(R.string.error_input)
+                    }else {
+                        next.text = "إنهاء"
+                        next.setCompoundDrawables(null, null, null, null)
+                        pbState.setCurrentStateNumber(StateProgressBar.StateNumber.THREE)
+                        viewGone(price_layout, items_list)
+                    }
                 } else if (current == 3) {
-                    next.setText("نشر")
-                    pbState.setCurrentStateNumber(StateProgressBar.StateNumber.FOUR)
-                    viewGone(adding_form, pk_form)
-                    //  var pk=list.get(spinnerPosition)
-                    //  img_type.setImageDrawable(resources.getDrawable(pk.image))
-                    pk_title.setText(pk_name.text.toString())
-                    var itemAdapter = RVItemsAdapter(this, listItems)
-                    item_rv.setHasFixedSize(true)
-                    item_rv.layoutManager = LinearLayoutManager(this)
-                    item_rv.adapter = itemAdapter
-                    price_view.setText(price.text.toString())
+                    if(listItems.size==0){
+                        current--
+                        Toast.makeText(this,getString(R.string.insert_items),Toast.LENGTH_SHORT).show()
+                    }else {
+                        next.text = "نشر"
+                        pbState.setCurrentStateNumber(StateProgressBar.StateNumber.FOUR)
+                        viewGone(adding_form, pk_form)
+                        pk_title.text = pk_name.text.toString()
+                        val itemAdapter = RVItemsAdapter(this, listItems)
+                        item_rv.setHasFixedSize(true)
+                        item_rv.layoutManager = LinearLayoutManager(this)
+                        item_rv.adapter = itemAdapter
+                        price_view.text = price.text.toString()
+                    }
                 }
                 else if (next.text.equals("نشر")) {
                     dialog!!.show()
                     if (::filepath.isInitialized&&filepath != null) {
-                        var mrefernace = FirebaseStorage.getInstance().getReference("PKImage")
-                        var uploadImage = mrefernace.putFile(filepath)
+                        val mrefernace = FirebaseStorage.getInstance().getReference("PKImage")
+                        val uploadImage = mrefernace.putFile(filepath)
                         uploadImage.addOnFailureListener { ex ->
                             Toast.makeText(
                                 baseContext,
@@ -115,7 +127,7 @@ class PhotoGrapherAddPackage : AppCompatActivity() {
                                 }.addOnCompleteListener { task ->
                                     if (task.isSuccessful) {
                                         val downloadUri = task.result
-                                        var photoData = PhotoGraph()
+                                        val photoData = PhotoGraph()
                                         photoData.name = pk_name.text.toString()
                                         photoData.price = price.text.toString()
                                         photoData.items = listItems
@@ -135,7 +147,7 @@ class PhotoGrapherAddPackage : AppCompatActivity() {
                             }
                     }
                     else{
-                        var photoData = PhotoGraph()
+                        val photoData = PhotoGraph()
                         photoData.name = pk_name.text.toString()
                         photoData.price = price.text.toString()
                         photoData.items = listItems
@@ -158,19 +170,19 @@ class PhotoGrapherAddPackage : AppCompatActivity() {
         }
         previous.setOnClickListener{
             current--
-            if(next.text.equals("إنهاء")){
+            if(next.text == "إنهاء"){
 
                 next.setTextColor(Color.parseColor("#ffffff"))
                 next.setBackgroundDrawable(resources.getDrawable(R.drawable.border_online))
-                val img = getResources().getDrawable(com.karim.myapplication.R.drawable.ic_right_arrow_online)
+                val img = resources.getDrawable(R.drawable.ic_right_arrow_online)
                 img.setBounds(0, 0, 60, 60)
                 next.setCompoundDrawables(null,null,img,null)
-                next.setText("التالى")
+                next.text = "التالى"
             }
             if(current==0){
                 previous.setTextColor(Color.parseColor("#BDBDBD"))
                 previous.setBackgroundDrawable(resources.getDrawable(R.drawable.border_offline))
-                val img = getResources().getDrawable(com.karim.myapplication.R.drawable.ic_left_arrow_offline)
+                val img = resources.getDrawable(R.drawable.ic_left_arrow_offline)
                 img.setBounds(0, 0, 60, 60)
                 previous.setCompoundDrawables(img,null,null,null)
                 pbState.setCurrentStateNumber(StateProgressBar.StateNumber.ONE)
@@ -179,14 +191,14 @@ class PhotoGrapherAddPackage : AppCompatActivity() {
             if (current==1){
                 previous.setTextColor(Color.parseColor("#ffffff"))
                 previous.setBackgroundDrawable(resources.getDrawable(R.drawable.border_online))
-                val img = getResources().getDrawable(com.karim.myapplication.R.drawable.ic_left_online)
+                val img = resources.getDrawable(R.drawable.ic_left_online)
                 img.setBounds(0, 0, 60, 60)
                 previous.setCompoundDrawables(img,null,null,null)
                 pbState.setCurrentStateNumber(StateProgressBar.StateNumber.TWO)
                 viewGone(items_list,price_layout)
             }
-            if(next.text.equals("نشر")){
-                next.setText("إنهاء")
+            if(next.text == "نشر"){
+                next.text = "إنهاء"
                 viewGone(pk_form,adding_form)
                 pbState.setCurrentStateNumber(StateProgressBar.StateNumber.THREE)
             }
@@ -196,10 +208,10 @@ class PhotoGrapherAddPackage : AppCompatActivity() {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                if(!s.toString().isEmpty()){
+                if(s.toString().isNotEmpty()){
                     next.setTextColor(Color.parseColor("#ffffff"))
                     next.setBackgroundDrawable(resources.getDrawable(R.drawable.border_online))
-                    val img = getResources().getDrawable(com.karim.myapplication.R.drawable.ic_right_arrow_online)
+                    val img = resources.getDrawable(R.drawable.ic_right_arrow_online)
                     img.setBounds(0, 0, 60, 60)
                     next.setCompoundDrawables(null,null,img,null)
                     typecheckd=true
@@ -207,7 +219,7 @@ class PhotoGrapherAddPackage : AppCompatActivity() {
                     typecheckd=false
                     next.setTextColor(Color.parseColor("#BDBDBD"))
                     next.setBackgroundDrawable(resources.getDrawable(R.drawable.border_offline))
-                    val img = getResources().getDrawable(R.drawable.ic_right_arrow)
+                    val img = resources.getDrawable(R.drawable.ic_right_arrow)
                     img.setBounds(0, 0, 60, 60)
                     next.setCompoundDrawables(null,null,img,null)
 

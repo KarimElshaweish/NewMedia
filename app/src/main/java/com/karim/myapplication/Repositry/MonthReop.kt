@@ -151,7 +151,10 @@ class MonthReop {
         var list= mutableListOf<PhotoGraph>()
         for(i in 0 until  items.size step 1){
             var map2=items[i] as HashMap<String, Objects>
-            var typelist=getItemsList(map2.get("items") as java.util.ArrayList<String>)
+            var typelist:List<TypesItems>?=null
+            if(map2["items"]!=null){
+                typelist =getItemsList(map2.get("items")as java.util.ArrayList<String>)
+            }
             var phot=
                 PhotoGraph(map2.get("name").toString(),map2.get("price").toString(), typelist,map2.get("iamge").toString())
             list.add(phot)

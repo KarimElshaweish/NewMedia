@@ -70,6 +70,8 @@
     <string name="total_income">إجمالى الإبرادات خلال كل الأشهر</string>
     <string name="error">حدث خطأ</string>
     <string name="employees">الموظفين</string>
+    <string name="error_input">من فضلك ادخل المعلومات</string>
+    <string name="insert_items">من فضلك ادخل العناصر</string>
 
 </resources>
 

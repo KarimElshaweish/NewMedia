@@ -252,9 +252,13 @@ class OrderRepo {
         }
     }
     private fun getDateFromString(date: String): Date? {
-        var foramt="EEEE- dd/MM/yyyy"
+        val sdate=date.split("-").toTypedArray()
+        var testDate=sdate[1]
+        if(!testDate.contains("/"))
+            testDate=sdate[0]
+        val foramt="dd/MM/yyyy"
         val formatter= SimpleDateFormat(foramt,Locale("ar"))
-        return formatter.parse(date)
+        return formatter.parse(testDate)
     }
 
     fun bubbleTheaterSort(list:ArrayList<TheaterUploadData>):ArrayList<TheaterUploadData>{

@@ -24,7 +24,6 @@ import java.util.*
 import kotlin.collections.HashMap
 
 class SoundControlActivity : AppCompatActivity() {
-    var dialog: android.app.AlertDialog? = null
     var count:Int = 0
     val photoList = mutableListOf<PhotoGraph>()
     private fun setUI(count:Int) {
@@ -40,10 +39,11 @@ class SoundControlActivity : AppCompatActivity() {
         rv.adapter=cardAdapter
     }
     private fun getData(){
-
-
-        dialog!!.show()
-
+        val dialog=SpotsDialog.Builder()
+            .setContext(this)
+            .setTheme(R.style.getData)
+            .build()
+        dialog.show()
         FirebaseDatabase.getInstance().getReference().addValueEventListener(object :
             ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
@@ -58,16 +58,15 @@ class SoundControlActivity : AppCompatActivity() {
                         override fun onCancelled(p0: DatabaseError) {
                             TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                         }
-
                         override fun onDataChange(p0: DataSnapshot) {
-                            dialog!!.show()
                             count= p0.childrenCount.toInt()
                             if(p0.exists()) {
                                 for (p1 in p0.children) {
                                     var pp=p1.value as HashMap<String, Objects>
                                     var name:String=pp.get("name")as String
                                     var price:String=pp.get("price")as String
-                                    var pkItems=pp.get("items")as MutableList<TypesItems>
+                                    var pkItems:MutableList<TypesItems>?=null
+                                    if(pp["items"]!=null) pkItems=pp.get("items")as MutableList<TypesItems>
                                     var pkImage=pp.get("image")as String
                                     var photoGraph= PhotoGraph(name,price,pkItems,pkImage)
                                     photoList.add(photoGraph)
@@ -93,10 +92,7 @@ class SoundControlActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sound_control)
-        dialog=SpotsDialog.Builder()
-            .setContext(this)
-            .setTheme(R.style.getData)
-            .build()
+
         getData()
     }
     fun finish(view: View) {
