@@ -6,31 +6,33 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <View
+        android:id="@+id/spliter"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#636e72"/>
-    <include layout="@layout/horizontial_scroll"/>
-    <RelativeLayout
-        android:id="@+id/removeRl"
-        android:layout_margin="7dp"
-        android:gravity="right"
-        android:layout_gravity="right"
+        android:layout_height="1px"
+        android:background="#aebbbf"/>
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:layout_centerHorizontal="true"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/colse_ic"
-            android:id="@+id/close_img"/>
-        <TextView
-            android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <include layout="@layout/horizontial_scroll"/>
+        <RelativeLayout
+            android:layout_margin="7dp"
+            android:id="@+id/removeRl"
+            android:padding="5dp"
+            android:gravity="bottom"
+            android:layout_gravity="bottom"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/remove_order"
-            android:layout_below="@id/close_img"
-            android:fontFamily="@font/merssi_semibold"/>
-    </RelativeLayout>
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_centerHorizontal="true"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/colse_ic"
+                android:id="@+id/close_img"
+                 />
+        </RelativeLayout>
+    </LinearLayout>
+
 
     <com.github.florent37.expansionpanel.ExpansionHeader
         android:visibility="gone"
@@ -57,7 +59,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/clientName"
             android:text="كريم"
-            android:fontFamily="@font/merssi_semibold"
+            android:fontFamily="@font/sda"
             android:textSize="16sp"
             android:textColor="#000"
             android:layout_gravity="center|center_vertical"/>
@@ -66,7 +68,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/order_date"
             android:text="25/2/2020"
-            android:fontFamily="@font/merssi_semibold"
+            android:fontFamily="@font/sda"
             android:textSize="16sp"
             android:textColor="#000"
             android:layout_gravity="right|center_vertical"/>

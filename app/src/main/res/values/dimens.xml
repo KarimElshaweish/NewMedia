@@ -9,4 +9,9 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="textViewWidth">100dp</dimen>
+    <dimen name="table_view_cell_height">28dp</dimen>
+    <dimen name="table_view_row_header_width">28dp</dimen>
+    <dimen name="table_view_default_text_size">11sp</dimen>
+    <dimen name="table_text_size">13sp</dimen>
+    <dimen name="table_text_size_title">15sp</dimen>
 </resources>

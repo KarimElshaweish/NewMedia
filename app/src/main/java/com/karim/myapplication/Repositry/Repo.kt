@@ -25,6 +25,7 @@ class Repo{
     fun uploadPictures(pd:photoData){
         val uid=FirebaseAuth.getInstance().currentUser!!.uid
         val time=Calendar.getInstance().time.toString()
+        pd.time=time
         pd.id= "$uid*$time"
         var query=ref.child("photoOrders").child(uid)
             .child(time)
@@ -41,6 +42,7 @@ class Repo{
     fun uploadMusic(pd:photoData){
         val uid=FirebaseAuth.getInstance().currentUser!!.uid
         val time=Calendar.getInstance().time.toString()
+        pd.time=time
         val query=ref.child("musicOrdersMonth/${uid}/${time}")
         pd.id="${uid}*${time}"
         query.setValue(pd).addOnCompleteListener{
@@ -54,6 +56,7 @@ class Repo{
     fun uploadTheater(pd: TheaterUploadData) {
         val uid=FirebaseAuth.getInstance().currentUser!!.uid
         val time=Calendar.getInstance().time.toString()
+        pd.time=time
         var query=ref.child("Theater").child(uid)
             .child(time)
         pd.id="${uid}*${time}"
@@ -72,6 +75,7 @@ class Repo{
         val uid=FirebaseAuth.getInstance().currentUser!!.uid
         val time=Calendar.getInstance().time.toString()
         screenData.id="${uid}*${time}"
+        screenData.time=time
         var query=ref.child("Screen").child(uid).child(
             time
         )

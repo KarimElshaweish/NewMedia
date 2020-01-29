@@ -6,14 +6,12 @@ import android.net.Uri
 import android.os.Environment
 import android.os.StrictMode
 import android.widget.Toast
+import com.karim.myapplication.Converter.NumberConverter.Companion.arabNumber
 import com.karim.myapplication.model.OrderData
 import org.apache.poi.hssf.usermodel.HSSFCellStyle
 import org.apache.poi.hssf.usermodel.HSSFWorkbook
 import org.apache.poi.hssf.util.HSSFColor
-import org.apache.poi.ss.usermodel.CellStyle
-import org.apache.poi.ss.usermodel.IndexedColors
-import org.apache.poi.ss.usermodel.Sheet
-import org.apache.poi.ss.usermodel.Workbook
+import org.apache.poi.ss.usermodel.*
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -21,9 +19,9 @@ import java.io.IOException
 
 @Suppress("NAME_SHADOWING")
 class ArchiveExcel(val ordersLsit:MutableList<OrderData>, val _ctx:Context,val name:String){
-    private var coloumns= arrayOf("إسم العميل","التاريخ","العناصر",
-    "المكان","طريقةالدفع", 	"العربون",	"المتبقى",	"رقم التليفون","إسم العمل")
+    private var coloumns= arrayOf("التاريخ","إسم العميل", "المكان","العناصر", "المتبقى","رقم التليفون")
     fun createExcel(){
+        coloumns.reverse()
         var builder = StrictMode.VmPolicy.Builder()
         StrictMode.setVmPolicy(builder.build())
 
@@ -38,6 +36,7 @@ class ArchiveExcel(val ordersLsit:MutableList<OrderData>, val _ctx:Context,val n
         headerFont.color = IndexedColors.RED.getIndex()
         val headerCellStyle: CellStyle = wb.createCellStyle()
         headerCellStyle.setFont(headerFont)
+        headerCellStyle.alignment=CellStyle.ALIGN_CENTER
         headerCellStyle.borderBottom=2
         headerCellStyle.borderLeft=2
         headerCellStyle.borderRight=2
@@ -48,21 +47,39 @@ class ArchiveExcel(val ordersLsit:MutableList<OrderData>, val _ctx:Context,val n
             cell.setCellValue(coloumns[i])
             cell.cellStyle = headerCellStyle
         }
+        var csStyle=wb.createCellStyle()
+        csStyle.alignment=CellStyle.ALIGN_CENTER
         var intRow=1
                 for(order in ordersLsit){
             val row = sheet.createRow(intRow++)
-            row.createCell(0).setCellValue(order.clientName)
-            row.createCell(1).setCellValue(order.date)
-            row.createCell(2).setCellValue(order.items)
-            row.createCell(3).setCellValue(order.location)
-            row.createCell(4).setCellValue(order.moneyGet)
-            row.createCell(5).setCellValue(order.moneyHave)
-            row.createCell(6).setCellValue(order.moneyRest)
-            row.createCell(7).setCellValue(order.phoneNumber)
-            row.createCell(8).setCellValue(order.workName)
+                    val c5= row.createCell(5)
+                    c5.cellStyle=csStyle
+                    c5.setCellValue(arabNumber(order.date))
+                    val c4=row.createCell(4)
+                    c4.cellStyle=csStyle
+                    c4.setCellValue(order.clientName)
+                    val c3=row.createCell(3)
+                    c3.cellStyle=csStyle
+                    c3.setCellValue(order.location)
+                    val c2=row.createCell(2)
+                    c2.cellStyle=csStyle
+                    c2.setCellValue(order.items)
+          //  row.createCell(4).setCellValue(order.moneyGet)
+         //   row.createCell(3).setCellValue(order.moneyHave)
+            val c1=row.createCell(1)
+                    c1.cellStyle=csStyle
+                    c1.setCellValue(order.moneyRest)
+            val c0=row.createCell(0)
+                c0.cellStyle=csStyle
+                    c0.setCellValue(order.phoneNumber)
+          //  row.createCell(0).setCellValue(order.workName)
         }
-        sheet.setColumnWidth(0, 10 * 200)
-        sheet.setColumnWidth(1, 10 * 200)
+        sheet.setColumnWidth(0,3000)
+        sheet.setColumnWidth(1, 3000)
+        sheet.setColumnWidth(2, 6000)
+        sheet.setColumnWidth(3,4000)
+        sheet.setColumnWidth(4, 3000)
+        sheet.setColumnWidth(5, 3000)
         val file = File(_ctx.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).toString(), "${name}.xls")
         var outputStream: FileOutputStream? = null
 

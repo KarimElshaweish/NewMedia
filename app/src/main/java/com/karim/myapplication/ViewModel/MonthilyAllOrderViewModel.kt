@@ -42,5 +42,69 @@ class MonthilyAllOrderViewModel :ViewModel() {
     fun getTheater()=theaterList
     fun getMusic()=musicList
     fun  getmontag()=montagList
+    fun removeScreen(id:String){
+        var split=id.split("*").toTypedArray()
+        var uid=split[0]
+        var time=split[1]
+        repo!!.removeScreen(uid,time)
+    }
+    fun remoMontage(id: String) {
+        var split=id.split("*").toTypedArray()
+        val uid=split[0]
+        val time=split[1]
+        repo!!.removeMontage(uid,time)
+    }
+    fun removeTheater(id:String){
+        var split=id.split("*").toTypedArray()
+        val uid=split[0]
+        val time=split[1]
+        repo!!.removeTheater(uid,time)
+    }
+    fun removeMusic(id:String){
+        var split=id.split("*").toTypedArray()
+        val uid=split[0]
+        val time=split[1]
+        repo!!.removeMusic(uid,time)
+    }
+    fun removePhoto(id:String) {
+        var split=id.split("*").toTypedArray()
+        val uid=split[0]
+        val time=split[1]
+        repo!!.removePhoto(uid,time)
+    }
 
+    fun updateTheaterTheater(id: String, checked: Boolean) {
+        var split=id.split("*").toTypedArray()
+        val uid=split[0]
+        val time=split[1]
+        repo!!.updateTheter(uid,time,checked)
+    }
+
+    fun updateScreen(id: String, checked: Boolean) {
+        var split=id.split("*").toTypedArray()
+        val uid=split[0]
+        val time=split[1]
+        repo!!.updateScreen(uid,time,checked)
+    }
+
+    fun updatePhoto(id: String, checked: Boolean) {
+        var split=id.split("*").toTypedArray()
+        val uid=split[0]
+        val time=split[1]
+        repo!!.updatePhoto(uid,time,checked)
+    }
+
+    fun updateMusic(id: String, checked: Boolean) {
+        var split=id.split("*").toTypedArray()
+        val uid=split[0]
+        val time=split[1]
+        repo!!.updateMusic(uid,time,checked)
+    }
+
+    fun updateMontage(id: String, checked: Boolean) {
+        var split=id.split("*").toTypedArray()
+        val uid=split[0]
+        val time=split[1]
+        repo!!.updateMontage(uid,time,checked)
+    }
 }

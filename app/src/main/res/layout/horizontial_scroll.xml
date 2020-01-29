@@ -1,276 +1,328 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView android:id="@+id/photoReport"
-    android:layout_margin="10dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <HorizontalScrollView
-        android:id="@+id/horizontalView1"
-        android:layout_gravity="end"
-        android:layout_height="wrap_content"
-        android:scrollbars="horizontal|vertical"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="5dip">
-
         <LinearLayout
-            android:background="@drawable/black_border"
+            android:layout_gravity="center_vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:orientation="vertical">
+
             <LinearLayout
+                android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <LinearLayout
-                    android:background="@drawable/black_border"
-                    android:layout_width="100dp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    >
                     <TextView
-                        android:padding="7dp"
-                        android:background="@drawable/black_border"
-                        android:textColor="#000"
+                        android:textColor="@color/blue"
+                        android:visibility="gone"
+                        android:id="@+id/contracText"
+                        android:textSize="@dimen/table_text_size_title"
                         android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/date"
                         android:layout_gravity="center_horizontal"
-                        android:fontFamily="@font/merssi_semibold"/>
-                    <TextView
-                        android:gravity="center"
-                        android:layout_gravity="center_horizontal"
-                        android:textColor="#000"
+                        android:fontFamily="@font/sda"/>
+                    <ImageView
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginTop="3dp"
+                        android:src="@drawable/contract"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/date"
-                        android:fontFamily="@font/merssi_semibold"/>
+                        android:layout_height="30dp"
+                        android:text="@string/contract"
+                        android:textColor="#fff"
+                        android:textStyle="bold"
+                        android:id="@+id/dealContractBtn"
+                        />
                 </LinearLayout>
                 <LinearLayout
-                    android:background="@drawable/black_border"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
                     android:layout_width="100dp"
                     android:layout_height="fill_parent"
                     android:orientation="vertical">
                     <TextView
-                        android:padding="7dp"
-                        android:background="@drawable/black_border"
-                        android:layout_gravity="center_horizontal"
-                        android:textColor="#000"
+                        android:textColor="@color/blue"
+                        android:visibility="gone"
+                        android:id="@+id/dateTitle"
+                        android:textSize="@dimen/table_text_size_title"
                         android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/mobile_number"
-                        android:fontFamily="@font/merssi_semibold"/>
-                    <TextView                         android:gravity="center"
-
+                        android:text="@string/date"
                         android:layout_gravity="center_horizontal"
+                        android:fontFamily="@font/sda"/>
+                    <TextView
                         android:textColor="#000"
+                        android:textSize="@dimen/table_text_size"
+                        android:gravity="center|center_vertical"
+                        android:layout_gravity="center_horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/mobile_number"
-                        android:fontFamily="@font/merssi_semibold"/>
+                        android:id="@+id/date"
+                        android:fontFamily="@font/sda"/>
                 </LinearLayout>
+
                 <LinearLayout
-                    android:background="@drawable/black_border"
+                    android:layout_width="120dp"
+                    android:layout_height="fill_parent"
+
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/phoneNumberTitle"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:fontFamily="@font/sda"
+                        android:gravity="center"
+                        android:text="@string/mobile_number"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/table_text_size_title"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/mobile_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_gravity="center_horizontal"
+                        android:fontFamily="@font/sda"
+                        android:gravity="center|center_vertical"
+                        android:textColor="#000"
+                        android:textSize="@dimen/table_text_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+
                     android:layout_width="100dp"
                     android:layout_height="fill_parent"
                     android:orientation="vertical">
                     <TextView
-                        android:background="@drawable/black_border"
-                        android:padding="7dp"
+                        android:textColor="@color/blue"
+
+                        android:visibility="gone"
+                        android:id="@+id/placeTitle"
+                        android:textSize="@dimen/table_text_size_title"
                         android:layout_gravity="center_horizontal"
-                        android:textColor="#000"
+
                         android:layout_width="match_parent"
                         android:gravity="center"
                         android:layout_height="wrap_content"
                         android:text="@string/place"
-                        android:fontFamily="@font/merssi_semibold"/>
-                    <TextView                         android:gravity="center"
+                        android:fontFamily="@font/sda"/>
+                    <TextView
+                        android:gravity="center|center_vertical"
+                        android:textSize="@dimen/table_text_size"
+                        android:textColor="#000"
 
                         android:layout_gravity="center_horizontal"
-                        android:textColor="#000"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/place"
-                        android:fontFamily="@font/merssi_semibold"/>
+                        android:fontFamily="@font/sda"/>
                 </LinearLayout>
                 <LinearLayout
-                    android:background="@drawable/black_border"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
                     android:layout_width="100dp"
                     android:layout_height="fill_parent"
                     android:orientation="vertical">
                     <TextView
-                        android:background="@drawable/black_border"
-                        android:padding="7dp"
-android:gravity="center"
+                        android:gravity="center|center_vertical"
+                        android:textColor="@color/blue"
+                        android:visibility="gone"
+                        android:id="@+id/wayTitle"
+                        android:textSize="@dimen/table_text_size_title"
                         android:layout_gravity="center_horizontal"
-                        android:textColor="#000"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/money_get_way"
-                        android:fontFamily="@font/merssi_semibold"/>
-                    <TextView                         android:gravity="center"
-
-                        android:layout_gravity="center_horizontal"
+                        android:fontFamily="@font/sda"/>
+                    <TextView
+                        android:gravity="center"
+                        android:textSize="@dimen/table_text_size"
                         android:textColor="#000"
+                        android:layout_gravity="center_horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/moneyGetWay"
-                        android:fontFamily="@font/merssi_semibold"/>
+                        android:fontFamily="@font/sda"/>
                 </LinearLayout>
                 <LinearLayout
-                    android:background="@drawable/black_border"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
 
                     android:layout_width="100dp"
                     android:layout_height="fill_parent"
                     android:orientation="vertical">
                     <TextView
-                        android:background="@drawable/black_border"
-                        android:padding="7dp"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/table_text_size_title"
+                        android:visibility="gone"
+                        android:id="@+id/itemsTitle"
 
                         android:layout_gravity="center_horizontal"
-                        android:textColor="#000"
-                        android:gravity="center"
+                        android:gravity="center|center_vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/items"
-                        android:fontFamily="@font/merssi_semibold"/>
-                    <TextView                         android:gravity="center"
-
-                        android:padding="5dp"
-                        android:layout_gravity="center_horizontal"
+                        android:fontFamily="@font/sda"/>
+                    <TextView
+                        android:gravity="center"
+                        android:textSize="@dimen/table_text_size"
                         android:textColor="#000"
+
+                        android:layout_gravity="center_horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/items"
-                        android:fontFamily="@font/merssi_semibold"/>
+                        android:fontFamily="@font/sda"/>
                 </LinearLayout>
                 <LinearLayout
-                    android:background="@drawable/black_border"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+
                     android:layout_width="100dp"
                     android:layout_height="fill_parent"
                     android:orientation="vertical">
                     <TextView
-                        android:background="@drawable/black_border"
-                        android:padding="7dp"
+                        android:textColor="@color/blue"
 
+                        android:textSize="@dimen/table_text_size_title"
+android:id="@+id/restTitle"
+                        android:visibility="gone"
                         android:layout_gravity="center_horizontal"
-                        android:textColor="#000"
-                        android:gravity="center"
+                        android:gravity="center|center_vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/money_rest"
-                        android:fontFamily="@font/merssi_semibold"/>
-                    <TextView                         android:gravity="center"
+                        android:fontFamily="@font/sda"/>
+                    <TextView
+                        android:gravity="center"
+                        android:textSize="@dimen/table_text_size"
+                        android:textColor="#000"
 
                         android:layout_gravity="center_horizontal"
-                        android:textColor="#000"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/rest"
-                        android:fontFamily="@font/merssi_semibold"/>
+                        android:fontFamily="@font/sda"/>
                 </LinearLayout>
                 <LinearLayout
-                    android:background="@drawable/black_border"
-                    android:textColor="#000"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
 
                     android:layout_width="100dp"
                     android:layout_height="fill_parent"
                     android:orientation="vertical">
                     <TextView
-                        android:background="@drawable/black_border"
-                        android:padding="7dp"
-android:gravity="center"
-                        android:textColor="#000"
+                        android:textColor="@color/blue"
+
+                        android:textSize="@dimen/table_text_size_title"
+
+                        android:id="@+id/getTitle"
+                        android:gravity="center|center_vertical"
+                        android:visibility="gone"
                         android:layout_gravity="center_horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/money_get"
-                        android:fontFamily="@font/merssi_semibold"/>
-                    <TextView                         android:gravity="center"
+                        android:fontFamily="@font/sda"/>
+                    <TextView
+                        android:gravity="center"
+                        android:textSize="@dimen/table_text_size"
+                        android:textColor="#000"
 
                         android:layout_gravity="center_horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/moneyGet"
-                        android:fontFamily="@font/merssi_semibold"/>
+                        android:fontFamily="@font/sda"/>
                 </LinearLayout>
                 <LinearLayout
-                    android:background="@drawable/black_border"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
 
                     android:layout_width="100dp"
                     android:layout_height="fill_parent"
                     android:orientation="vertical">
                     <TextView
-                        android:background="@drawable/black_border"
-                        android:padding="7dp"
-
+                        android:textSize="@dimen/table_text_size_title"
+                        android:textColor="@color/blue"
+                        android:visibility="gone"
+                        android:id="@+id/priceTitle"
                         android:layout_gravity="center_horizontal"
-                        android:textColor="#000"
                         android:layout_width="match_parent"
-                        android:gravity="center"
+                        android:gravity="center|center_vertical"
                         android:layout_height="wrap_content"
                         android:text="@string/price"
-                        android:fontFamily="@font/merssi_semibold"/>
+                        android:fontFamily="@font/sda"/>
                     <TextView                         android:gravity="center"
+                        android:textSize="@dimen/table_text_size"
+                        android:textColor="#000"
 
                         android:layout_gravity="center_horizontal"
-                        android:textColor="#000"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/price"
-                        android:fontFamily="@font/merssi_semibold"/>
+                        android:fontFamily="@font/sda"/>
                 </LinearLayout>
                 <LinearLayout
-                    android:background="@drawable/black_border"
+                    android:gravity="center_vertical"
+
                     android:layout_width="100dp"
+                    android:layout_gravity="center_vertical"
                     android:layout_height="fill_parent"
                     android:orientation="vertical">
                     <TextView
-                        android:background="@drawable/black_border"
-                        android:padding="7dp"
-                        android:gravity="center"
+                        android:textColor="@color/blue"
+
+                        android:textSize="@dimen/table_text_size_title"
+android:visibility="gone"
+                        android:id="@+id/clientNameTitle"
+                        android:gravity="center|center_vertical"
                         android:layout_gravity="center_horizontal"
-                        android:textColor="#000"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/client_name"
-                        android:fontFamily="@font/merssi_semibold"/>
-                    <TextView                         android:gravity="center"
+                        android:fontFamily="@font/sda"/>
+                    <TextView
+                        android:gravity="center"
+                        android:textSize="@dimen/table_text_size"
+                        android:textColor="#000"
 
                         android:layout_gravity="center_horizontal"
-                        android:textColor="#000"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/fullName"
-                        android:fontFamily="@font/merssi_semibold"/>
+                        android:fontFamily="@font/sda"/>
                 </LinearLayout>
-                <LinearLayout
-                    android:background="@drawable/black_border"
-                    android:layout_width="100dp"
+                <RelativeLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:orientation="vertical">
-                    <TextView
-                        android:background="@drawable/black_border"
-                        android:padding="7dp"
-                        android:gravity="center"
-                        android:layout_gravity="center_horizontal"
-                        android:textColor="#000"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/rank"
-                        android:fontFamily="@font/merssi_semibold"/>
-                    <TextView
-                        android:gravity="center"
-
-                        android:layout_gravity="center_horizontal"
-                        android:textColor="#000"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/rank"
-                        android:fontFamily="@font/merssi_semibold"/>
-                </LinearLayout>
+                   <CheckBox
+                       android:theme="@style/checkBox"
+                       android:layout_alignParentBottom="true"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:id="@+id/statusCheckBox"/>
+                </RelativeLayout>
             </LinearLayout>
-
         </LinearLayout>
-</HorizontalScrollView>
 </ScrollView>

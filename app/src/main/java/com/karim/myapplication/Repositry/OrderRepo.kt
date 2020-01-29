@@ -2,10 +2,7 @@ package com.karim.myapplication.Repositry
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.karim.myapplication.Interfaces.OnOrdersDataLoaderLisenter
 import com.karim.myapplication.model.*
 import java.text.SimpleDateFormat
@@ -76,7 +73,7 @@ class OrderRepo {
                             map.get("moneyRest").toString(),
                             map.get("moneyHave").toString(),
                             map.get("id").toString()
-                        ,map.get("workName").toString())
+                        ,map.get("workName").toString(),map["time"].toString(),false)
                         theaterModel.add(work)
                     }
                 }
@@ -107,7 +104,7 @@ class OrderRepo {
                             map.get("moneyRest").toString(),
                             map.get("moneyHave").toString(),
                             map.get("id").toString()
-                        ,map.get("workName").toString())
+                        ,map.get("workName").toString(),map["time"].toString(),false)
                         screenModel.add(work)
                     }
                 }
@@ -139,7 +136,8 @@ class OrderRepo {
                             map.get("moneyRest").toString(),
                             map.get("moneyHave").toString(),
                             map.get("id").toString()
-                        , map.get("workName").toString())
+                        , map.get("workName").toString(),
+                            map["time"].toString(),false)
                         soundModel.add(work)
                     }
                 }
@@ -170,7 +168,8 @@ class OrderRepo {
                                 map.get("moneyRest").toString(),
                                 map.get("moneyHave").toString(),
                                 map.get("id").toString()
-                                ,map.get("workName").toString())
+                                ,map.get("workName").toString(),
+                                map["time"].toString(),false)
                             photoModel.add(work)
                     }
                 }
@@ -221,7 +220,9 @@ class OrderRepo {
     }
 
     fun removePhoto(uid: String, time: String) {
-        val query=ref.child("photoOrders/${uid}/${time}")
+        var query: DatabaseReference?
+        query = ref.child("photoOrders/${uid}/${time}")
+
         query.setValue(null).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 listener!!.onphotoRemoveSuccess()
@@ -241,9 +242,9 @@ class OrderRepo {
         }
     }
     fun removeScreen(uid:String,time:String){
-        val query=ref.child("Screen/${uid}/${time}")
+        val query= ref.child("Screen/${uid}/${time}")
         query.setValue(null).addOnCompleteListener{
-            task ->
+                task ->
             if(task.isSuccessful){
                 listener!!.onScreenRemovedSuccess()
             }else{
@@ -283,5 +284,9 @@ class OrderRepo {
         }
         return list
     }
+
+
+
+
 
 }

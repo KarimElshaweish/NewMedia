@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:background="#fff"
         android:text="إضافة عمل"
-        android:fontFamily="@font/merssi_semibold"
+        android:fontFamily="@font/sda"
         android:textColor="#000"
         android:layout_gravity="center"
         android:gravity="center"
@@ -31,13 +31,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="إسم الموظف"
-                android:fontFamily="@font/merssi_bold"
+                android:fontFamily="@font/sda"
                 android:textColor="#000"
                 android:padding="7dp"
                 android:layout_margin="10dp"
                 android:layout_gravity="right"
                 android:gravity="right"/>
-            <EditText
+            <TextView
                 android:textCursorDrawable="@drawable/coursor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -46,13 +46,13 @@
                 android:textSize="17sp"
                 android:hint="إسم الموظف"
                 android:id="@+id/employeName"
-                android:fontFamily="@font/merssi_semibold"
+                android:fontFamily="@font/sda"
                 android:layout_margin="10dp"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="إسم العمل"
-                android:fontFamily="@font/merssi_bold"
+                android:fontFamily="@font/sda"
                 android:textColor="#000"
                 android:padding="7dp"
                 android:layout_margin="10dp"
@@ -67,19 +67,20 @@
                 android:textSize="17sp"
                 android:hint="إسم العمل"
                 android:id="@+id/workName"
-                android:fontFamily="@font/merssi_semibold"
+                android:fontFamily="@font/sda"
                 android:layout_margin="10dp"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="تاريخ العمل"
-                android:fontFamily="@font/merssi_bold"
+                android:fontFamily="@font/sda"
                 android:textColor="#000"
                 android:padding="7dp"
                 android:layout_margin="10dp"
                 android:layout_gravity="right"
                 android:gravity="right"/>
-            <EditText
+            <TextView
+                android:focusable="false"
                 android:textCursorDrawable="@drawable/coursor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -89,13 +90,13 @@
                 android:textSize="17sp"
                 android:hint="تاريخ العمل"
                 android:id="@+id/workDate"
-                android:fontFamily="@font/merssi_semibold"
+                android:fontFamily="@font/sda"
                 android:layout_margin="10dp"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="رابط العمل"
-                android:fontFamily="@font/merssi_bold"
+                android:fontFamily="@font/sda"
                 android:textColor="#000"
                 android:padding="7dp"
                 android:layout_margin="10dp"
@@ -111,14 +112,14 @@
                 android:inputType="textUri"
                 android:textSize="17sp"
                 android:hint="رابط العمل"
-                android:fontFamily="@font/merssi_semibold"
+                android:fontFamily="@font/sda"
                 android:layout_margin="10dp"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_online"
                 android:text="إضافة عمل "
-                android:fontFamily="@font/merssi_bold"
+                android:fontFamily="@font/sda"
                 android:textColor="#fff"
                 android:layout_gravity="center"
                 android:layout_margin="7dp"

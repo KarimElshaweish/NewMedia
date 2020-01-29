@@ -8,7 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
     <style name="RobotoTextViewStyle" parent="android:Widget.TextView">
-        <item name="android:fontFamily">@font/new_media_font</item>
+        <item name="android:fontFamily">@font/sda</item>
     </style>
     <style name="ClickableImageView">
         <item name="android:clickable">true</item>
@@ -19,9 +19,19 @@
         <item name="colorAccent">@color/blue</item>
     </style>
 
+    <style name="checkBox" parent="AppTheme">
+        <item name="colorAccent">@color/blue</item>  // for checked
+        <item name="android:textColorSecondary">@android:color/darker_gray</item>  // for unchecked
+    </style>
     <style name="Custom" parent="Theme.AppCompat.Light.Dialog">
         <item name="DialogTitleAppearance">@android:style/TextAppearance.Medium</item>
         <item name="DialogTitleText">جارى النشر</item>
+        <item name="DialogSpotColor">@color/blue</item>
+        <item name="DialogSpotCount">4</item>
+    </style>
+    <style name="addEmployee" parent="Theme.AppCompat.Light.Dialog">
+        <item name="DialogTitleAppearance">@android:style/TextAppearance.Medium</item>
+        <item name="DialogTitleText">جارى إضافة موظف</item>
         <item name="DialogSpotColor">@color/blue</item>
         <item name="DialogSpotCount">4</item>
     </style>
@@ -43,5 +53,4 @@
         <item name="DialogSpotColor">@color/blue</item>
         <item name="DialogSpotCount">4</item>
     </style>
-
 </resources>

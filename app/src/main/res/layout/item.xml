@@ -48,7 +48,7 @@
                     android:padding="24dp">
 
                     <TextView
-                        android:fontFamily="@font/merssi_req"
+                        android:fontFamily="@font/sda"
                         android:id="@+id/title"
                         style="@style/TextAppearance.AppCompat.Title"
                         android:layout_width="wrap_content"
@@ -62,14 +62,14 @@
                         android:orientation="horizontal">
                         <TextView
                             android:padding="10dp"
-                            android:fontFamily="@font/merssi_req"
+                            android:fontFamily="@font/sda"
                             style="@style/TextAppearance.AppCompat.Title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="ريال" />
                         <TextView
                             android:padding="10dp"
-                            android:fontFamily="@font/merssi_req"
+                            android:fontFamily="@font/sda"
                             android:id="@+id/price"
                             style="@style/TextAppearance.AppCompat.Title"
                             android:layout_width="wrap_content"
@@ -77,7 +77,7 @@
                             android:text="" />
                         <TextView
                             android:padding="10dp"
-                            android:fontFamily="@font/merssi_req"
+                            android:fontFamily="@font/sda"
                             style="@style/TextAppearance.AppCompat.Title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -95,7 +95,7 @@
 
                 <Button
                     android:layout_alignParentBottom="true"
-                    android:fontFamily="@font/merssi_req"
+                    android:fontFamily="@font/sda"
                     android:textColor="#000"
                     android:background="@drawable/btn_corner"
                     android:id="@+id/button"

@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="  إضافة منتج صوتى جديد جديدة"
-            android:fontFamily="@font/merssi_semibold"
+            android:fontFamily="@font/sda"
             android:textColor="#000"
             android:layout_centerHorizontal="true"
             android:padding="7dp"/>
@@ -63,7 +63,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:layout_margin="10dp"
-                android:fontFamily="@font/merssi_semibold"
+                android:fontFamily="@font/sda"
                 android:text=" صورة المنتح"/>
             <com.mikhaellopez.circularimageview.CircularImageView
                 android:onClick="chengePicture"
@@ -80,7 +80,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:layout_margin="10dp"
-                android:fontFamily="@font/merssi_semibold"
+                android:fontFamily="@font/sda"
                 android:text="إسم المنتح"/>
             <EditText
                 android:textCursorDrawable="@drawable/coursor"
@@ -89,22 +89,10 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/border_offline"
                 android:hint="إسم المنتج"
-                android:fontFamily="@font/merssi_semibold"
+                android:fontFamily="@font/sda"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:id="@+id/pk_name"/>
-
-
-            <!--        <androidx.cardview.widget.CardView-->
-            <!--            android:layout_width="match_parent"-->
-            <!--            android:elevation="10dp"-->
-            <!--            android:layout_margin="10dp"-->
-            <!--            android:layout_height="wrap_content">-->
-            <!--           <Spinner&ndash;
-            <!-               android:layout_width="match_parent"-->
-            <!--               android:layout_height="110dp"-->
-            <!--             android:id="@+id/package_type_spinner"/>-->
-            <!--        </androidx.cardview.widget.CardView>-->
 
         </LinearLayout>
         <LinearLayout
@@ -119,7 +107,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="سعر المنتح بالريال"
-                android:fontFamily="@font/merssi_semibold"
+                android:fontFamily="@font/sda"
                 android:textColor="#000"
                 android:layout_gravity="center_vertical"
                 android:gravity="center_vertical"
@@ -133,7 +121,7 @@
                 android:background="@drawable/border_offline"
                 android:inputType="number"
                 android:hint="السعر"
-                android:fontFamily="@font/merssi_semibold"
+                android:fontFamily="@font/sda"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:id="@+id/price"/>
@@ -148,7 +136,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="عناصر المنتج"
-                android:fontFamily="@font/merssi_semibold"
+                android:fontFamily="@font/sda"
                 android:textColor="#000"
                 android:textSize="15sp"
                 android:layout_gravity="center"
@@ -168,7 +156,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/border_online"
                     android:text="إضافة"
-                    android:fontFamily="@font/merssi_req"
+                    android:fontFamily="@font/sda"
                     android:textColor="#fff"
                     android:layout_gravity="left|center_vertical"
                     android:gravity="center"
@@ -176,7 +164,7 @@
                     android:padding="7dp"/>
                 <EditText
                     android:textCursorDrawable="@drawable/coursor"
-                    android:fontFamily="@font/merssi_semibold"
+                    android:fontFamily="@font/sda"
                     android:layout_width="0dp"
                     android:layout_height="70dp"
                     android:layout_weight="3"
@@ -193,7 +181,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="العناصر المضافة"
-                android:fontFamily="@font/merssi_req"
+                android:fontFamily="@font/sda"
                 android:layout_gravity="center"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
@@ -240,7 +228,7 @@
                         android:src="@drawable/defualt"
                         android:layout_centerHorizontal="true"/>
                     <TextView
-                        android:fontFamily="@font/merssi_req"
+                        android:fontFamily="@font/sda"
                         android:id="@+id/pk_title"
                         style="@style/TextAppearance.AppCompat.Title"
                         android:layout_width="wrap_content"
@@ -254,7 +242,7 @@
                         android:gravity="center">
                         <TextView
                             android:padding="7dp"
-                            android:fontFamily="@font/merssi_req"
+                            android:fontFamily="@font/sda"
                             style="@style/TextAppearance.AppCompat.Title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -262,14 +250,14 @@
                         <TextView
                             android:id="@+id/price_view"
                             android:padding="7dp"
-                            android:fontFamily="@font/merssi_req"
+                            android:fontFamily="@font/sda"
                             style="@style/TextAppearance.AppCompat.Title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0" />
                         <TextView
                             android:padding="7dp"
-                            android:fontFamily="@font/merssi_req"
+                            android:fontFamily="@font/sda"
                             style="@style/TextAppearance.AppCompat.Title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -309,7 +297,7 @@
         android:layout_margin="20dp"
         android:background="@drawable/border_offline"
         android:textColor="#BDBDBD"
-        android:fontFamily="@font/merssi_semibold"
+        android:fontFamily="@font/sda"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:drawableRight="@drawable/ic_right_arrow"/>
@@ -323,7 +311,7 @@
         android:layout_margin="20dp"
         android:background="@drawable/border_offline"
         android:textColor="#BDBDBD"
-        android:fontFamily="@font/merssi_semibold"
+        android:fontFamily="@font/sda"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
         android:drawableLeft="@drawable/ic_left_arrow_offline"/>

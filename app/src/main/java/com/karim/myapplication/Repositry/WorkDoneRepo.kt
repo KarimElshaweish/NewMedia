@@ -26,7 +26,7 @@ class WorkDoneRepo {
         var _ctx:Context?=null
         var instance:WorkDoneRepo?=null
         var dataListener:OnWorkDoneLoadedLisntner?=null
-        fun getInstnace(_ctx:Fragment):WorkDoneRepo?{
+        fun getInstnace(_ctx:Context):WorkDoneRepo?{
             dataListener=_ctx as OnWorkDoneLoadedLisntner
             if(instance==null) {
                 instance = WorkDoneRepo()
@@ -48,9 +48,9 @@ class WorkDoneRepo {
         employes.value=employesModel
         return employes
     }
-    fun getEmployeeWorkDone(uid:String):MutableLiveData<ArrayList<WorkDone>>{
-        if(employeeWorkDoneModel.size==0)
-            loadEmployeeWorkDone(uid)
+    fun getEmployeeWorkDone(name:String):MutableLiveData<ArrayList<WorkDone>>{
+      //  if(employeeWorkDoneModel.size==0)
+            loadEmployeeWorkDone(name)
         var work= MutableLiveData<ArrayList<WorkDone>>()
         work.value=employeeWorkDoneModel
         return work
@@ -74,25 +74,26 @@ class WorkDoneRepo {
 
         })
     }
-    private fun loadEmployeeWorkDone(uid: String) {
+    private fun loadEmployeeWorkDone(name: String) {
         var query=ref.child("WorkDone")
-        query.addListenerForSingleValueEvent(object :ValueEventListener{
+        query.addValueEventListener(object :ValueEventListener{
                 override fun onCancelled(p0: DatabaseError) {
                     dataListener!!.onEmployeeWorkDoneLoadedFailed()
                 }
                 override fun onDataChange(p0: DataSnapshot) {
+                    employeeWorkDoneModel.clear()
                     for (p1 in p0.children) {
-                        if (p1.key.equals(uid)) {
-                            for (p2 in p1.children) {
-                                var map = p2.value as Map<String, Objects>
-                                var work = WorkDone(
-                                    map.get("employeName").toString(),
-                                    map.get("workDate").toString(),
-                                    map.get("workURL").toString(),
-                                    map.get("workName").toString()
-                                )
+                        for (p2 in p1.children) {
+                            var map = p2.value as Map<*,*>
+                            var finish=map["finish"] as Boolean
+                            var work = WorkDone(p2.key.toString(),
+                                map["employeName"].toString(),
+                                map["workURL"].toString(),
+                                map["workDate"].toString(),
+                                map["workName"].toString()
+                            ,finish)
+                            if (work.employeName == name)
                                 employeeWorkDoneModel.add(work)
-                            }
                         }
                     }
                     dataListener!!.onEmployeeWorkDoneLoadedSuccessfully()
@@ -111,13 +112,14 @@ class WorkDoneRepo {
             override fun onDataChange(p0: DataSnapshot) {
                 for (p1 in p0.children) {
                         for (p2 in p1.children) {
-                            var map = p2.value as Map<String, Objects>
-                            var work = WorkDone(
+                            var map = p2.value as Map<*,*>
+                            var finish=map["finish"]as Boolean
+                            var work = WorkDone(p2.key.toString(),
                                 map.get("employeName").toString(),
-                                map.get("workDate").toString(),
                                 map.get("workURL").toString(),
-                                map.get("workName").toString()
-                            )
+                                map.get("workDate").toString(),
+                                map.get("workName").toString(),
+                                finish)
                             allWorkDoneModel.add(work)
                     }
                 }

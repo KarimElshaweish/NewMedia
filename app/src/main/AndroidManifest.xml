@@ -15,7 +15,12 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme"
         tools:replace="android:supportsRtl">
-        <service android:name=".Notification.MyFirebaseMasseging"
+        <activity android:name=".Activites.ViewContractActivity"></activity>
+        <activity android:name=".Activites.EmployeeWorkActivity" />
+        <activity android:name=".Activites.AddEmployee" />
+
+        <service
+            android:name=".Notification.MyFirebaseMasseging"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -30,8 +35,8 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-        <activity android:name=".Activites.Login.LoginAdminActivity" />
 
+        <activity android:name=".Activites.Login.LoginAdminActivity" />
         <activity android:name=".Activites.Orders.PhotoOrderActivity" />
         <activity android:name=".Activites.Orders.SoundOrderActivity" />
         <activity android:name=".Activites.Orders.MontageOrderAct" />
@@ -43,10 +48,8 @@
         <activity android:name=".Activites.ControlPannel.SoundControl.SoundControlAddPackage" />
         <activity android:name=".Activites.ControlPannel.PhotoGrapherControl.PhotoGrapherAddPackage" />
         <activity android:name=".Activites.ControlPannel.PhotoGrapherControlActivity" />
-        <activity android:name=".Activites.SplashScreen">
-
-        </activity>
-        <activity android:name=".Activites.MainActivity" >
+        <activity android:name=".Activites.SplashScreen" />
+        <activity android:name=".Activites.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

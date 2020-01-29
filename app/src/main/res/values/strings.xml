@@ -72,6 +72,18 @@
     <string name="employees">الموظفين</string>
     <string name="error_input">من فضلك ادخل المعلومات</string>
     <string name="insert_items">من فضلك ادخل العناصر</string>
+    <string name="sort_ascending">Sort Ascending</string>
 
+    <string name="sort_descending">Sort Descending</string>
+
+    <string name="clear_sorting">Clear</string>
+
+    <string name="row_show">Show 5. Row</string>
+
+    <string name="row_hide">Hide 5. Row</string>
+    <string name="contract">العقد</string>
+    <string name="sound_removed">تم مسح هذا الطلب الصوتى</string>
+    <string name="montage_delete">تم حذف مونتاج</string>
+    <string name="removed_in_order">تم حذف هذا العقد من الطلبات</string>
 </resources>
 

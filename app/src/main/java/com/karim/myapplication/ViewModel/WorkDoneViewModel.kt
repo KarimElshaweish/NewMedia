@@ -8,14 +8,14 @@ import com.karim.myapplication.Repositry.WorkDoneRepo
 import com.karim.myapplication.model.WorkDone
 
 class   WorkDoneViewModel:ViewModel() {
-    lateinit var allWorkDone:MutableLiveData<ArrayList<WorkDone>>
+ //   lateinit var allWorkDone:MutableLiveData<ArrayList<WorkDone>>
     lateinit var employeeWorkDone : MutableLiveData<ArrayList<WorkDone>>
-    fun init(_ctx:Fragment,uid:String){
-        if(!::allWorkDone.isInitialized)
-            allWorkDone=WorkDoneRepo.getInstnace(_ctx)!!.getAllWordDone()
+    fun init(_ctx:Context,name:String){
+//        if(!::allWorkDone.isInitialized)
+//            allWorkDone=WorkDoneRepo.getInstnace(_ctx)!!.getAllWordDone()
         if(!::employeeWorkDone.isInitialized)
-            employeeWorkDone=WorkDoneRepo.getInstnace(_ctx)!!.getEmployeeWorkDone(uid)
+            employeeWorkDone=WorkDoneRepo.getInstnace(_ctx)!!.getEmployeeWorkDone(name)
     }
-    fun getAllWordDone()=allWorkDone
+   // fun getAllWordDone()=allWorkDone
     fun getEmployeeWorkDoneList()=employeeWorkDone
 }

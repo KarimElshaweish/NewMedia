@@ -38,7 +38,7 @@ class SoundCardAdapter(var photList: List<PhotoGraph>, var _ctx: Context, var no
         holder.price.text=photList.get(position).price
         holder.rv.setHasFixedSize(true)
         holder.rv.layoutManager= LinearLayoutManager(_ctx)
-        var adapter=RVAdapterPkItems(photList.get(position).items,_ctx)
+        var adapter=RVAdapterPkItems(photList.get(position).items,_ctx,true)
         holder.rv.adapter=adapter
         if(nochoice)
             holder.button.visibility=View.GONE

@@ -11,12 +11,15 @@ import android.view.ViewGroup
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.github.florent37.expansionpanel.ExpansionHeader
 import com.github.florent37.expansionpanel.ExpansionLayout
+import com.google.firebase.database.FirebaseDatabase
 import com.karim.myapplication.R
+import com.karim.myapplication.Util
 import com.karim.myapplication.model.WorkDone
 
 
@@ -30,9 +33,19 @@ class workAdapter (var _ctx: Context, var list:List<WorkDone>) :RecyclerView.Ada
         return list.size
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.nameText.text=list.get(position).employeName
-        holder.date.text=list.get(position).workDate
-        holder.url.text=list.get(position).workURL
+        var work=list[position]
+        holder.nameText.text=work.employeName
+        holder.date.text= work.workDate
+        holder.url.text= work.workURL
+        holder.checkBox.isChecked=work.finish
+        holder.checkBox.setOnCheckedChangeListener{
+            buttonView, isChecked ->
+            work.finish=isChecked
+            updateWork(work)
+        }
+        if (Util.empolyee){
+            holder.checkBox.visibility=View.GONE
+        }
         holder.date.setOnClickListener{
             val uri=Uri.parse(holder.date.text.toString())
             val intent=Intent(Intent.ACTION_VIEW,uri)
@@ -48,6 +61,12 @@ class workAdapter (var _ctx: Context, var list:List<WorkDone>) :RecyclerView.Ada
         }
     }
 
+    private fun updateWork(work: WorkDone) {
+        val ref=FirebaseDatabase.getInstance().reference
+        val query=ref.child("WorkDone/${work.employeName}/${work.id}")
+        query.setValue(work)
+    }
+
     class ViewHolder(itemview: View) :RecyclerView.ViewHolder(itemview){
         val exp: ExpansionHeader =itemview.findViewById(R.id.exp)
         val expansionLayout:ExpansionLayout=itemview.findViewById(R.id.expansionLayout)
@@ -56,5 +75,6 @@ class workAdapter (var _ctx: Context, var list:List<WorkDone>) :RecyclerView.Ada
         var url:TextView = itemview.findViewById(R.id.url)
         var workName:TextView = itemview.findViewById(R.id.workName)
         var image=itemview.findViewById<ImageView>(R.id.image)
+        var checkBox=itemview.findViewById<CheckBox>(R.id.checkbox)
     }
 }

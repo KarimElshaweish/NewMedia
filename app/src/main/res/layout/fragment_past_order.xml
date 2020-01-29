@@ -18,7 +18,7 @@
             android:layout_alignParentRight="true"
             android:background="@drawable/border_offline_color"
             android:text="@string/printPdf"
-            android:fontFamily="@font/merssi_semibold"
+            android:fontFamily="@font/sda"
             android:layout_margin="7dp"
             android:id="@+id/print_pdf_arch"/>
         <TextView
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/orderNumber"
-            android:fontFamily="@font/merssi_semibold"
+            android:fontFamily="@font/sda"
             android:layout_alignParentLeft="true"/>
 
     </RelativeLayout>
@@ -39,15 +39,14 @@
         android:gravity="right|center"
         android:id="@+id/filterRl">
 
-        <Button
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="3dp"
-            android:background="@drawable/border_offline_color"
-            android:drawableRight="@drawable/ic_filter"
-            android:fontFamily="@font/merssi_semibold"
+            android:src="@drawable/ic_filter"
+            android:fontFamily="@font/sda"
             android:id="@+id/btnFilter"
-            android:text="@string/filter" />
+          />
 
         <androidx.appcompat.widget.AppCompatSpinner
             android:layout_width="wrap_content"
@@ -59,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/year"
-            android:fontFamily="@font/merssi_semibold"
+            android:fontFamily="@font/sda"
             android:padding="7dp"
             android:textColor="#000"/>
         <androidx.appcompat.widget.AppCompatSpinner
@@ -72,7 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/month"
-            android:fontFamily="@font/merssi_semibold"
+            android:fontFamily="@font/sda"
             android:padding="7dp"
             android:textColor="#000"/>
     </LinearLayout>
@@ -88,20 +87,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/no_order_date"
-        android:fontFamily="@font/merssi_semibold"
+        android:fontFamily="@font/sda"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/screenPb"
         android:visibility="gone"
             android:id="@+id/no_order"/>
-    <ScrollView
-        android:layout_below="@id/screenPb"
+    <androidx.cardview.widget.CardView
+        android:layout_below="@id/filterRl"
+        android:elevation="3dp"
+        android:layout_margin="5dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/arch_scroll">
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/arch_rv"/>
-    </ScrollView>
+        android:layout_height="wrap_content">
 
+        <HorizontalScrollView
+            android:id="@+id/horizontalView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="5dip"
+            android:nextFocusRight="@color/blue"
+            android:scrollbars="horizontal|vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/arch_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="7dp"
+                android:visibility="visible" />
+        </HorizontalScrollView>
+    </androidx.cardview.widget.CardView>
 </RelativeLayout>

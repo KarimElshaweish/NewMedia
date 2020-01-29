@@ -48,7 +48,8 @@ class MontageOrderAct : AppCompatActivity() {
                                     map["cashGet"].toString(),
                                     map["cashRest"].toString(),
                                     map["id"].toString()
-                                )
+                                , map["time"].toString(),
+                                    (map["checked"] as Boolean))
                                 createTableRow(work)
 
                             }

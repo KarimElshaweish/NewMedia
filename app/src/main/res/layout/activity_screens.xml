@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="شاشات"
-            android:fontFamily="@font/merssi_semibold"
+            android:fontFamily="@font/sda"
             android:textColor="#000"
             android:layout_centerHorizontal="true"
             android:padding="7dp"/>
@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="  سعر المتر بالريال"
-            android:fontFamily="@font/merssi_bold"
+            android:fontFamily="@font/sda"
             android:textColor="#000"/>
         <EditText
             android:text="0"
@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="  مجموع الأمتار"
-            android:fontFamily="@font/merssi_bold"
+            android:fontFamily="@font/sda"
             android:textColor="#000"/>
         <EditText
             android:textCursorDrawable="@drawable/coursor"
@@ -78,14 +78,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="السعر النهائى : 0 ريال"
-            android:fontFamily="@font/merssi_bold"/>
+            android:fontFamily="@font/sda"/>
     </LinearLayout>
     <com.robertlevonyan.views.customfloatingactionbutton.FloatingActionButton
         android:id="@+id/add_fab"
         android:onClick="btnClicked"
         app:fabIcon="@drawable/ic_add"
         android:text="إضافة إلى السلة"
-        android:fontFamily="@font/merssi_semibold"
+        android:fontFamily="@font/sda"
         android:textColor="#fff"
         app:fabColor="@color/blue"
         android:layout_width="wrap_content"

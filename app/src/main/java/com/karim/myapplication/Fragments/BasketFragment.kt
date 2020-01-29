@@ -104,6 +104,7 @@ class BasketFragment : Fragment(),
     }
     var state = 0
     var api_services:APIServices?=null
+    var basketData:BasketData?=null
     fun nextfun() {
         when (state) {
             0 -> {
@@ -249,7 +250,7 @@ class BasketFragment : Fragment(),
                     else{
                         state++
                         binding!!.next.text=getString(R.string.share)
-                        var basketData=BasketData(clientName.text.toString(),
+                         basketData=BasketData(clientName.text.toString(),
                             moneyGetWay.text.toString(),
                             phoneNumber.text.toString(),
                             workLocation.text.toString(),
@@ -269,26 +270,26 @@ class BasketFragment : Fragment(),
                                 listTypes.addAll(item.items)
                                 totPrice+=item.price.toInt()
                             }
-                            var itemAdapter=  RVAdapterPkItems(listTypes, context!!)
+                            var itemAdapter=  RVAdapterPkItems(listTypes, context!!,true)
                             binding!!.rvitems.adapter=itemAdapter
                             binding!!.bsketFrame.visibility = View.GONE
                             binding!!.fullReportOption.visibility = View.VISIBLE
                             binding!!.soundReportView.visibility=View.VISIBLE
                         }
                         if(Util.list.size!=0){
-                            var listTypes1= mutableListOf<TypesItems>()
-                            var totPrice1=0
-                            for(item in Util.list){
-                                listTypes1.addAll(item.items)
-                                totPrice1+=item.price.toInt()
-                            }
-                            binding!!.rvitems1.setHasFixedSize(true)
-                            binding!!.rvitems1.layoutManager=LinearLayoutManager(context)
-                            var itemAdapter1=  RVAdapterPkItems(listTypes1, context!!)
-                            binding!!.rvitems1.adapter=itemAdapter1
-                            binding!!.bsketFrame.visibility = View.GONE
-                            binding!!.fullReportOption.visibility = View.VISIBLE
-                            binding!!.photoReportView.visibility=View.VISIBLE
+                                var listTypes1= mutableListOf<TypesItems>()
+                                var totPrice1=0
+                                for(item in Util.list){
+                                    listTypes1.addAll(item.items)
+                                    totPrice1+=item.price.toInt()
+                                }
+                                binding!!.rvitems1.setHasFixedSize(true)
+                                binding!!.rvitems1.layoutManager=LinearLayoutManager(context)
+                                var itemAdapter1=  RVAdapterPkItems(listTypes1, context!!,true)
+                                binding!!.rvitems1.adapter=itemAdapter1
+                                binding!!.bsketFrame.visibility = View.GONE
+                                binding!!.fullReportOption.visibility = View.VISIBLE
+                                binding!!.photoReportView.visibility=View.VISIBLE
                         }
                         if(Util.theaterList.size!=0) {
                             binding!!.theaterReportView.visibility = View.VISIBLE
@@ -316,11 +317,10 @@ class BasketFragment : Fragment(),
                 pd = photoData(
                     emptyList(),
                     getTextString(binding!!.clientName),
-                    getTextString(binding!!.photoMoneyGet),
+                    getTextString(binding!!.moneyGetWay),
                     getTextString(binding!!.phoneNumber),
                     getTextString(binding!!.workLocation),
-                    getTextString(binding!!.workDate),"","","",binding!!.workName.text.toString()
-                )
+                    getTextString(binding!!.workDate),"","","",binding!!.workName.text.toString(),"",false)
                 dialog!!.show()
                 when {
                     Util.soundList.size!=0 -> {
@@ -336,17 +336,19 @@ class BasketFragment : Fragment(),
                         basketViewModel.uploadPhotoData(pd!!)
                     }
                     Util.theaterList.size!=0 -> {
+                        var price=basketData!!.theaterGet
                         theaterData=TheaterUploadData(Util.theaterList,pd!!.clientName,
-                            pd!!.moneyGet,pd!!.phoneNumber,pd!!.location,pd!!.date,
-                            binding!!.theaterMoneyRest.text.toString(),
-                            binding!!.theaterMoneyGet.text.toString(),"",binding!!.workName.text.toString())
+                           basketData!!.moneyGet,basketData!!.phoneNumber,basketData!!.location,basketData!!.date,
+                            basketData!!.theaterRest,
+                            price,
+                           "",binding!!.workName.text.toString(),"",false)
                         basketViewModel.uploadTheater(theaterData!!)
                     }
                     else -> {
                         screenData=ScreenUploadData(Util.listScreen,pd!!.clientName,
                             pd!!.moneyGet,pd!!.phoneNumber,pd!!.location,pd!!.date,
                             binding!!.screenMoneyRest.text.toString(),
-                            binding!!.screenMoneyGet.text.toString(),"",binding!!.workName.text.toString())
+                            binding!!.screenMoneyGet.text.toString(),"",binding!!.workName.text.toString(),"",false)
                         basketViewModel.uploadScreen(screenData!!)
                     }
                 }
@@ -355,32 +357,37 @@ class BasketFragment : Fragment(),
         }
     }
 
-    private fun sentNotification(reciver: String, clientName: EditText?, workDate: EditText?) {
-        val tokens = FirebaseDatabase.getInstance().getReference("Tokens")
+    private fun sentNotification(reciver: String, clientName: EditText?, workDate: TextView?) {
+        val tokens = FirebaseDatabase.getInstance().getReference("Tokens/")
         val query = tokens.orderByKey().equalTo(reciver)
         query.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                for (dt in dataSnapshot.children) {
-                    val token = dt.value as HashMap<*, *>
-                    var data=Data(FirebaseAuth.getInstance().currentUser!!.uid,
-                        clientName!!.text.toString(),workDate!!.text.toString())
-                    val sender = Sender(data, token["token"].toString())
-                    api_services!!.sendNotificaiton(sender).enqueue(object : Callback<MyResponse> {
-                            override fun onResponse(
-                                call: Call<MyResponse>,
-                                response: Response<MyResponse>
-                            ) {
-                                if (response.code() == 200) {
+            override fun onDataChange(dt0: DataSnapshot) {
+                for(dt in dt0.children) {
+                    if (dt.key == "tNhsqknIyefQ1CztCTgiX4XIlCf1") {
+                        val token = dt.value as HashMap<*, *>
+                        val data = Data(
+                            FirebaseAuth.getInstance().currentUser!!.uid,
+                            clientName!!.text.toString(), workDate!!.text.toString()
+                        )
+                        val sender = Sender(data, token["token"].toString())
+                        api_services!!.sendNotificaiton(sender)
+                            .enqueue(object : Callback<MyResponse> {
+                                override fun onResponse(
+                                    call: Call<MyResponse>,
+                                    response: Response<MyResponse>
+                                ) {
+                                    if (response.code() == 200) {
+                                    }
                                 }
-                            }
 
-                            override fun onFailure(
-                                call: Call<MyResponse>,
-                                t: Throwable
-                            ) {
-                                println(t.message)
-                            }
-                        })
+                                override fun onFailure(
+                                    call: Call<MyResponse>,
+                                    t: Throwable
+                                ) {
+                                    println(t.message)
+                                }
+                            })
+                    }
                 }
             }
 
@@ -533,8 +540,8 @@ class BasketFragment : Fragment(),
         }
         var pbState=view.findViewById<StateProgressBar>(R.id.pbState)
         soundLayout=view.findViewById<LinearLayout>(R.id.soundLayout)
-        pbState.setStateDescriptionTypeface("font/merssi_semibold.ttf")
-        pbState.setStateNumberTypeface("font/merssi_semibold.ttf")
+        pbState.setStateDescriptionTypeface("font/sda.ttf")
+        pbState.setStateNumberTypeface("font/sda.ttf")
         pbState.setStateDescriptionData(descriptionData)
         pbState.setDescriptionTopSpaceIncrementer(10f);
         pbState.setDescriptionLinesSpacing(5f)
@@ -796,7 +803,7 @@ class BasketFragment : Fragment(),
 
     }
 
-    var filePath:File?=null
+        var filePath:File?=null
     private fun getBitmapFromView(view: View, height: Int, width: Int): Bitmap {
         val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
         //
@@ -839,7 +846,7 @@ class BasketFragment : Fragment(),
                 theaterData=TheaterUploadData(Util.theaterList,pd!!.clientName,
                     pd!!.moneyGet,pd!!.phoneNumber,pd!!.location,pd!!.date,
                     binding!!.theaterMoneyRest.text.toString(),
-                    binding!!.theaterMoneyGet.text.toString(),"",binding!!.workName.text.toString())
+                    binding!!.theaterMoneyGet.text.toString(),"",binding!!.workName.text.toString(),"",false)
                     basketViewModel.uploadTheater(theaterData!!)
             }
         }
@@ -885,14 +892,14 @@ class BasketFragment : Fragment(),
                 theaterData=TheaterUploadData(Util.theaterList,pd!!.clientName,
                     pd!!.moneyGet,pd!!.phoneNumber,pd!!.location,pd!!.date,
                     binding!!.theaterMoneyRest.text.toString(),
-                    binding!!.theaterMoneyGet.text.toString(),"",binding!!.workName.text.toString())
+                    binding!!.theaterMoneyGet.text.toString(),"",binding!!.workName.text.toString(),"",false)
                 basketViewModel.uploadTheater(theaterData!!)
             }
             Util.listScreen.size!=0 -> {
                 screenData=ScreenUploadData(Util.listScreen,pd!!.clientName,
                     pd!!.moneyGet,pd!!.phoneNumber,pd!!.location,pd!!.date,
                     binding!!.screenMoneyRest.text.toString(),
-                    binding!!.screenMoneyGet.text.toString(),"",binding!!.workName.text.toString())
+                    binding!!.screenMoneyGet.text.toString(),"",binding!!.workName.text.toString(),"",false)
                 basketViewModel.uploadScreen(screenData!!)
             }
             else->{
@@ -915,7 +922,7 @@ class BasketFragment : Fragment(),
                 screenData=ScreenUploadData(Util.listScreen,pd!!.clientName,
                     pd!!.moneyGet,pd!!.phoneNumber,pd!!.location,pd!!.date,
                     binding!!.screenMoneyRest.text.toString(),
-                    binding!!.screenMoneyGet.text.toString(),"",binding!!.workName.text.toString())
+                    binding!!.screenMoneyGet.text.toString(),"",binding!!.workName.text.toString(),"",false)
                     basketViewModel.uploadScreen(screenData!!)
             }
         }

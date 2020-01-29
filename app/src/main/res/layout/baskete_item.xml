@@ -18,7 +18,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/merssi_bold"
+            android:fontFamily="@font/sda"
             android:text="الباقة"
             android:layout_gravity="center"
             android:gravity="center"

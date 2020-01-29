@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/orderNumber"
-            android:fontFamily="@font/merssi_semibold"
+            android:fontFamily="@font/sda"
             android:layout_alignParentLeft="true"/>
       <Button
           android:layout_width="200dp"
@@ -35,7 +35,7 @@
           android:layout_alignParentRight="true"
           android:background="@drawable/border_offline_color"
           android:text="@string/printPdf"
-          android:fontFamily="@font/merssi_semibold"
+          android:fontFamily="@font/sda"
           android:layout_margin="7dp"
           android:id="@+id/print_pdf_order"/>
     </RelativeLayout>
@@ -47,13 +47,12 @@
         android:gravity="right|center"
         android:id="@+id/filterRl">
 
-        <Button
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="3dp"
-            android:background="@drawable/border_offline_color"
-            android:drawableRight="@drawable/ic_filter"
-            android:fontFamily="@font/merssi_semibold"
+            android:src="@drawable/ic_filter"
+            android:fontFamily="@font/sda"
             android:id="@+id/btnFilter"
             android:text="@string/filter" />
 
@@ -67,7 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/year"
-            android:fontFamily="@font/merssi_semibold"
+            android:fontFamily="@font/sda"
             android:padding="7dp"
             android:textColor="#000"/>
         <androidx.appcompat.widget.AppCompatSpinner
@@ -80,7 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/month"
-            android:fontFamily="@font/merssi_semibold"
+            android:fontFamily="@font/sda"
             android:padding="7dp"
             android:textColor="#000"/>
     </LinearLayout>
@@ -90,496 +89,22 @@
         android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_margin="7dp"
-            android:layout_width="match_parent"
+
+        <HorizontalScrollView
+            android:id="@+id/horizontalView1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/order_rv"/>
+            android:layout_gravity="end"
+            android:layout_marginTop="5dip"
+            android:nextFocusRight="@color/blue"
+            android:scrollbars="horizontal|vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/order_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="7dp"
+                android:visibility="visible" />
+        </HorizontalScrollView>
     </androidx.cardview.widget.CardView>
-    <LinearLayout
-        android:layout_above="@id/bottom"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <LinearLayout
-            android:visibility="gone"
-            android:id="@+id/photoTableView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/photo"
-                android:fontFamily="@font/merssi_req"
-                android:textColor="#000"
-                android:textSize="19sp"
-                android:layout_gravity="center"
-                android:gravity="center"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2">
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/btn_offline_login"
-                    android:layout_margin="10dp"
-                    android:text="@string/past_order"
-                    android:fontFamily="@font/merssi_req"
-                    android:textSize="15sp"
-                    android:id="@+id/allPhotosOrder"
-                    android:textColor="@color/color_second_primary"/>
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/btn_offline_login"
-                    android:layout_margin="10dp"
-                    android:text="@string/remove_order"
-                    android:fontFamily="@font/merssi_req"
-                    android:textSize="15sp"
-                    android:id="@+id/removePhoto"
-                    android:textColor="@color/color_second_primary"/>
-
-            </LinearLayout>
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/btn_offline_login"
-                android:layout_margin="10dp"
-                android:text="@string/printPdf"
-                android:fontFamily="@font/merssi_req"
-                android:textSize="15sp"
-                android:id="@+id/print_photo"
-                android:textColor="@color/color_second_primary"/>
-
-            <ScrollView
-                android:id="@+id/photoReport"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <HorizontalScrollView
-                        android:id="@+id/horizontalView1"
-                        android:layout_gravity="end"
-                        android:layout_height="wrap_content"
-                        android:scrollbars="horizontal|vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_marginTop="5dip">
-                        <TableLayout
-                            android:layout_margin="7dp"
-                            android:layout_width="match_parent"
-                            android:id="@+id/table"
-                            android:layout_height="wrap_content">
-
-                            <TableRow
-                                android:background="#14B2BB">
-                                <TextView
-                                    android:layout_width="@dimen/textViewWidth"
-                                    android:textColor="#fff"
-                                    android:gravity="center"
-                                    android:text="الموعد"
-                                    android:fontFamily="@font/merssi_req"/>
-                                <TextView
-                                    android:layout_width="@dimen/textViewWidth"
-                                    android:textColor="#fff"
-                                    android:gravity="center"
-                                    android:text="رقم الجوال"
-                                    android:fontFamily="@font/merssi_req"/>
-                                <TextView
-                                    android:layout_width="@dimen/textViewWidth"
-                                    android:textColor="#fff"
-                                    android:gravity="center"
-                                    android:text="المكان"
-                                    android:fontFamily="@font/merssi_req"/>
-                                <TextView
-                                    android:layout_width="@dimen/textViewWidth"
-                                    android:textColor="#fff"
-                                    android:gravity="center"
-                                    android:text="طريقة الدفع"
-                                    android:fontFamily="@font/merssi_req"/>
-                                <TextView android:layout_width="@dimen/textViewWidth"
-                                    android:text="العناصر"
-                                    android:textColor="#fff"
-                                    android:gravity="center"
-                                    android:fontFamily="@font/merssi_req"/>
-                                <TextView android:layout_width="@dimen/textViewWidth"
-                                    android:text="المتبقى"
-                                    android:textColor="#fff"
-                                    android:gravity="center"
-                                    android:fontFamily="@font/merssi_req"/>
-                                <TextView android:layout_width="@dimen/textViewWidth"
-                                    android:text="العربون"
-                                    android:textColor="#fff"
-                                    android:gravity="center"
-                                    android:fontFamily="@font/merssi_req"/>
-                                <TextView android:layout_width="@dimen/textViewWidth"
-                                    android:text="السعر"
-                                    android:textColor="#fff"
-                                    android:gravity="center"
-                                    android:fontFamily="@font/merssi_req"/>
-                                <TextView
-                                    android:layout_width="@dimen/textViewWidth"
-                                    android:text="إسم العمل"
-                                    android:textColor="#fff"
-                                    android:gravity="center"
-                                    android:fontFamily="@font/merssi_req"/>
-                                <TextView
-                                    android:layout_width="@dimen/textViewWidth"
-                                    android:text="إسم العميل"
-                                    android:textColor="#fff"
-                                    android:gravity="center"
-                                    android:fontFamily="@font/merssi_req"/>
-                                <TextView
-                                    android:layout_width="@dimen/textViewWidth"
-                                    android:text="الترتيب"
-                                    android:textColor="#fff"
-                                    android:gravity="center"
-                                    android:fontFamily="@font/merssi_req"/>
-                            </TableRow>
-                        </TableLayout>
-                    </HorizontalScrollView>
-                </ScrollView>
-            <com.eyalbira.loadingdots.LoadingDots
-                android:id="@+id/photoPb"
-                android:layout_gravity="center"
-                android:layout_margin="7sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-        <LinearLayout
-            android:visibility="gone"
-            android:id="@+id/theaterTableView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/theater"
-                android:fontFamily="@font/merssi_req"
-                android:textColor="#000"
-                android:textSize="19sp"
-                android:layout_gravity="center"
-                android:gravity="center"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2">
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/btn_offline_login"
-                    android:layout_margin="10dp"
-                    android:text="@string/past_order"
-                    android:fontFamily="@font/merssi_req"
-                    android:textSize="15sp"
-                    android:id="@+id/allTheaterOrder"
-                    android:textColor="@color/color_second_primary"/>
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/btn_offline_login"
-                    android:layout_margin="10dp"
-                    android:text="@string/remove_order"
-                    android:fontFamily="@font/merssi_req"
-                    android:textSize="15sp"
-                    android:id="@+id/removeTheater"
-                    android:textColor="@color/color_second_primary"/>
-
-            </LinearLayout>
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/btn_offline_login"
-                android:layout_margin="10dp"
-                android:text="@string/printPdf"
-                android:fontFamily="@font/merssi_req"
-                android:textSize="15sp"
-                android:id="@+id/print_theater"
-                android:textColor="@color/color_second_primary"/>
-
-            <ScrollView
-                    android:id="@+id/theaterReport"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <HorizontalScrollView
-                    android:id="@+id/horizontalView3"
-                    android:layout_gravity="end"
-                    android:layout_height="wrap_content"
-                    android:scrollbars="horizontal|vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_marginTop="5dip">
-                    <TableLayout
-                        android:layout_margin="7dp"
-                        android:layout_width="match_parent"
-                        android:id="@+id/theater_table"
-                        android:layout_height="wrap_content">
-
-                        <TableRow
-                            android:background="#14B2BB">
-                            <TextView
-                                android:layout_width="@dimen/textViewWidth"
-                                android:textColor="#fff"
-                                android:gravity="center"
-                                android:text="الموعد"
-                                android:fontFamily="@font/merssi_req"/>
-                            <TextView
-                                android:layout_width="@dimen/textViewWidth"
-                                android:textColor="#fff"
-                                android:gravity="center"
-                                android:text="رقم الجوال"
-                                android:fontFamily="@font/merssi_req"/>
-                            <TextView
-                                android:layout_width="@dimen/textViewWidth"
-                                android:textColor="#fff"
-                                android:gravity="center"
-                                android:text="المكان"
-                                android:fontFamily="@font/merssi_req"/>
-                            <TextView
-                                android:layout_width="@dimen/textViewWidth"
-                                android:textColor="#fff"
-                                android:gravity="center"
-                                android:text="طريقة الدفع"
-                                android:fontFamily="@font/merssi_req"/>
-                            <TextView android:layout_width="@dimen/textViewWidth"
-                                android:text="العناصر"
-                                android:textColor="#fff"
-                                android:gravity="center"
-                                android:fontFamily="@font/merssi_req"/>
-                            <TextView android:layout_width="@dimen/textViewWidth"
-                                android:text="المتبقى"
-                                android:textColor="#fff"
-                                android:gravity="center"
-                                android:fontFamily="@font/merssi_req"/>
-                            <TextView android:layout_width="@dimen/textViewWidth"
-                                android:text="العربون"
-                                android:textColor="#fff"
-                                android:gravity="center"
-                                android:fontFamily="@font/merssi_req"/>
-                            <TextView android:layout_width="@dimen/textViewWidth"
-                                android:text="السعر"
-                                android:textColor="#fff"
-                                android:gravity="center"
-                                android:fontFamily="@font/merssi_req"/>
-                            <TextView
-                                android:layout_width="@dimen/textViewWidth"
-                                android:text="إسم العمل"
-                                android:textColor="#fff"
-                                android:gravity="center"
-                                android:fontFamily="@font/merssi_req"/>
-                            <TextView
-                                android:layout_width="@dimen/textViewWidth"
-                                android:text="إسم العميل"
-                                android:textColor="#fff"
-                                android:gravity="center"
-                                android:fontFamily="@font/merssi_req"/>
-                            <TextView
-                                android:layout_width="@dimen/textViewWidth"
-                                android:text="الترتيب"
-                                android:textColor="#fff"
-                                android:gravity="center"
-                                android:fontFamily="@font/merssi_req"/>
-                        </TableRow>
-                    </TableLayout>
-                </HorizontalScrollView>
-            </ScrollView>
-            <com.eyalbira.loadingdots.LoadingDots
-                android:id="@+id/theaterPb"
-                android:layout_gravity="center"
-                android:layout_margin="7sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-        <LinearLayout
-            android:visibility="gone"
-            android:id="@+id/screenTableView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/screen"
-                android:fontFamily="@font/merssi_req"
-                android:textColor="#000"
-                android:textSize="19sp"
-                android:layout_gravity="center"
-                android:gravity="center"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2">
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/btn_offline_login"
-                    android:layout_margin="10dp"
-                    android:text="@string/past_order"
-                    android:fontFamily="@font/merssi_req"
-                    android:textSize="15sp"
-                    android:id="@+id/allScreenOrder"
-                    android:textColor="@color/color_second_primary"/>
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/btn_offline_login"
-                    android:layout_margin="10dp"
-                    android:text="@string/remove_order"
-                    android:fontFamily="@font/merssi_req"
-                    android:textSize="15sp"
-                    android:id="@+id/screenPhoto"
-                    android:textColor="@color/color_second_primary"/>
-
-            </LinearLayout>
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/btn_offline_login"
-                android:layout_margin="10dp"
-                android:text="@string/printPdf"
-                android:fontFamily="@font/merssi_req"
-                android:textSize="15sp"
-                android:id="@+id/print_screen"
-                android:textColor="@color/color_second_primary"/>
-
-            <ScrollView
-                android:id="@+id/screen_report"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dip"
-                android:layout_marginBottom="10dp"
-                android:scrollbarStyle="outsideInset"
-                android:fillViewport="true"
-                android:scrollbars="horizontal|vertical">
-                <HorizontalScrollView
-                    android:id="@+id/horizontalView2"
-                    android:layout_gravity="right"
-                    android:layout_height="fill_parent"
-                    android:scrollbars="horizontal|vertical"
-                    android:layout_width="fill_parent"
-                    android:layout_marginTop="5dip">
-                        <TableLayout
-                            android:layout_margin="7dp"
-                            android:layout_width="match_parent"
-                            android:id="@+id/tableScreen"
-                            android:layout_height="wrap_content">
-
-                            <TableRow
-                                android:background="#14B2BB">
-                                <TextView
-                                    android:layout_width="@dimen/textViewWidth"
-                                    android:textColor="#fff"
-                                    android:gravity="center"
-                                    android:text="الموعد"
-                                    android:fontFamily="@font/merssi_req"/>
-                                <TextView
-                                    android:layout_width="@dimen/textViewWidth"
-                                    android:textColor="#fff"
-                                    android:gravity="center"
-                                    android:text="رقم الجوال"
-                                    android:fontFamily="@font/merssi_req"/>
-                                <TextView
-                                    android:layout_width="@dimen/textViewWidth"
-                                    android:textColor="#fff"
-                                    android:gravity="center"
-                                    android:text="المكان"
-                                    android:fontFamily="@font/merssi_req"/>
-                                <TextView
-                                    android:layout_width="@dimen/textViewWidth"
-                                    android:textColor="#fff"
-                                    android:gravity="center"
-                                    android:text="طريقة الدفع"
-                                    android:fontFamily="@font/merssi_req"/>
-                                <TextView android:layout_width="@dimen/textViewWidth"
-                                    android:text="العناصر"
-                                    android:textColor="#fff"
-                                    android:gravity="center"
-                                    android:fontFamily="@font/merssi_req"/>
-                                <TextView android:layout_width="@dimen/textViewWidth"
-                                    android:text="المتبقى"
-                                    android:textColor="#fff"
-                                    android:gravity="center"
-                                    android:fontFamily="@font/merssi_req"/>
-                                <TextView android:layout_width="@dimen/textViewWidth"
-                                    android:text="العربون"
-                                    android:textColor="#fff"
-                                    android:gravity="center"
-                                    android:fontFamily="@font/merssi_req"/>
-                                <TextView android:layout_width="@dimen/textViewWidth"
-                                    android:text="السعر"
-                                    android:textColor="#fff"
-                                    android:gravity="center"
-                                    android:fontFamily="@font/merssi_req"/>
-                                <TextView
-                                    android:layout_width="@dimen/textViewWidth"
-                                    android:text="إسم العمل"
-                                    android:textColor="#fff"
-                                    android:gravity="center"
-                                    android:fontFamily="@font/merssi_req"/>
-                                <TextView
-                                    android:layout_width="@dimen/textViewWidth"
-                                    android:text="إسم العميل"
-                                    android:textColor="#fff"
-                                    android:gravity="center"
-                                    android:fontFamily="@font/merssi_req"/>
-                                <TextView
-                                    android:layout_width="@dimen/textViewWidth"
-                                    android:text="الترتيب"
-                                    android:textColor="#fff"
-                                    android:gravity="center"
-                                    android:fontFamily="@font/merssi_req"/>
-                            </TableRow>
-                        </TableLayout>
-                </HorizontalScrollView>
-            </ScrollView>
-
-        </LinearLayout>
-    </LinearLayout>
-    <RelativeLayout
-        android:id="@+id/bottom"
-        android:visibility="gone"
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
-        <TextView
-            android:id="@+id/next"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:text="التالى"
-            android:padding="7dp"
-            android:gravity="center"
-            android:layout_margin="10dp"
-            android:background="@drawable/border_online"
-            android:textColor="#FFF"
-            android:fontFamily="@font/merssi_semibold"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:drawableRight="@drawable/ic_right_arrow_online"/>
-        <TextView
-            android:visibility="gone"
-            android:id="@+id/previous"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:text="@string/previous"
-            android:padding="7dp"
-            android:gravity="center"
-            android:layout_margin="10dp"
-            android:background="@drawable/border_online"
-            android:textColor="#fff"
-            android:fontFamily="@font/merssi_semibold"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentBottom="true"
-            android:drawableLeft="@drawable/ic_left_online"/>
-    </RelativeLayout>
-
 </RelativeLayout>

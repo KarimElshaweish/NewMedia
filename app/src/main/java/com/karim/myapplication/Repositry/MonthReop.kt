@@ -3,10 +3,7 @@ package com.karim.myapplication.Repositry
 import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.karim.myapplication.Interfaces.OnMonthilyOrderLoad
 import com.karim.myapplication.model.*
 import java.util.*
@@ -78,7 +75,7 @@ class MonthReop {
                         val id=map["id"].toString()
                         val name=map["name"].toString()
                         val phoneNumber=map["phoneNumber"].toString()
-                        val montag=Montag(name,phoneNumber,date,cashGet,cashRest,id)
+                        val montag=Montag(name,phoneNumber,date,cashGet,cashRest,id,map["time"].toString(),map["checked"]as Boolean)
                         montagModel.add(montag)
                     }
                 }
@@ -109,7 +106,8 @@ class MonthReop {
                             map.get("moneyRest").toString(),
                             map.get("moneyHave").toString(),
                             map.get("id").toString()
-                            ,map.get("workName").toString())
+                            ,map.get("workName").toString(),
+                            map["time"].toString(),map["checked"]as Boolean)
                         photoModel.add(work)
                     }
                 }
@@ -139,7 +137,7 @@ class MonthReop {
                             map.get("moneyRest").toString(),
                             map.get("moneyHave").toString(),
                             map.get("id").toString()
-                            ,map.get("workName").toString())
+                            ,map.get("workName").toString(),map["time"].toString(),map["checked"]as Boolean)
                         musicModel.add(work)
                     }
                 }
@@ -172,7 +170,7 @@ class MonthReop {
         return list
     }
     fun loadTheater(){
-        var query=ref.child("Theater")
+        var query=ref.child("TheaterMonth")
         query.addListenerForSingleValueEvent(object :ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
                 listener!!.onTheaterloadedFailed()
@@ -194,7 +192,8 @@ class MonthReop {
                             map.get("moneyRest").toString(),
                             map.get("moneyHave").toString(),
                             map.get("id").toString()
-                            ,map.get("workName").toString())
+                            ,map.get("workName").toString(),
+                            map["time"].toString(),map["checked"]as Boolean)
                         theaterModel.add(work)
                     }
                 }
@@ -234,7 +233,8 @@ class MonthReop {
                             map.get("moneyRest").toString(),
                             map.get("moneyHave").toString(),
                             map.get("id").toString()
-                            ,map.get("workName").toString())
+                            ,map.get("workName").toString(),
+                            map["time"].toString(),map["checked"]as Boolean)
                         screenModel.add(work)
                     }
                 }
@@ -253,6 +253,97 @@ class MonthReop {
         }
         return list
     }
+    fun removeScreen(uid:String,time:String){
+        val query= ref.child("ScreenMonth/${uid}/${time}")
+        query.setValue(null).addOnCompleteListener{
+                task ->
+            if(task.isSuccessful){
+                listener!!.onScreenRemovedSuccess()
+            }else{
+                listener!!.onScreenRemovedFailed()
+            }
+        }
+    }
+    fun removeMontage(uid: String, time: String) {
+        val query = ref.child("Montage/${uid}/${time}")
+        query.setValue(null).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                listener!!.onMontagRemovedSuccessfully()
+            } else {
+                listener!!.onMontagRemovedFailed()
+            }
+        }
+    }
+    fun removeTheater(uid:String,time:String) {
+        val query = ref.child("TheaterMonth/${uid}/${time}")
+        query.setValue(null).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                listener!!.onTheaterRemovedSuccess()
+            } else {
+                listener!!.onTheaterRemovedFailed()
+            }
+        }
+    }
+    fun removeMusic(uid: String, time: String) {
+        val query = ref.child("musicOrdersMonth/${uid}/${time}")
+        query.setValue(null).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                listener!!.onMusicRemovedSuccessfully()
+            } else {
+                listener!!.onMusicRemovedFailed()
+            }
+        }
+    }
+    fun removePhoto(uid: String, time: String) {
+        var query: DatabaseReference?
+        query =
+            ref.child("photoMonth/${uid}/${time}")
+        query.setValue(null).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                listener!!.onphotoRemoveSuccess()
+            } else {
+                listener!!.onPhotoRemoveFailed()
+            }
+        }
+    }
 
+    fun updateTheter(uid: String, time: String, checked: Boolean) {
+        var query: DatabaseReference?
+        query =
+            ref.child("TheaterMonth/${uid}/${time}/checked")
+        query.setValue(checked).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
 
+            } else {
+            }
+        }
+    }
+
+    fun updateScreen(uid: String, time: String, checked: Boolean) {
+        var query: DatabaseReference?
+        query =
+            ref.child("ScreenMonth/${uid}/${time}/checked")
+        query.setValue(checked)
+    }
+
+    fun updatePhoto(uid: String, time: String, checked: Boolean) {
+        var query: DatabaseReference?
+        query =
+            ref.child("photoMonth/${uid}/${time}/checked")
+        query.setValue(checked)
+    }
+
+    fun updateMusic(uid: String, time: String, checked: Boolean) {
+        var query: DatabaseReference?
+        query =
+            ref.child("musicOrdersMonth/${uid}/${time}/checked")
+        query.setValue(checked)
+    }
+
+    fun updateMontage(uid: String, time: String, checked: Boolean) {
+        var query: DatabaseReference?
+        query =
+            ref.child("Montage/${uid}/${time}/checked")
+        query.setValue(checked)
+    }
 }

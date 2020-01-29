@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatSpinner
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -18,55 +19,67 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.karim.myapplication.Activites.AddEmployee
 import com.karim.myapplication.Activites.AddWorkDone
+import com.karim.myapplication.Adapter.EmployeeAdapter
 import com.karim.myapplication.Adapter.workAdapter
 import com.karim.myapplication.Interfaces.OnWorkDoneLoadedLisntner
 import com.karim.myapplication.model.WorkDone
 import com.karim.myapplication.R
 import com.karim.myapplication.Util
 import com.karim.myapplication.ViewModel.WorkDoneViewModel
+import com.karim.myapplication.model.EmployeeData
 import kotlinx.android.synthetic.main.fragment_work_done.*
 import kotlinx.android.synthetic.main.fragment_work_done.view.*
 import kotlinx.android.synthetic.main.fragment_work_done.view.rv
+import schemasMicrosoftComOfficeOffice.STInsetMode
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashSet
 
-class WorkDoneFragment : Fragment(),OnWorkDoneLoadedLisntner {
+class WorkDoneFragment : Fragment(){
 
 
-    var workDoneModel:WorkDoneViewModel= WorkDoneViewModel()
-     lateinit var adapter:workAdapter
     var employeeSpinner: AppCompatSpinner?=null
-    var employessList= ArrayList<String>()
     var employe=""
     var filterRl:LinearLayout?=null
+    var employeesList1= mutableListOf<EmployeeData>()
+    var employeAdapter:EmployeeAdapter?=null
+    var listEmp= mutableListOf<String>()
+    fun getEmployee(){
+        val ref =FirebaseDatabase.getInstance().reference
+        val query=ref.child("employees")
+        query.addValueEventListener(object :ValueEventListener{
+            override fun onCancelled(p0: DatabaseError) {
+                Toast.makeText(context,getString(R.string.error),Toast.LENGTH_SHORT).show()
+            }
+            override fun onDataChange(p0: DataSnapshot) {
+                employeesList1= ArrayList()
+                 listEmp.clear()
+                listEmp.add("الكل")
+                workDonePb.visibility=View.GONE
+                for(p1 in p0.children){
+                    val mp=EmployeeData(p1.key.toString(),p1.value.toString())
+                    employeesList1.add(mp)
+                    listEmp.add(mp.name)
+                }
+                employeAdapter = EmployeeAdapter(employeesList1,context!!)
+                view!!.rv.adapter = employeAdapter
+                val employeAdapter= ArrayAdapter(context!!,R.layout.spinner_text_view,listEmp)
+                employeeSpinner!!.adapter=employeAdapter
+            }
+
+        })
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-         var view= inflater.inflate(R.layout.fragment_work_done, container, false)
+         val view= inflater.inflate(R.layout.fragment_work_done, container, false)
         filterRl=view.findViewById(R.id.filterRl)
         if(Util.empolyee)
-            filterRl!!.visibility=View.GONE
-        view.btnFilter.setOnClickListener{
-            when(employe){
-                "الكل"->{
-                    adapter = workAdapter(context!!, workDoneModel.getAllWordDone().value!!)
-                    view.rv.adapter = adapter
-                }
-                else->{
-                    var list=ArrayList<WorkDone>()
-                    for(work in workDoneModel.getAllWordDone().value!!){
-                        if(work.employeName==employe)
-                            list.add(work)
-                    }
-                    adapter = workAdapter(context!!,list)
-                    view.rv.adapter = adapter
-                }
-            }
-        }
+            view.add_fab!!.visibility=View.GONE
         employeeSpinner=view.findViewById(R.id.employeeSpinner)
         employeeSpinner!!.onItemSelectedListener=object :  AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -75,71 +88,39 @@ class WorkDoneFragment : Fragment(),OnWorkDoneLoadedLisntner {
 
             override fun onItemSelected(
                 parent: AdapterView<*>?,
-                view: View?,
+                view1: View?,
                 position: Int,
                 id: Long
             ) {
-                employe=employeSet!!.elementAt(position)
+                employe=listEmp[position]
+                filter(view)
             }
 
         }
         view.add_fab.setOnClickListener{
-                startActivity(Intent(context,AddWorkDone::class.java))
+                startActivity(Intent(context,AddEmployee::class.java))
         }
-
-       view.rv.setHasFixedSize(true)
+        view.rv.setHasFixedSize(true)
         view.rv.layoutManager= LinearLayoutManager(context)
-        workDoneModel=ViewModelProviders.of(this).get(WorkDoneViewModel::class.java)
-        if(!Util.empolyee) {
-            workDoneModel.init(this,"")
-            adapter = workAdapter(context!!, workDoneModel.getAllWordDone().value!!)
-            view.rv.adapter = adapter
-        }else{
-            workDoneModel.init(this,FirebaseAuth.getInstance().currentUser!!.uid)
-            adapter = workAdapter(context!!, workDoneModel.getEmployeeWorkDoneList().value!!)
-            view.rv.adapter = adapter
-        }
+        getEmployee()
         return view
     }
-    var employeSet:Set<String>?=null
-    override fun onWorkDoneLoadSuccefully() {
-        workDoneModel.allWorkDone.observe(this,Observer<Any>{
-            workDonePb.visibility=View.GONE
-            adapter.notifyDataSetChanged()
-            employessList.add("الكل")
-            for(work in workDoneModel.allWorkDone.value!!){
-                employessList.add(work.employeName)
+
+    private fun filter(view: View) {
+        when (employe) {
+            "الكل" -> {
+                employeAdapter = EmployeeAdapter(employeesList1, context!!)
+                view.rv.adapter = employeAdapter
             }
-            employeSet= HashSet(employessList)
-            val employeAdapter= ArrayAdapter(context!!,R.layout.spinner_text_view,employeSet!!.toTypedArray())
-            employeeSpinner!!.adapter=employeAdapter
-        })
+            else -> {
+                val list = ArrayList<EmployeeData>()
+                for (emp in employeesList1) {
+                    if (emp.name == employe)
+                        list.add(emp)
+                }
+                employeAdapter = EmployeeAdapter(list, context!!)
+                view.rv.adapter = employeAdapter
+            }
+        }
     }
-
-    override fun onWorkDoneLoadedFaield() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun onEmployeeWorkDoneLoadedSuccessfully() {
-        workDoneModel.getEmployeeWorkDoneList().observe(this,
-            Observer<Any>{
-                workDonePb.visibility=View.GONE
-                adapter.notifyDataSetChanged()
-
-            })
-    }
-
-    override fun onEmployeeWorkDoneLoadedFailed() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun onEmployesLoadSuccess() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun onEmployesLoadFailed() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-
 }

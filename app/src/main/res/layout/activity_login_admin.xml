@@ -51,7 +51,7 @@
                     android:layout_margin="10dp"
                     android:background="@drawable/border_offline"
                     android:ems="10"
-                    android:fontFamily="@font/merssi_meduim"
+                    android:fontFamily="@font/sda"
                     android:gravity="center_horizontal|center_vertical"
                     android:hint="البريد الإلكترونى"
                     android:inputType="textEmailAddress" />
@@ -63,7 +63,7 @@
                     android:layout_margin="10dp"
                     android:background="@drawable/border_offline"
                     android:ems="10"
-                    android:fontFamily="@font/merssi_req"
+                    android:fontFamily="@font/sda"
                     android:gravity="center_horizontal|center_vertical"
                     android:hint="الرقم السرى"
                     android:inputType="textPassword" />
@@ -76,7 +76,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="10dp"
                     android:background="@drawable/border_online"
-                    android:fontFamily="@font/merssi_req"
+                    android:fontFamily="@font/sda"
                     android:gravity="center|center_horizontal"
                     android:padding="10dp"
                     android:text="تسجيل الدخول"

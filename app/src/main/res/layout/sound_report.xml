@@ -28,7 +28,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="عقد فاتورة الصوت"
-                        android:fontFamily="@font/merssi_bold"
+                        android:fontFamily="@font/sda"
                         android:textColor="#fff"
                         android:gravity="right"
                         android:textSize="20sp"
@@ -56,7 +56,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/reportClientName"
-                            android:fontFamily="@font/merssi_req"
+                            android:fontFamily="@font/sda"
                             android:textSize="17sp"
                             android:textColor="#14B2BB"
                             android:padding="7dp"/>
@@ -66,7 +66,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="إسم العميل"
-                            android:fontFamily="@font/merssi_req"
+                            android:fontFamily="@font/sda"
                             android:textColor="#000"
                             android:textSize="17sp"/>
                     </TableRow>
@@ -78,7 +78,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/phoneNumberReport"
-                            android:fontFamily="@font/merssi_req"
+                            android:fontFamily="@font/sda"
                             android:textSize="17sp"
                             android:textColor="#14B2BB"
                             android:padding="7dp"/>
@@ -89,7 +89,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="رقم الجوال"
-                            android:fontFamily="@font/merssi_req"
+                            android:fontFamily="@font/sda"
                             android:textColor="#000"
                             android:textSize="17sp"/>
                     </TableRow>
@@ -101,7 +101,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/locationReport"
-                            android:fontFamily="@font/merssi_req"
+                            android:fontFamily="@font/sda"
                             android:textSize="17sp"
                             android:textColor="#14B2BB"
                             android:padding="7dp"/>
@@ -112,7 +112,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="مكان العمل"
-                            android:fontFamily="@font/merssi_req"
+                            android:fontFamily="@font/sda"
                             android:textColor="#000"
                             android:textSize="17sp"/>
                     </TableRow>
@@ -124,7 +124,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/reportCashType"
-                            android:fontFamily="@font/merssi_req"
+                            android:fontFamily="@font/sda"
                             android:textSize="17sp"
                             android:textColor="#14B2BB"
                             android:padding="7dp"/>
@@ -134,7 +134,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="طريقة الدفع"
-                            android:fontFamily="@font/merssi_req"
+                            android:fontFamily="@font/sda"
                             android:textColor="#000"
                             android:textSize="17sp"/>
                     </TableRow>
@@ -174,7 +174,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="20dp"
                         android:drawablePadding="7dp"
-                        android:fontFamily="@font/merssi_req"
+                        android:fontFamily="@font/sda"
                         android:gravity="center_vertical"
                         android:textColor="#14B2BB"
                         android:textSize="20dp" />
@@ -184,7 +184,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="المبلغ"
-                        android:fontFamily="@font/merssi_req"
+                        android:fontFamily="@font/sda"
                         android:textSize="20dp"
                         android:textColor="#000"
                         android:drawablePadding="7dp"
@@ -200,7 +200,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="السعر"
-                            android:fontFamily="@font/merssi_bold"
+                            android:fontFamily="@font/sda"
                             android:textColor="#fff"
                             android:gravity="right"
                             android:textSize="20sp"
@@ -223,7 +223,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="المحتويات"
-                            android:fontFamily="@font/merssi_bold"
+                            android:fontFamily="@font/sda"
                             android:textColor="#fff"
                             android:gravity="right"
                             android:textSize="20sp"
@@ -252,7 +252,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="الشروط"
-                            android:fontFamily="@font/merssi_bold"
+                            android:fontFamily="@font/sda"
                             android:textColor="#fff"
                             android:gravity="right"
                             android:textSize="20sp"
@@ -268,7 +268,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1- في حالة طلب العمل مستعجل يتم زيادة المبلغ بنسة 30٪ من المبلغ الكامل"
-                    android:fontFamily="@font/merssi_req"
+                    android:fontFamily="@font/sda"
                     android:textSize="14dp"
                     android:textColor="#000"
                     android:drawablePadding="7dp"
@@ -281,7 +281,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="2_ يتم دفع المبلغ كاملا بعد التسجيل وقبل البدء في التوزيع وقبل التسليم"
-                    android:fontFamily="@font/merssi_req"
+                    android:fontFamily="@font/sda"
                     android:textSize="14dp"
                     android:textColor="#000"
                     android:drawablePadding="7dp"
@@ -294,7 +294,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="3-في حال مطالبتنا من قِبل العميل بالتعديل يتم احتساب ٢٠٠ ريال على كل تعديل وله الحق التعديل المره الأولى مجانا"
-                    android:fontFamily="@font/merssi_req"
+                    android:fontFamily="@font/sda"
                     android:textSize="14dp"
                     android:textColor="#000"
                     android:drawablePadding="7dp"

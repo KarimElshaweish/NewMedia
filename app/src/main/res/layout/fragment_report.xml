@@ -36,7 +36,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="@string/year"
-                    android:fontFamily="@font/merssi_semibold"
+                    android:fontFamily="@font/sda"
                     android:textColor="#000"/>
                 <androidx.appcompat.widget.AppCompatSpinner
                     android:layout_width="0dp"
@@ -49,7 +49,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="@string/month"
-                    android:fontFamily="@font/merssi_semibold"
+                    android:fontFamily="@font/sda"
                     android:textColor="#000"/>
             </LinearLayout>
 
@@ -59,7 +59,7 @@
             android:id="@+id/tip_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/merssi_semibold"
+            android:fontFamily="@font/sda"
             android:layout_gravity="center"
             android:gravity="center"
             android:layout_margin="7dp"
@@ -80,7 +80,7 @@
                     android:layout_height="wrap_content">
                     <TextView
                         android:text="@string/income"
-                        android:fontFamily="@font/merssi_semibold"
+                        android:fontFamily="@font/sda"
                         android:layout_gravity="center"
                         android:layout_width="0dp"
                         android:textColor="@color/blue"
@@ -90,7 +90,7 @@
                     <TextView
                         android:textColor="@color/blue"
                         android:text="@string/department"
-                        android:fontFamily="@font/merssi_semibold"
+                        android:fontFamily="@font/sda"
                         android:layout_gravity="center"
                         android:layout_width="0dp"
                         android:layout_weight="1"
@@ -108,7 +108,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
-                        android:fontFamily="@font/merssi_semibold"
+                        android:fontFamily="@font/sda"
                         android:layout_gravity="center"
                         android:layout_width="0dp"
                         android:layout_weight="1"
@@ -117,7 +117,7 @@
                         android:layout_height="wrap_content" />
                     <TextView
                         android:text="@string/photo"
-                        android:fontFamily="@font/merssi_semibold"
+                        android:fontFamily="@font/sda"
                         android:layout_gravity="center"
                         android:layout_width="0dp"
                         android:layout_weight="1"
@@ -136,7 +136,7 @@
                     android:layout_height="wrap_content">
                     <TextView
                         android:id="@+id/musicDep"
-                        android:fontFamily="@font/merssi_semibold"
+                        android:fontFamily="@font/sda"
                         android:layout_gravity="center"
                         android:layout_width="0dp"
                         android:layout_weight="1"
@@ -144,7 +144,7 @@
                         android:layout_height="wrap_content" />
                     <TextView
                         android:text="@string/music"
-                        android:fontFamily="@font/merssi_semibold"
+                        android:fontFamily="@font/sda"
                         android:layout_gravity="center"
                         android:layout_width="0dp"
                         android:layout_weight="1"
@@ -163,7 +163,7 @@
                     android:layout_height="wrap_content">
                     <TextView
                         android:id="@+id/montagDep"
-                        android:fontFamily="@font/merssi_semibold"
+                        android:fontFamily="@font/sda"
                         android:layout_gravity="center"
                         android:layout_width="0dp"
                         android:layout_weight="1"
@@ -171,7 +171,7 @@
                         android:layout_height="wrap_content" />
                     <TextView
                         android:text="@string/montag"
-                        android:fontFamily="@font/merssi_semibold"
+                        android:fontFamily="@font/sda"
                         android:layout_gravity="center"
                         android:layout_width="0dp"
                         android:layout_weight="1"
@@ -190,7 +190,7 @@
                     android:layout_height="wrap_content">
                     <TextView
                         android:id="@+id/theaterDep"
-                        android:fontFamily="@font/merssi_semibold"
+                        android:fontFamily="@font/sda"
                         android:layout_gravity="center"
                         android:layout_width="0dp"
                         android:layout_weight="1"
@@ -198,7 +198,7 @@
                         android:layout_height="wrap_content" />
                     <TextView
                         android:text="@string/theater"
-                        android:fontFamily="@font/merssi_semibold"
+                        android:fontFamily="@font/sda"
                         android:layout_gravity="center"
                         android:layout_width="0dp"
                         android:layout_weight="1"
@@ -217,7 +217,7 @@
                     android:layout_height="wrap_content">
                     <TextView
                         android:id="@+id/screenDep"
-                        android:fontFamily="@font/merssi_semibold"
+                        android:fontFamily="@font/sda"
                         android:layout_gravity="center"
                         android:layout_width="0dp"
                         android:layout_weight="1"
@@ -225,7 +225,7 @@
                         android:layout_height="wrap_content" />
                     <TextView
                         android:text="@string/screen"
-                        android:fontFamily="@font/merssi_semibold"
+                        android:fontFamily="@font/sda"
                         android:layout_gravity="center"
                         android:layout_width="0dp"
                         android:layout_weight="1"
@@ -245,7 +245,7 @@
                     <TextView
                         android:id="@+id/totalDep"
                         android:text="0"
-                        android:fontFamily="@font/merssi_semibold"
+                        android:fontFamily="@font/sda"
                         android:layout_gravity="center"
                         android:layout_width="0dp"
                         android:layout_weight="1"
@@ -253,7 +253,7 @@
                         android:layout_height="wrap_content" />
                     <TextView
                         android:text="@string/total"
-                        android:fontFamily="@font/merssi_semibold"
+                        android:fontFamily="@font/sda"
                         android:layout_gravity="center"
                         android:layout_width="0dp"
                         android:layout_weight="1"

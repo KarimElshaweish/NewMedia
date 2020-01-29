@@ -10,7 +10,7 @@ import com.karim.myapplication.model.TypesItems
 import com.karim.myapplication.R
 import kotlin.collections.HashMap
 
-class RVAdapterPkItems(var typesItemsList: List<TypesItems>, var _ctx: Context): RecyclerView.Adapter<RVAdapterPkItems.ViewHolder>(){
+class RVAdapterPkItems(var typesItemsList: List<TypesItems>, var _ctx: Context,var hash:Boolean): RecyclerView.Adapter<RVAdapterPkItems.ViewHolder>(){
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -25,8 +25,13 @@ class RVAdapterPkItems(var typesItemsList: List<TypesItems>, var _ctx: Context):
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        var t=typesItemsList.get(position) as HashMap<String,String>
-        holder.text.text = t.get("item") as String
+        if(hash) {
+            val t = typesItemsList[position] as HashMap<*, *>
+            holder.text.text = t["item"] as String
+        }else{
+            val t = typesItemsList[position]
+            holder.text.text = t.item
+        }
     }
 
     class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){

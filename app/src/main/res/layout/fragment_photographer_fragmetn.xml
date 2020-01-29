@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/noPk_added"
-        android:fontFamily="@font/merssi_semibold"
+        android:fontFamily="@font/sda"
         android:textColor="#000"
         android:layout_gravity="center"
         android:id="@+id/no_pk"

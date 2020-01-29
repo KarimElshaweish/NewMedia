@@ -26,7 +26,7 @@ class BasketRVAdapter(var _ctx:Context,var list:MutableList<PhotoGraph>) :Recycl
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.rv.setHasFixedSize(true)
         holder.rv.layoutManager=LinearLayoutManager(_ctx)
-        var adapter=RVAdapterPkItems(list.get(position).items,_ctx)
+        var adapter=RVAdapterPkItems(list.get(position).items,_ctx,true)
         holder.rv.adapter=adapter
         holder.titleText.text=list.get(position).name
         holder.delete.setOnClickListener{

@@ -71,12 +71,6 @@ class OrdersViewModel:ViewModel() {
         val time=split[1]
         repo!!.removeTheater(uid,time)
     }
-    fun removeScreen(screen:ScreenUploadData){
-        var split=screen.id.split("*").toTypedArray()
-        var uid=split[0]
-        var time=split[1]
-        repo!!.removeScreen(uid,time)
-    }
     fun removeScreen(id:String){
         var split=id.split("*").toTypedArray()
         var uid=split[0]

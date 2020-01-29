@@ -29,7 +29,7 @@
                 android:background="@drawable/btn_offline_login"
                 android:textColor="#000"
                 android:text="تسجيل كمدير"
-                android:fontFamily="@font/merssi_req"
+                android:fontFamily="@font/sda"
                 android:padding="8dp"
                 android:layout_margin="8dp"/>
             <Button
@@ -39,7 +39,7 @@
                 android:background="@drawable/btn_offline_login"
                 android:textColor="#000"
                 android:text="تسجيل كموظف"
-                android:fontFamily="@font/merssi_req"
+                android:fontFamily="@font/sda"
                 android:padding="8dp"
                 android:layout_margin="8dp"/>
         </LinearLayout>

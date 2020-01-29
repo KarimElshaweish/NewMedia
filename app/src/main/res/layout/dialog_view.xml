@@ -29,7 +29,7 @@
                     android:padding="24dp">
 
                     <TextView
-                        android:fontFamily="@font/merssi_req"
+                        android:fontFamily="@font/sda"
                         android:id="@+id/title"
                         style="@style/TextAppearance.AppCompat.Title"
                         android:layout_width="wrap_content"
@@ -43,7 +43,7 @@
                         android:padding="10dp"
                         android:id="@+id/order_edittext"
                         android:hint="@string/order_number"
-                        android:fontFamily="@font/merssi_req"
+                        android:fontFamily="@font/sda"
                         android:layout_gravity="center"
                         android:gravity="center"
                         android:layout_margin="7dp"/>
@@ -60,7 +60,7 @@
                            android:layout_weight="1"
                            android:background="@drawable/border_online"
                            android:text="@string/yes"
-                           android:fontFamily="@font/merssi_req"
+                           android:fontFamily="@font/sda"
                            android:textColor="#fff"
                            android:layout_margin="7dp"
                            android:textSize="17sp"/>
@@ -72,7 +72,7 @@
                            android:layout_weight="1"
                            android:background="@drawable/border_offline_color"
                            android:text="@string/cancel"
-                           android:fontFamily="@font/merssi_req"
+                           android:fontFamily="@font/sda"
                            android:textColor="@color/colorPrimary"
                            android:textSize="17sp"/>
                    </LinearLayout>

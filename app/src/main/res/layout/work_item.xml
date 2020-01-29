@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_height="wrap_content"
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
@@ -11,32 +12,32 @@
         app:expansion_headerIndicator="@id/headerIndicator"
         app:expansion_layout="@id/expansionLayout"
         app:expansion_toggleOnClick="true">
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/merssi_semibold"
+            android:fontFamily="@font/sda"
             android:layout_gravity="center"
             android:gravity="center"
             android:textColor="#000"
             android:textSize="17sp"
             android:id="@+id/workName"
             android:padding="7dp"/>
-        <!-- HEADER -->
-
-
-        ...
-        <!-- HEADER INDICATOR -->
         <ImageView
             android:adjustViewBounds="true"
             android:id="@+id/headerIndicator"
-            android:layout_gravity="center_vertical|right"
+            android:layout_gravity="center_vertical|left"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
             android:layout_width="wrap_content"
-            app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
+            app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp"
+            tools:ignore="RtlHardcoded" />
 
-
+        <CheckBox
+            android:id="@+id/checkbox"
+            android:theme="@style/checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"/>
     </com.github.florent37.expansionpanel.ExpansionHeader>
 
     <com.github.florent37.expansionpanel.ExpansionLayout

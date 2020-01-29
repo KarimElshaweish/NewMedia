@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="حجوزات المونتاج"
-        android:fontFamily="@font/merssi_semibold"
+        android:fontFamily="@font/sda"
         android:textColor="#000"
         android:textSize="16sp"
         android:layout_centerHorizontal="true"
@@ -43,32 +43,32 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:text="المتبقى"
-                    android:fontFamily="@font/merssi_req"/>
+                    android:fontFamily="@font/sda"/>
                 <TextView android:layout_weight="1"
                     android:textColor="#fff"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:text="العربون"
-                    android:fontFamily="@font/merssi_req"/>
+                    android:fontFamily="@font/sda"/>
                 <TextView android:layout_weight="1"
                     android:text="التاريخ"
                     android:textColor="#fff"
                     android:layout_gravity="center"
                     android:gravity="center"
 
-                    android:fontFamily="@font/merssi_req"/>
+                    android:fontFamily="@font/sda"/>
                 <TextView android:layout_weight="1"
                     android:text="رقم العميل"
                     android:textColor="#fff"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:fontFamily="@font/merssi_req"/>
+                    android:fontFamily="@font/sda"/>
                 <TextView android:layout_weight="1"
                     android:text="إسم العميل"
                     android:textColor="#fff"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:fontFamily="@font/merssi_req"/>
+                    android:fontFamily="@font/sda"/>
             </TableRow>
         </TableLayout>
     </ScrollView>

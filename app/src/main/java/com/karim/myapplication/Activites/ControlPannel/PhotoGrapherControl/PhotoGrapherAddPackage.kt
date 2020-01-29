@@ -54,8 +54,8 @@ class PhotoGrapherAddPackage : AppCompatActivity() {
                 adapter.notifyDataSetChanged()
             }
         }
-        pbState.setStateDescriptionTypeface("font/merssi_semibold.ttf")
-        pbState.setStateNumberTypeface("font/merssi_semibold.ttf")
+        pbState.setStateDescriptionTypeface("font/sda.ttf")
+        pbState.setStateNumberTypeface("font/sda.ttf")
         pbState.setStateDescriptionData(descriptionData)
         pbState.descriptionTopSpaceIncrementer = 10f
         pbState.descriptionLinesSpacing = 5f

@@ -15,7 +15,7 @@
             android:id="@+id/item_text"
             android:text="عنصر"
             android:textColor="#000"
-            android:fontFamily="@font/merssi_req"
+            android:fontFamily="@font/sda"
             android:layout_toLeftOf="@id/delete_icon"
             android:padding="3dp"/>
         <ImageView

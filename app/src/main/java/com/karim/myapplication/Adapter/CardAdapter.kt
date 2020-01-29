@@ -39,9 +39,9 @@ class CardAdapter (var photList: List<PhotoGraph>,var _ctx:Context,var nochoice:
         holder.price.text=photList.get(position).price
         holder.rv.setHasFixedSize(true)
         holder.rv.layoutManager=LinearLayoutManager(_ctx)
-        var adapter=RVAdapterPkItems(emptyList(),_ctx)
+        var adapter=RVAdapterPkItems(emptyList(),_ctx,true)
 
-        if(photList[position].items!=null) adapter=RVAdapterPkItems(photList[position].items,_ctx)
+        if(photList[position].items!=null) adapter=RVAdapterPkItems(photList[position].items,_ctx,true)
 
         holder.rv.adapter=adapter
         if(nochoice)

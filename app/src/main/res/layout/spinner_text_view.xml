@@ -6,7 +6,7 @@
     android:layout_gravity="right"
     android:gravity="center"
     android:textColor="@color/blue"
-    android:fontFamily="@font/merssi_semibold"
+    android:fontFamily="@font/sda"
     android:layout_height="wrap_content">
 
 </TextView>
